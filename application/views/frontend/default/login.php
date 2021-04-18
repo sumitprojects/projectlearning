@@ -180,7 +180,7 @@
                                                     class="fa fa-map"></i></span>
                                             <?php echo site_phrase('state'); ?>:</label>
 
-                                        <input type="text" class="form-control" name="state" id="pincode"
+                                        <input type="text" class="form-control" name="state" id="state"
                                             placeholder="<?php echo site_phrase('state'); ?>" value="" required>
 
                                     </div>

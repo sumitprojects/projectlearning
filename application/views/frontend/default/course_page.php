@@ -155,11 +155,10 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
           <div class="course-curriculum-box">
 
             <div class="course-curriculum-title clearfix">
-
+            <?php if($course_details['course_type'] == 'general'):?>
               <div class="title float-left"><?php echo site_phrase('curriculum_for_this_'.$course_details['course_type']); ?></div>
-
+            <?php endif; ?>
               <div class="float-right">
-
                 <span class="total-lectures">
                   <?php if($magazine):?>
                   <?php echo $this->crud_model->get_lessons('course', $course_details['id'])->num_rows().' '.site_phrase('magazines'); ?>
@@ -300,7 +299,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 
     <?php endif;?>
 
-    <div class="description-box view-more-parent">
+    <div class="description-box view-more-parent expanded">
 
       <!-- <div class="view-more" onclick="viewMore(this,'hide')">+ <?php echo site_phrase('view_more'); ?></div> -->
 
@@ -322,7 +321,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 
 
 
-    <div class="compare-box view-more-parent">
+    <div class="compare-box view-more-parent expanded">
 
       <!-- <div class="view-more" onclick="viewMore(this)">+ <?php echo site_phrase('view_more'); ?></div> -->
 
@@ -343,6 +342,9 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
           <div class="course-comparism-item-container this-course">
 
             <div class="course-comparism-item clearfix">
+            
+              <?php if($course_details['course_type'] == 'general'): ?>
+
 
               <div class="item-image float-left  mt-4 mt-md-0">
 
@@ -351,7 +353,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                 <div class="item-duration"><b><?php echo $this->crud_model->get_total_duration_of_lesson_by_course_id($other_realted_course['id']); ?></b></div>
 
               </div>
-
+            <?php endif; ?>
               <div class="item-title float-left">
 
                 <div class="title"><a href="<?php echo site_url('courses/'.slugify($other_realted_course['title']).'/'.$other_realted_course['id']); ?>"><?php echo $other_realted_course['title']; ?></a></div>
@@ -510,7 +512,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 
       <div class="col-lg-8">
 
-        <div class="about-instructor-details view-more-parent">
+        <div class="about-instructor-details view-more-parent expanded">
 
           <!-- <div class="view-more" onclick="viewMore(this)">+ <?php echo site_phrase('view_more'); ?></div> -->
 
@@ -897,6 +899,8 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 
       <div class="includes">
 
+      <?php if($course_details['course_expiry'] != 0 && $course_details['course_expiry'] != 999999): ?>
+
         <div class="title"><b><?php echo site_phrase('includes'); ?>:</b></div>
 
         <ul>
@@ -925,7 +929,8 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 
           <?php endif; ?>
 
-          <li><i class="far fa-compass"></i><?php echo site_phrase('limited_access'); ?></li>
+            <li><i class="far fa-compass"></i><?php echo site_phrase('limited_access'); ?></li>
+          <?php endif; ?>
 
         </ul>
 

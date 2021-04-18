@@ -102,19 +102,18 @@
 
                 <div class="row text-center">
 
-                    <div class="col"><a href=""><i class="fab fa-linkedin fa-3x text-theme" aria-hidden="true"></i></a>
 
-                    </div>
+                    <div class="col"><a href="<?=get_settings('instagram_link')?>"><i class="fab fa-instagram text-theme fa-3x" aria-hidden="true"></i></a></div>
 
-                    <div class="col"><i class="fab fa-instagram text-theme fa-3x" aria-hidden="true"></i></div>
+                    <div class="col"><a href="<?=get_settings('linkedin_link')?>"><i class="fab fa-linkedin text-theme fa-3x" aria-hidden="true"></i></a></div>
 
-                    <div class="col"><i class="fab fa-facebook-square text-theme fa-3x" aria-hidden="true"></i></div>
+                    <div class="col"><a href="<?=get_settings('facebook_link')?>"><i class="fab fa-facebook-square text-theme fa-3x" aria-hidden="true"></i></a></div>
 
-                    <div class="col"><i class="fab fa-youtube-square text-theme fa-3x" aria-hidden="true"></i></div>
+                    <div class="col"><a href="<?=get_settings('youtube_link')?>"><i class="fab fa-youtube-square text-theme fa-3x" aria-hidden="true"></i></a></div>
 
-                    <div class="col"><i class="fab fa-whatsapp-square text-theme fa-3x" aria-hidden="true"></i></div>
+                    <div class="col"><a href="<?=get_settings('whatsapp_link')?>"><i class="fab fa-whatsapp-square text-theme fa-3x" aria-hidden="true"></i></a></div>
 
-                    <div class="col"><i class="fab fa-twitter-square text-theme fa-3x" aria-hidden="true"></i></div>
+                    <div class="col"><a href="<?=get_settings('twitter_link')?>"><i class="fab fa-twitter-square text-theme fa-3x" aria-hidden="true"></i></a></div>
 
                 </div>
 

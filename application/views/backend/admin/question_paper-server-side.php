@@ -1,3 +1,7 @@
+<?php 
+$status_wise_courses = $this->crud_model->get_status_wise_courses("",'question_paper');
+?>
+
 <div class="row ">
 
     <div class="col-xl-12">
@@ -56,8 +60,6 @@
                         </a>
 
                     </div>
-
-
 
                     <div class="col-sm-6 col-xl-3">
 

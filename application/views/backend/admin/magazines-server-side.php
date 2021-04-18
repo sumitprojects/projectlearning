@@ -1,3 +1,7 @@
+<?php 
+$status_wise_courses = $this->crud_model->get_status_wise_courses("",'magazine');
+?>
+
 <div class="row ">
 
     <div class="col-xl-12">

@@ -104,8 +104,7 @@ class Home extends CI_Controller {
 
         if (!$this->session->userdata('layout')) {
 
-            $this->session->set_userdata('layout', 'list');
-
+            $this->session->set_userdata('layout', 'grid');
         }
 
         $layout = $this->session->userdata('layout');
@@ -238,7 +237,7 @@ class Home extends CI_Controller {
 
         if (!$this->session->userdata('layout')) {
 
-            $this->session->set_userdata('layout', 'list');
+            $this->session->set_userdata('layout', 'grid');
 
         }
 
@@ -293,16 +292,9 @@ class Home extends CI_Controller {
         }
 
 
-
-
-
         if ($selected_category_id == "all" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
 
-            if(!addon_status('scorm_course')){
-
-                $this->db->where('course_type', 'magazine');
-
-            }
+            $this->db->where('course_type', 'magazine');
 
             $this->db->where('status', 'active');
 
@@ -316,11 +308,7 @@ class Home extends CI_Controller {
 
             $this->pagination->initialize($config);
 
-            if(!addon_status('scorm_course')){
-
-                $this->db->where('course_type', 'magazine');
-
-            }
+            $this->db->where('course_type', 'magazine');
 
             $this->db->where('status', 'active');
 
@@ -328,7 +316,7 @@ class Home extends CI_Controller {
 
         }else {
 
-            $courses = $this->crud_model->filter_course($selected_category_id, $selected_price, $selected_level, $selected_language, $selected_rating);
+            $courses = $this->crud_model->filter_course($selected_category_id, $selected_price, $selected_level, $selected_language, $selected_rating,'magazine');
 
             $page_data['courses'] = $courses;
 
@@ -359,7 +347,7 @@ class Home extends CI_Controller {
 
         if (!$this->session->userdata('layout')) {
 
-            $this->session->set_userdata('layout', 'list');
+            $this->session->set_userdata('layout', 'grid');
 
         }
 
@@ -419,11 +407,7 @@ class Home extends CI_Controller {
 
         if ($selected_category_id == "all" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
 
-            if(!addon_status('scorm_course')){
-
-                $this->db->where('course_type', 'question_paper');
-
-            }
+            $this->db->where('course_type', 'question_paper');
 
             $this->db->where('status', 'active');
 
@@ -436,12 +420,8 @@ class Home extends CI_Controller {
             $config['base_url']  = site_url('question_papers/');
 
             $this->pagination->initialize($config);
-
-            if(!addon_status('scorm_course')){
-
-                $this->db->where('course_type', 'question_paper');
-
-            }
+            
+            $this->db->where('course_type', 'question_paper');
 
             $this->db->where('status', 'active');
 
@@ -449,7 +429,7 @@ class Home extends CI_Controller {
 
         }else {
 
-            $courses = $this->crud_model->filter_course($selected_category_id, $selected_price, $selected_level, $selected_language, $selected_rating);
+            $courses = $this->crud_model->filter_course($selected_category_id, $selected_price, $selected_level, $selected_language, $selected_rating,'question_paper');
 
             $page_data['courses'] = $courses;
 
@@ -1123,7 +1103,7 @@ class Home extends CI_Controller {
 
 
 
-        if($course_details['course_type'] == 'general' || $course_details['course_type'] == 'magazine'){
+        if($course_details['course_type'] == 'general' || $course_details['course_type'] == 'magazine' || $course_details['course_type'] == 'question_paper'){
 
             $sections = $this->crud_model->get_section('course', $course_id);
 
@@ -1181,7 +1161,7 @@ class Home extends CI_Controller {
 
         // Check if the lesson contained course is purchased by the user
 
-        if (isset($page_data['lesson_id']) && $page_data['lesson_id'] > 0 && ($course_details['course_type'] == 'general' || $course_details['course_type'] == 'magazine')) {
+        if (isset($page_data['lesson_id']) && $page_data['lesson_id'] > 0 && ($course_details['course_type'] == 'general' || $course_details['course_type'] == 'magazine' || $course_details['course_type'] == 'question_paper')) {
 
             if ($this->session->userdata('role_id') != 1 && $course_details['user_id'] != $this->session->userdata('user_id')) {
 

@@ -14,10 +14,9 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo base_url().'assets/global/toastr/toastr.css' ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nestable2/1.6.0/jquery.nestable.min.css" />
-<script src="<?php echo base_url('assets/backend/js/jquery-3.3.1.min.js'); ?>"></script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500&display=swap');
+<script src="<?php echo base_url().'assets/frontend/default/js/vendor/jquery-3.2.1.min.js'; ?>"></script>
 
+<style>
 h1,h2,h3,h4,h5,h6 {
     font-family:  'Zilla Slab', serif;
     color:#181D20;
@@ -69,7 +68,7 @@ h1,h2,h3,h4,h5,h6 {
     top: 20%;
 }
 .mobile-main-nav span{
-    color:black;
+    color:#181D20;
     font-family: Inter;
     text-transform: uppercase;
     font-weight:700;

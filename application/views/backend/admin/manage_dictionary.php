@@ -177,3 +177,33 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // initDataTable(['#manage-dict']);
+});
+
+function updatePhrase(key, lang_key) {
+    $('#btn-' + key).text('...');
+    var phrase = $('#phrase-' + key).val();
+    var meaning = $('#meaning-' + key).val();
+    var pronounce = $('#pronounce-' + key).val();
+    var currentEditingLanguage = '<?php echo $current_editing_language; ?>';
+    $.ajax({
+        type: "POST",
+        url: "<?php echo site_url('admin/update_dic_phrase_with_ajax'); ?>",
+        data: {
+            currentEditingLanguage: currentEditingLanguage,
+            key: key,
+            lang_key: lang_key,
+            phrase: phrase,
+            meaning: meaning,
+            pronounce: pronounce
+        },
+        success: function(response) {
+            $('#btn-' + key).html('<i class = "mdi mdi-check-circle"></i>');
+            success_notify('<?php echo get_phrase('phrase_updated');?>');
+        }
+    });
+}
+</script>

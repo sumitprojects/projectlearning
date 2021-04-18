@@ -18,7 +18,7 @@
             <div class="test-component">
                 <article class="test-content">
                     <img class="img-fluid"
-                        src="<?php echo base_url(); ?>/assets/frontend/default/img/India 5000 Nomination.jpg">
+                        src="<?php echo base_url(); ?>/assets/frontend/default/img/India 500 Nomination.jpg">
                 </article>
             </div>
         </div>

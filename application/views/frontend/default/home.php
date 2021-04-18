@@ -198,15 +198,14 @@
 
                     <?php $courses = $this->crud_model->get_top_magazines(); ?>
 
-                    <?php for ($i=0; $i <6 ; $i++) :?>
-
                     <?php foreach ($courses->result_array() as $course): ?>
 
                     <div class="col">
 
-                        <div class="card" style="height:400px;">
+                        <div class="card" style="height:580px;">
+                        <a href="<?php echo site_url('magazines/'.rawurlencode(slugify($course['title'])).'/'.$course['id']); ?>" title="<?=$course['title']?>" target="_blank" rel="noopener noreferrer">
 
-                            <?php if(!empty($course['thumbnail'])):?>
+                            <?php if(!empty($this->crud_model->get_course_thumbnail_url($course['id']))):?>
 
                             <img class="card-img-top"
 
@@ -221,7 +220,7 @@
                                 src="<?=base_url()?>/uploads/system/hospitalityconnaisseur_placeholder.jpg" alt="hospitality connaisseur" />
 
                             <?php endif; ?>
-
+                            </a>
                             <div class="card-body">
 
                                 <div class="card-body-content">
@@ -248,7 +247,6 @@
 
                     <?php endforeach; ?>
 
-                    <?php endfor; ?>
 
                     <!-- second half cards -->
 
@@ -1308,7 +1306,7 @@
 
                 </h1>
 
-                <p class="py-4">
+                <p class="py-4 filters-button-group">
 
                     <a href="https://community.hospitalityconnaisseur.com/category/articles/" target="_blank" class="btn btn-outline-dark"><?php echo site_phrase('show_all'); ?></a>
 
@@ -1466,7 +1464,7 @@
 
                     <img class="img-fluid"
 
-                        src="<?php echo base_url(); ?>/assets/frontend/default/img/India 5000 Nomination.jpg">
+                        src="<?php echo base_url(); ?>/assets/frontend/default/img/India 500 Nomination.jpg">
 
                 </article>
 
@@ -1586,9 +1584,9 @@ function handleWishList(elem) {
 
 function handleCartItems(elem) {
 
-    url1 = '<?php echo site_url('home / handleCartItems ');?>';
+    url1 = '<?php echo site_url('home/handleCartItems');?>';
 
-    url2 = '<?php echo site_url('home / refreshWishList ');?>';
+    url2 = '<?php echo site_url('home/refreshWishList');?>';
 
     $.ajax({
 
@@ -1650,7 +1648,7 @@ function handleEnrolledButton() {
 
     $.ajax({
 
-        url: '<?php echo site_url('home / isLoggedIn ');?>',
+        url: '<?php echo site_url('home/isLoggedIn');?>',
 
         success: function(response) {
 
@@ -1670,9 +1668,9 @@ function handleEnrolledButton() {
 
 function handleCartItems(elem) {
 
-    url1 = '<?php echo site_url('home / handleCartItems ');?>';
+    url1 = '<?php echo site_url('home/handleCartItems');?>';
 
-    url2 = '<?php echo site_url('home / refreshWishList ');?>';
+    url2 = '<?php echo site_url('home/refreshWishList');?>';
 
     $.ajax({
 

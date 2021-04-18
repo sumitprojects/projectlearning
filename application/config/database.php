@@ -196,7 +196,7 @@ $db['live'] = array(
 
 	'dsn'	=> '',
 
-	'hostname' => 'localhost',
+	'hostname' => '162.241.123.129',
 
 	'username' => 'hospivf3_newlms',
 

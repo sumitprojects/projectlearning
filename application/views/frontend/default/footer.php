@@ -132,7 +132,7 @@
 
                         <a class="nav-link"
 
-                            href="<?=site_url('courses?category='.$category['slug'].'&price=all&level=all&language=all&rating=all')?>"
+                            href="<?=site_url($category['slug'].'?category='.$category['slug'].'&price=all&level=all&language=all&rating=all')?>"
 
                             target="_blank" rel="noopener noreferrer">
 

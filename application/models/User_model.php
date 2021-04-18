@@ -51,6 +51,23 @@ class User_model extends CI_Model {
             $data['status'] = 1;
             $data['image'] = md5(rand(10000, 10000000));
 
+            $data['address'] = html_escape($this->input->post('address'));
+
+            $data['city'] = html_escape($this->input->post('city'));
+
+            $data['pincode'] = html_escape($this->input->post('pincode'));
+
+            $data['state'] = html_escape($this->input->post('state'));
+
+            $data['country'] = html_escape($this->input->post('country'));
+
+            $data['mob_no'] = html_escape($this->input->post('mob_no'));
+
+            $data['dob'] = html_escape($this->input->post('dob'));
+
+            $data['gender'] = html_escape($this->input->post('gender'));
+
+
             // Add paypal keys
             $paypal_info = array();
             $paypal['production_client_id']  = html_escape($this->input->post('paypal_client_id'));
@@ -170,6 +187,23 @@ class User_model extends CI_Model {
             $data['title'] = html_escape($this->input->post('title'));
             $data['last_modified'] = strtotime(date("Y-m-d H:i:s"));
 
+            $data['address'] = html_escape($this->input->post('address'));
+
+            $data['city'] = html_escape($this->input->post('city'));
+
+            $data['pincode'] = html_escape($this->input->post('pincode'));
+
+            $data['state'] = html_escape($this->input->post('state'));
+
+            $data['country'] = html_escape($this->input->post('country'));
+
+            $data['mob_no'] = html_escape($this->input->post('mob_no'));
+
+            $data['dob'] = html_escape($this->input->post('dob'));
+
+            $data['gender'] = html_escape($this->input->post('gender'));
+
+            
             if (isset($_FILES['user_image']) && $_FILES['user_image']['name'] != "") {
                 unlink('uploads/user_image/' . $this->db->get_where('users', array('id' => $user_id))->row('image').'.jpg');
                 $data['image'] = md5(rand(10000, 10000000));

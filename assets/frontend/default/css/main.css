@@ -3,6 +3,7 @@
     src: url("../webfonts/Inter-Regular.woff2") format("woff");
 }
 
+@import 'https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500&display=swap';
 @font-face {
     font-family: Metropolis;
     src: url("../webfonts/Metropolis-Bold.woff2") format("woff2");
@@ -56,12 +57,12 @@ input[type="button"] {
 }
 
 a {
-    color: white;
+    color: #FF7C2C;
 }
 
 a:hover {
     text-decoration: none;
-    color: white;
+    color: #FF7C2C;
 }
 
 *[data-toggle="modal"],
@@ -113,47 +114,56 @@ label {
 }
 
 .overlay {
-  height: 100%;
-  width: 100%;
-  display: none;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .overlay-content {
-  position: relative;
-  top: 46%;
-  width: 80%;
-  text-align: center;
-  margin-top: 30px;
-  margin: auto;
+    position: relative;
+    top: 46%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
 }
 
 .overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-  cursor: pointer;
-  color: white;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    cursor: pointer;
+    color: white;
 }
 
 .overlay .closebtn:hover {
-  color: #ccc;
+    color: #ccc;
 }
 
 .overlay input[type=text] {
-  padding: 15px;
-  font-size: 17px;
-  border: none;
-  float: left;
-  width: 80%;
-  background: white;
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    float: left;
+    width: 80%;
+    background: white;
 }
+
+.footer-area a {
+    color: white;
+}
+
+.filters-button-group .btn {
+    margin-top: 5px;
+}
+
 
 /************/
 
@@ -230,7 +240,9 @@ label {
 
 .btn.btn-primary:hover,
 .btn.btn-primary:focus,
-.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
     background-color: #181D20;
     border-color: #181D20;
     color: #fff;
@@ -773,8 +785,8 @@ menu
 }
 
 .menu-icon-box .icon a:hover {
-    background: rgba(20, 23, 28, .05);
-    border-color: rgba(20, 23, 28, .05);
+    background: rgba(255, 124, 44, .5);
+    border-color: rgba(255, 124, 44, .5);
 }
 
 .menu-icon-box:hover>.dropdown {
@@ -1556,11 +1568,11 @@ homepage styles
 .home-fact-box i {
     font-size: 47px;
     margin-top: 10px;
-    margin-right:15px;
+    margin-right: 15px;
 }
 
 .home-fact-box i>img {
-width:60px;
+    width: 60px;
 }
 
 .home-fact-box .text-box h4 {
@@ -1574,8 +1586,8 @@ width:60px;
     margin-bottom: 0;
 }
 
-.service-box img{
-    width:60px;
+.service-box img {
+    width: 60px;
 }
 
 .course-carousel-area {
@@ -3473,7 +3485,7 @@ ul.pagination .page-item.active .page-link {
 
 ul.pagination .page-item a,
 ul.pagination .page-item .page-link {
-    color: #007791;
+    color: #181D20;
     padding: 10px 15px;
     font-size: 17px;
     position: relative;
@@ -3486,6 +3498,7 @@ ul.pagination .page-item .page-link {
 
 ul.pagination .page-item a:hover,
 ul.pagination .page-item .page-link:hover {
+    color: white;
     background-color: #181D20;
     border-color: #181D20;
     position: relative;
@@ -4132,10 +4145,9 @@ section.user-dashboard-area {
     border-color: #FF7C2C;
     padding: 11px 12px;
     font-size: 15px;
-     border-radius: 2px; 
+    border-radius: 2px;
     line-height: 1.35135;
     font-weight: 600;
-
 }
 
 .user-dashboard-content .content-box .form-group {

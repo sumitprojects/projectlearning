@@ -1,6 +1,6 @@
 <?php
 
-isset($layout) ? "": $layout = "list";
+isset($layout) ? "": $layout = "grid";
 
 isset($selected_category_id) ? "": $selected_category_id = "all";
 
@@ -32,6 +32,14 @@ if (isset($sub_category_id)) {
 
 $magazine = (strpos(current_url(),'magazine')) > 0;
 $questionpaper = (strpos(current_url(),'question-paper')) > 0;
+$type = 'courses';
+if($magazine){
+    $type= 'magazines';
+}
+
+if($questionpaper){
+    $type= 'question-papers';
+}
 
 ?>
 
@@ -403,7 +411,7 @@ $questionpaper = (strpos(current_url(),'question-paper')) > 0;
 
 function get_url() {
 
-    var urlPrefix 	= '<?php echo site_url('courses?'); ?>'
+    var urlPrefix 	= '<?php echo site_url($type.'?'); ?>'
 
     var urlSuffix = "";
 

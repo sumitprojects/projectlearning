@@ -63,7 +63,6 @@ class Login extends CI_Controller {
         }
 
         
-
         $email = $this->input->post('email');
 
         $password = $this->input->post('password');
@@ -121,7 +120,6 @@ class Login extends CI_Controller {
 
 
     public function register() {
-
 
 
         if($this->crud_model->check_recaptcha() == false && get_frontend_settings('recaptcha_status') == true){

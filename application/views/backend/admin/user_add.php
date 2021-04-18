@@ -70,9 +70,70 @@
                                             </div>
                                         </div>
                                         <div class="form-group row mb-3">
-                                            <label class="col-md-3 col-form-label" for="linkedin_link"><?php echo get_phrase('biography'); ?></label>
+                                            <label class="col-md-3 col-form-label" for="summernote-basic"><?php echo get_phrase('biography'); ?></label>
                                             <div class="col-md-9">
                                                 <textarea name="biography" id = "summernote-basic" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-3">
+                                            <label class="col-md-3 col-form-label" for="address"><?php echo get_phrase('address'); ?><span class="required">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="address" name="address">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-3">
+                                            <label class="col-md-3 col-form-label" for="city"><?php echo get_phrase('city'); ?><span class="required">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="city" name="city">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-3">
+                                            <label class="col-md-3 col-form-label" for="pincode"><?php echo get_phrase('pincode'); ?><span class="required">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="pincode" name="pincode">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-3">
+                                            <label class="col-md-3 col-form-label" for="state"><?php echo get_phrase('state'); ?><span class="required">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="state" name="state">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-3">
+                                            <label class="col-md-3 col-form-label" for="country"><?php echo get_phrase('country'); ?><span class="required">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="country" name="country">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-3">
+                                            <label class="col-md-3 col-form-label" for="mob_no"><?php echo get_phrase('mobile_no'); ?><span class="required">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="mob_no" name="mob_no">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-3">
+                                            <label class="col-md-3 col-form-label"
+                                                for=""><?php echo get_phrase('gender'); ?><span
+                                                    class="required">*</span></label><br>
+                                            <div class="col-md-9">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="male_radio"
+                                                        value="male" name="gender" selected required>
+                                                    <label class="custom-control-label"
+                                                        for="male_radio"><?php echo get_phrase('male'); ?></label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="female_radio"
+                                                        value="female" name="gender" required>
+                                                    <label class="custom-control-label"
+                                                        for="female_radio"><?php echo get_phrase('female'); ?></label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="other_radio"
+                                                        value="other" name="gender" required>
+                                                    <label class="custom-control-label"
+                                                        for="other_radio"><?php echo get_phrase('other'); ?></label>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group row mb-3">

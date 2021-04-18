@@ -6,8 +6,6 @@
         max-width:1400px
     }
 }
-
-
 /*
     menu resonsive for 768px+
 */
@@ -608,5 +606,11 @@
     }
     .main-nav-wrap{
         width:0%;
+    }
+}
+@media (max-width:385px){
+    .navbar-brand>.main-logo{
+        height:60px;
+        width:180px;
     }
 }

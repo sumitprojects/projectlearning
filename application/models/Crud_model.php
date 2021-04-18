@@ -1633,7 +1633,6 @@ class Crud_model extends CI_Model
 
 
     public function get_top_magazines()
-
     {
 
             return $this->db->get_where('course', array('is_top_course' => 1, 'status' => 'active', 'course_type' => 'magazine'));
@@ -3365,7 +3364,9 @@ class Crud_model extends CI_Model
 
         $user_id = $this->session->userdata('user_id');
 
-        return $this->db->select('*')
+        $course_details = $this->get_course_by_id($course_id)->row_array();
+
+        $course  =  $this->db->select('*')
 
         ->from('enrol')
 
@@ -3373,10 +3374,19 @@ class Crud_model extends CI_Model
 
         ->where('course_id',$course_id)
 
-        ->where('expiry_time>=',strtotime(date('D, d-M-Y')))
+        ->get()->row_array();
 
-        ->get();
+        $course['expiry_time'] = (int) $course['expiry_time'];
 
+        $course_details['course_expiry'] = (int)$course_details['course_expiry'];
+
+        if($course['expiry_time'] > 0 && $course['expiry_time'] <= strtotime(date('D, d-M-Y')) ){
+            return $course;            
+        }else if($course['expiry_time'] == 0){
+            return $course;
+        }else{
+            return null;
+        }
     }
 
 
@@ -3423,7 +3433,11 @@ class Crud_model extends CI_Model
 
             $exp_days = $this->get_course_expiry_days($purchased_course);
 
-            $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days")));
+            if($exp_days != 0 && $exp_days <= 999999){
+                $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days")));
+            }else{
+                $data['expiry_time'] = 0;
+            }
 
             $this->db->insert('enrol', $data);
 
@@ -3445,7 +3459,7 @@ class Crud_model extends CI_Model
 
         
 
-        if ($check_enrol->num_rows() > 0) {
+        if (!empty($check_enrol)) {
 
             $this->session->set_flashdata('error_message', get_phrase('student_has_already_been_enrolled_to_this_course'));
 
@@ -3453,7 +3467,11 @@ class Crud_model extends CI_Model
 
             $data['date_added'] = strtotime(date('D, d-M-Y'));
 
-            $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days")));
+            if($exp_days != 0 && $exp_days <= 999999){
+                $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days")));
+            }else{
+                $data['expiry_time'] = 0;
+            }
 
             $this->db->insert('enrol', $data);
 
@@ -3477,7 +3495,7 @@ class Crud_model extends CI_Model
 
 
 
-        if ($check_enrol->num_rows() > 0) {
+        if (!empty($check_enrol)) {
 
             $response['status'] = 0;
 
@@ -3493,8 +3511,11 @@ class Crud_model extends CI_Model
 
             $exp_days = $this->crud_model->get_course_expiry_days($data['course_id'])->row_array()['course_expiry'];
 
-            $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days")));
-
+            if($exp_days != 0 && $exp_days <= 999999){
+                $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days")));
+            }else{
+                $data['expiry_time'] = 0;
+            }
             $this->session->set_flashdata('flash_message', get_phrase('student_has_been_enrolled_to_that_course'));
 
             $response['status'] = 1;
@@ -3521,7 +3542,7 @@ class Crud_model extends CI_Model
 
             $check_enrol = $this->check_course_enrol_expiry_for_course($data['user_id'],$data['course_id']); 
 
-            if ($check_enrol->num_rows() > 0) {
+            if (!empty($check_enrol)) {
 
                 $this->session->set_flashdata('error_message', get_phrase('student_has_already_been_enrolled_to_this_course'));
 
@@ -3533,8 +3554,11 @@ class Crud_model extends CI_Model
 
                 $exp_days = $this->crud_model->get_course_expiry_days($data['course_id'])->row_array()['course_expiry'];
 
-                $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days"))); 
-
+                if($exp_days != 0 && $exp_days <= 999999){
+                    $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days")));
+                }else{
+                    $data['expiry_time'] = 0;
+                }
                 $this->session->set_flashdata('flash_message', get_phrase('successfully_enrolled'));
 
             }
@@ -4097,7 +4121,7 @@ class Crud_model extends CI_Model
 
     // version 1.4
 
-    function filter_course($selected_category_id = "", $selected_price = "", $selected_level = "", $selected_language = "", $selected_rating = "")
+    function filter_course($selected_category_id = "", $selected_price = "", $selected_level = "", $selected_language = "", $selected_rating = "", $type = "general")
 
     {
 
@@ -4110,8 +4134,6 @@ class Crud_model extends CI_Model
         if ($selected_category_id != "all") {
 
             $category_details = $this->get_category_details_by_id($selected_category_id)->row_array();
-
-
 
             if ($category_details['parent'] > 0) {
 
@@ -4195,12 +4217,12 @@ class Crud_model extends CI_Model
 
         if (count($course_ids) > 0) {
 
-            if(!addon_status('scorm_course')){
+            // if(!addon_status('scorm_course')){
 
-                $this->db->where('course_type', 'general');
+            //     $this->db->where('course_type', 'general');
 
-            }
-
+            // }
+            $this->db->where('course_type', $type);
             $this->db->where_in('id', $course_ids);
 
             return $this->db->get('course')->result_array();
@@ -5003,6 +5025,8 @@ class Crud_model extends CI_Model
 
         $lesson_id = $this->input->post('lesson_id');
 
+        $course = $this->db->select('c.*')->from('course as c')->join('lesson as l','l.course_id = c.id')->where('l.id',$lesson_id)->get()->row_array();
+
         $progress = $this->input->post('progress');
 
         $user_id   = $this->session->userdata('user_id');
@@ -5057,7 +5081,7 @@ class Crud_model extends CI_Model
 
         // CHECK IF THE USER IS ELIGIBLE FOR CERTIFICATE
 
-        if (addon_status('certificate')) {
+        if (addon_status('certificate') && $course['course_type'] == 'general') {
 
             $this->load->model('addons/Certificate_model', 'certificate_model');
 
