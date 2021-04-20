@@ -57,8 +57,8 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1>We are Sorry! This Webpage is not available. Back to Everything Hospitality!</h1>
-		<a href="<?=base_url()?>">Back to Hospitality Connaisseur</a>
+		<h1><?php echo $heading; ?></h1>
+		<?php echo $message; ?>
 	</div>
 </body>
 </html>

@@ -3004,15 +3004,7 @@ class Admin extends CI_Controller {
 
             $course_id = $this->crud_model->add_course();
 
-
-
             redirect(site_url('admin/magazine_form/magazine_edit/'.$course_id), 'refresh');
-
-
-
-
-
-
 
         }elseif ($param1 == "edit") {
 

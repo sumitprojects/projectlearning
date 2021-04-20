@@ -191,11 +191,13 @@ if ( ! function_exists('lesson_progress'))
         }
         $user_details = $CI->user_model->get_all_user($user_id)->row_array();
         $watch_history_array = json_decode($user_details['watch_history'], true);
-        for ($i = 0; $i < count($watch_history_array); $i++) {
-            $watch_history_for_each_lesson = $watch_history_array[$i];
-            if ($watch_history_for_each_lesson['lesson_id'] == $lesson_id) {
-                return $watch_history_for_each_lesson['progress'];
-            }
+        if(is_array($watch_history_array)){
+            for ($i = 0; $i < count($watch_history_array); $i++) {
+                $watch_history_for_each_lesson = $watch_history_array[$i];
+                if ($watch_history_for_each_lesson['lesson_id'] == $lesson_id) {
+                    return $watch_history_for_each_lesson['progress'];
+                }
+            }    
         }
         return 0;
     }
@@ -224,11 +226,13 @@ if ( ! function_exists('course_progress'))
             // total number of lessons for that course
             $total_number_of_lessons = $lessons_for_that_course->num_rows();
             // arranging completed lesson ids
-            for ($i = 0; $i < count($watch_history_array); $i++) {
-                $watch_history_for_each_lesson = $watch_history_array[$i];
-                if ($watch_history_for_each_lesson['progress'] == 1) {
-                    array_push($completed_lessons_ids, $watch_history_for_each_lesson['lesson_id']);
-                }
+            if(is_array($watch_history_array)){
+                for ($i = 0; $i < count($watch_history_array); $i++) {
+                    $watch_history_for_each_lesson = $watch_history_array[$i];
+                    if ($watch_history_for_each_lesson['progress'] == 1) {
+                        array_push($completed_lessons_ids, $watch_history_for_each_lesson['lesson_id']);
+                    }
+                }    
             }
     
             foreach ($lessons_for_that_course->result_array() as $row) {

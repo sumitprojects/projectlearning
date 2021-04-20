@@ -1231,7 +1231,7 @@ class Crud_model extends CI_Model
 
         $trimmed_array = array();
 
-        if (sizeof($untrimmed_array) > 0) {
+        if (is_array($untrimmed_array) && count($untrimmed_array) > 0) {
 
             foreach ($untrimmed_array as $row) {
 
