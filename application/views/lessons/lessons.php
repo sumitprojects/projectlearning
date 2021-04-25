@@ -12,7 +12,7 @@ if(isset($bundle_id) && $bundle_id > 0):
 
 else:
 
-    $my_course_url = strtolower($this->session->userdata('role')) == 'user' ? site_url('home/my_courses') : 'javascript::';
+    $my_course_url = strtolower($this->session->userdata('role')) == 'user' ? site_url('my-courses') : 'javascript::';
 
     $btn_title = 'my_courses';
 

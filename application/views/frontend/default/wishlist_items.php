@@ -8,7 +8,7 @@ $cart_items = $this->session->userdata('cart_items');
 
 <div class="icon">
 
-    <a href=""><i class="far fa-heart"></i></a>
+    <a href=""><i class="fa fa-heart text-dark"></i></a>
 
     <span class="number"><?php echo sizeof($this->crud_model->getWishLists()); ?></span>
 
@@ -130,7 +130,7 @@ $cart_items = $this->session->userdata('cart_items');
 
         <div class="dropdown-footer">
 
-            <a href = "<?php echo site_url('home/my_wishlist'); ?>"><?php echo site_phrase('go_to_wishlist'); ?></a>
+            <a href = "<?php echo site_url('my-wishlist'); ?>"><?php echo site_phrase('go_to_wishlist'); ?></a>
 
         </div>
 

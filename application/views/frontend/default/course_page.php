@@ -817,7 +817,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 
         <div class="already_purchased">
 
-          <a href="<?php echo site_url('home/my_courses'); ?>"><?php echo site_phrase('already_purchased'); ?></a>
+          <a href="<?php echo site_url('my-courses'); ?>"><?php echo site_phrase('already_purchased'); ?></a>
 
         </div>
 

@@ -1,4 +1,5 @@
 <!-- Nirmita code start -->
+<?php if(!$this->agent->is_mobile()): ?>
 
 <section class="d-sm-none d-md-block">
 
@@ -6,11 +7,15 @@
 
 </section>
 
+<?php else:?>
+
 <section class="d-sm-block d-md-none">
 
 <img src="<?php echo base_url(); ?>assets/frontend/default/img/mobile everything hospitality.jpg" alt="" class="w-100 h-100">
 
 </section>
+
+<?php endif;?>
 
 <section class="mx-1">
 

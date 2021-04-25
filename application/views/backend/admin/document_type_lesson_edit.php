@@ -16,5 +16,4 @@
             <label class="custom-file-label" for="attachment"><?php echo get_phrase('attachment'); ?></label>
         </div>
     </div>
-    <span class="text-muted"><?=get_phrase('dont_upload_if_you_dont_want_to_change')?></span>
 </div>

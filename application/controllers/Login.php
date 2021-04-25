@@ -276,7 +276,7 @@ class Login extends CI_Controller {
 
                 $this->session->set_flashdata('flash_message', get_phrase('your_registration_has_been_successfully_done'));
 
-                redirect(site_url('login'), 'refresh');
+                $this->validate_login();
 
             }
         }else {

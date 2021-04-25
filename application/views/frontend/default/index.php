@@ -158,7 +158,7 @@
 	?>
     <script type='text/javascript'
         src='https://platform-api.sharethis.com/js/sharethis.js#property=606feed86f7ab900129cee27&product=sticky-share-buttons'
-        async='async'></script>
+        async='async' defer></script>
 </body>
 <?php 
 $popup_settings = json_decode(get_frontend_settings('popup_settings'));
@@ -168,9 +168,10 @@ $popup_settings = json_decode(get_frontend_settings('popup_settings'));
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="card">
-				<?php if(!empty($popup_settings->image_link)):?>
-                <img src="<?=base_url('uploads/system/'.$popup_settings->image_link)?>" class="card-img-top" alt="Hospitality Connaisseur">
-				<?php endif; ?>
+                <?php if(!empty($popup_settings->image_link)):?>
+                <img src="<?=base_url('uploads/system/'.$popup_settings->image_link)?>" class="card-img-top"
+                    alt="Hospitality Connaisseur">
+                <?php endif; ?>
                 <div class="card-body">
                     <h2 class="card-title"><?=$popup_settings->popup_title?></h2>
                     <a href="<?=$popup_settings->popup_link?>" class="btn btn-primary"><?=get_phrase('learn_more')?></a>
@@ -179,13 +180,55 @@ $popup_settings = json_decode(get_frontend_settings('popup_settings'));
         </div>
     </div>
 </div>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/zl-fetch"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
 <script>
-	$(document).ready(function(){
-	    setTimeout(function () {
-    	            $('.bd-example-modal-lg').modal('show');
-        }, <?=$popup_settings->popup_timer?>);
-	});
+$('img').addClass('animated-background lazyload');
+
+document.addEventListener("DOMContentLoaded", function() {
+    let lazyloadImages;
+    if ("IntersectionObserver" in window) {
+        lazyloadImages = document.querySelectorAll("img");
+        let imageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    let image = entry.target;
+                    image.src = image.src;
+                    image.classList.remove("animated-background");
+                    imageObserver.unobserve(image);
+                }
+            });
+        });
+        lazyloadImages.forEach(function(image) {
+            imageObserver.observe(image);
+        });
+    } else {
+        let lazyloadThrottleTimeout;
+        lazyloadImages = document.querySelectorAll("img");
+
+        function lazyload() {
+            if (lazyloadThrottleTimeout) {
+                clearTimeout(lazyloadThrottleTimeout);
+            }
+            lazyloadThrottleTimeout = setTimeout(function() {
+                let scrollTop = window.pageYOffset;
+                lazyloadImages.forEach(function(img) {
+                    if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                        img.src = img.src;
+                        img.classList.remove('animated-background');
+                    }
+                });
+            }, 20);
+        }
+    }
+})
+
+$(document).ready(function() {
+    setTimeout(function() {
+        $('.bd-example-modal-lg').modal('show');
+    }, <?=$popup_settings->popup_timer?>);
+});
 </script>
 
 

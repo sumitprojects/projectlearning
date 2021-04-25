@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
 function toggleRatingView(course_id) {
   $('#course_info_view_'+course_id).toggle();
@@ -23,4 +24,15 @@ function publishRating(course_id) {
 
     }
 }
+
+$(document).ready(function(){
+    if($(document).width() < 768){
+        $('#headingOne').addClass('collapsed');
+        $('#collapseFilter').removeClass('show');
+        $('.filter-area').addClass('mb-4');
+    }else{
+        $('#collapseFilter').addClass('show');
+        $('#headingOne').removeClass('collapsed');
+    }
+});
 </script>

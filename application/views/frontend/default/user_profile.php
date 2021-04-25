@@ -18,13 +18,13 @@
                         <div class="user-dashboard-menu">
                             <ul>
                                 <li class="active"><a
-                                        href="<?php echo site_url('home/profile/user_profile'); ?>"><?php echo site_phrase('profile'); ?></a>
+                                        href="<?php echo site_url('profile/user-profile'); ?>"><?php echo site_phrase('profile'); ?></a>
                                 </li>
                                 <li><a
-                                        href="<?php echo site_url('home/profile/user_credentials'); ?>"><?php echo site_phrase('account'); ?></a>
+                                        href="<?php echo site_url('profile/user-credentials'); ?>"><?php echo site_phrase('account'); ?></a>
                                 </li>
                                 <li><a
-                                        href="<?php echo site_url('home/profile/user_photo'); ?>"><?php echo site_phrase('photo'); ?></a>
+                                        href="<?php echo site_url('profile/user-photo'); ?>"><?php echo site_phrase('photo'); ?></a>
                                 </li>
                             </ul>
                         </div>

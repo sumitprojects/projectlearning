@@ -3004,7 +3004,15 @@ class Admin extends CI_Controller {
 
             $course_id = $this->crud_model->add_course();
 
+
+
             redirect(site_url('admin/magazine_form/magazine_edit/'.$course_id), 'refresh');
+
+
+
+
+
+
 
         }elseif ($param1 == "edit") {
 
@@ -7504,21 +7512,19 @@ class Admin extends CI_Controller {
 
             }
 
-
-
             // add dictionary Language
+            if(isset($_POST['dlid'])){
+                $id = $this->input->post('dlid');
 
+                $this->db->update('dictionary_lang',['language'=>$language],['dlid'=>$id]);
 
+                $this->session->set_flashdata('flash_message', get_phrase('language_added_successfully'));
+            }else{
+                $this->db->insert('dictionary_lang',['language'=>$language,'slug'=>slugify($language)]);
 
-            $this->db->insert('dictionary_lang',['language'=>$language]);
-
-
-
-
-
-
-
-            $this->session->set_flashdata('flash_message', get_phrase('language_added_successfully'));
+                $this->session->set_flashdata('flash_message', get_phrase('language_added_successfully'));
+    
+            }
 
 
 
@@ -7578,7 +7584,7 @@ class Admin extends CI_Controller {
 
 
 
-            $page_data['phrase_list'] = $this->db->select('dictionary.*')->from('dictionary')->join('dictionary_lang','dictionary_lang.dlid = dictionary.lang_key')->get()->result_array();
+            $page_data['phrase_list'] = $this->db->select('dictionary.*,dictionary_lang.slug')->from('dictionary')->join('dictionary_lang','dictionary_lang.dlid = dictionary.lang_key')->get()->result_array();
 
 
 
@@ -7609,6 +7615,15 @@ class Admin extends CI_Controller {
             redirect(site_url('admin/manage_dictionary'), 'refresh');
 
 
+
+        }
+
+        if ($param1 == 'edit_language') {  
+            $page_data['lang_id'] = $param3;
+
+            $page_data['language'] = $this->db->select('*')->from('dictionary_lang')->where('dlid',$param3)->get()->result_array();
+
+            $page_data['edit_lang'] = $param3;
 
         }
 

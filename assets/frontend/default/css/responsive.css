@@ -108,7 +108,7 @@
         display: block;
     }
     .main-nav-wrap>ul>li>ul>li a:hover{
-        color: #007791;;
+        color: #181D20;;
         background-color: #f2f3f5;
     }
     .main-nav-wrap>ul>li>ul ul{
@@ -193,7 +193,8 @@
         display: none !important;
     }
     .mobile-main-nav a:not(.btn){
-        color: #686f7a;
+        color: #181D20;
+        font-weight:700;
     }
     .main-nav-wrap ul li .has-sub-category {
         font-size: 12px;

@@ -101,7 +101,7 @@ if ( ! function_exists('saveJSONFile'))
             $jsonString[$updating_key] = filter_var(escapeJsonString($updating_value), FILTER_SANITIZE_SPECIAL_CHARS, FILTER_SANITIZE_STRING);
         }
         $jsonData = json_encode($jsonString, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
-        file_put_contents(APPPATH.'language/'.$language_code.'.json', stripslashes($jsonData));
+        $saved = file_put_contents(APPPATH.'language/'.$language_code.'.json', stripslashes($jsonData));
     }
 }
 

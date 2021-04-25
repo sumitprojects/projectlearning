@@ -948,7 +948,7 @@ class User extends CI_Controller {
 
     function manage_profile() {
 
-        redirect(site_url('home/profile/user_profile'), 'refresh');
+        redirect(site_url('profile/user-profile'), 'refresh');
 
     }
 

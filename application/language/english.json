@@ -1,7 +1,7 @@
 {
     "home": "Home",
     "courses": "Courses",
-    "all_courses": "All courses",
+    "all_courses": "All Courses",
     "search_for_courses": "Search for courses",
     "administrator": "Administrator",
     "total": "Total",
@@ -9,7 +9,7 @@
     "your_cart_is_empty": "Your cart is empty",
     "log_in": "Log in",
     "sign_up": "Sign up",
-    "cookie_policy": "Cookie policy",
+    "cookie_policy": "Cookie Policy",
     "accept": "Accept",
     "what_do_you_want_to_learn": "What do you want to learn",
     "online_courses": "Online courses",
@@ -160,8 +160,8 @@
     "certificate_template": "Certificate template",
     "make_sure_that_template_size_is_less_than": "Make sure that template size is less than",
     "404_page_not_found": "404 page not found",
-    "this_is_not_the_web_page_you_are_looking_for": "This is not the web page you are looking for",
-    "back_to_home": "Back to home",
+    "this_is_not_the_web_page_you_are_looking_for": "We are Sorry! This Webpage is not available. Back to Everything Hospitality!",
+    "back_to_home": "Back to Hospitality Connaisseur",
     "get_enrolled": "Get enrolled",
     "registered_user": "Registered user",
     "provide_your_valid_login_credentials": "Provide your valid login credentials",
@@ -1012,7 +1012,6 @@
     "update_recaptcha_settings": "Update recaptcha settings",
     "home_marquee_setting": "Set Heading Lines",
     "heading_line": "Heading line",
-    "all_coruses": "All Courses",
     "certificate": "Certificate",
     "get_certificate": "Get certificate",
     "certification": "Certification",
@@ -1245,5 +1244,7 @@
     "total_question_paper": "Total question paper",
     "mobile_no": "Mobile no",
     "start_reading": "Start reading",
-    "dont_upload_if_you_dont_want_to_change": "Dont upload if you dont want to change"
+    "user_credentials": "User credentials",
+    "all_coruses": "All coruses",
+    "edit_language": "Edit language"
 }

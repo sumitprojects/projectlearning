@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="<?php echo base_url().'assets/frontend/default/css/main.css'; ?>">
 <link rel="stylesheet" href="<?php echo base_url().'assets/frontend/default/css/responsive.css'; ?>">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo base_url().'assets/global/toastr/toastr.css' ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nestable2/1.6.0/jquery.nestable.min.css" />
 <script src="<?php echo base_url().'assets/frontend/default/js/vendor/jquery-3.2.1.min.js'; ?>"></script>
@@ -69,7 +70,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 .mobile-main-nav span{
     color:#181D20;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     text-transform: uppercase;
     font-weight:700;
     font-size:16px;
@@ -78,4 +79,40 @@ h1,h2,h3,h4,h5,h6 {
 .nav-link{
     padding: 0.5rem 0rem;
 }
+
+.dropdown-user-logout {
+    padding: 10px 0;
+    background: #181D20 !important;
+}
+
+.dropdown-user-logout a,
+.dropdown-user-logout a:hover {
+    background: #181D20 !important;
+    color: white !important;
+}
+
+#st-2.st-right {
+    z-index: 0;
+}
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+
+.animated-background {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    height: 96px;
+    position: relative;
+}
+
 </style>

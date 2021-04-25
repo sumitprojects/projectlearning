@@ -51,7 +51,7 @@
 											<p>
 												<input type="text" class="form-control" name="updated_phrase" value="<?php echo $value; ?>" id = "phrase-<?php echo $key; ?>">
 											</p>
-											<button type="button" class="btn btn-icon btn-primary" style="float: right;" id = "btn-<?php echo $key; ?>" onclick="updatePhrase('<?php echo $key; ?>')"> <i class = "mdi mdi-check-circle"></i> </button>
+											<button type="button" class="btn btn-icon btn-primary" style="float: right;" id = "btn-<?php echo $key; ?>" onclick="updateLangPhrase('<?php echo $key; ?>')"> <i class = "mdi mdi-check-circle"></i> </button>
 										</div>
 									</div>
 								</div>
@@ -134,7 +134,7 @@
 
 <script type="text/javascript">
 
-function updatePhrase(key) {
+function updateLangPhrase(key) {
 	$('#btn-'+key).text('...');
 	var updatedValue = $('#phrase-'+key).val();
 	var currentEditingLanguage = '<?php echo $current_editing_language; ?>';

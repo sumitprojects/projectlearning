@@ -142,6 +142,12 @@ $route['courses'] = "home/courses";
 $route['magazines'] = 'home/magazines';
 $route['question-papers'] = 'home/question_papers';
 
+$route['courses/(:any)'] = "home/courses/$1";
+$route['magazines/(:any)'] = 'home/magazines/$1';
+$route['question-papers/(:any)'] = 'home/question_papers/$1';
+
+
+
 $route['jobs'] = 'home/jobs';
 $route['jobs/(:any)/(:any)'] = 'home/jobs/$1/$2';
 $route['jobs/(:any)'] = 'home/jobs/$1';
@@ -165,3 +171,17 @@ $route['faq'] = 'home/faqs';
 
 $route['login'] = 'home/login';
 $route['sign-up'] = 'home/sign_up';
+
+
+$route['my-courses'] = 'home/my_courses';
+$route['profile'] = 'home/profile';
+$route['profile/(:any)'] = 'home/profile/$1';
+
+
+$route['my-wishlist'] = 'home/my_wishlist';
+
+$route['my-messages'] = 'home/my_messages';
+
+$route['purchase-history'] = 'home/purchase_history';
+
+// $route['slug_routes'] = array('home');

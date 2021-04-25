@@ -31,6 +31,7 @@ class Home extends CI_Controller {
 
 
         // CHECK CUSTOM SESSION DATA
+        $this->load->library('user_agent');
 
         $this->session_data();
 
@@ -109,7 +110,7 @@ class Home extends CI_Controller {
 
         $layout = $this->session->userdata('layout');
 
-        $selected_category_id = "all";
+        $selected_category_id = "courses";
 
         $selected_price = "all";
 
@@ -183,6 +184,8 @@ class Home extends CI_Controller {
 
             $total_rows = $this->db->get('course')->num_rows();
 
+
+
             $config = array();
 
             $config = pagintaion($total_rows, 6);
@@ -198,6 +201,8 @@ class Home extends CI_Controller {
             }
 
             $this->db->where('status', 'active');
+
+            $this->db->order_by("id", "desc");
 
             $page_data['courses'] = $this->db->get('course', $config['per_page'], $this->uri->segment(3))->result_array();
 
@@ -243,7 +248,7 @@ class Home extends CI_Controller {
 
         $layout = $this->session->userdata('layout');
 
-        $selected_category_id = "all";
+        $selected_category_id = "magazines";
 
         $selected_price = "all";
 
@@ -304,7 +309,7 @@ class Home extends CI_Controller {
 
             $config = pagintaion($total_rows, 6);
 
-            $config['base_url']  = site_url('courses/');
+            $config['base_url']  = site_url('magazines/');
 
             $this->pagination->initialize($config);
 
@@ -312,6 +317,7 @@ class Home extends CI_Controller {
 
             $this->db->where('status', 'active');
 
+            $this->db->order_by("id", "desc");
             $page_data['courses'] = $this->db->get('course', $config['per_page'], $this->uri->segment(3))->result_array();
 
         }else {
@@ -353,7 +359,7 @@ class Home extends CI_Controller {
 
         $layout = $this->session->userdata('layout');
 
-        $selected_category_id = "all";
+        $selected_category_id = "question-papers";
 
         $selected_price = "all";
 
@@ -417,13 +423,15 @@ class Home extends CI_Controller {
 
             $config = pagintaion($total_rows, 6);
 
-            $config['base_url']  = site_url('question_papers/');
+            $config['base_url']  = site_url('question-papers/');
 
             $this->pagination->initialize($config);
             
             $this->db->where('course_type', 'question_paper');
 
             $this->db->where('status', 'active');
+
+            $this->db->order_by("id", "desc");
 
             $page_data['courses'] = $this->db->get('course', $config['per_page'], $this->uri->segment(3))->result_array();
 
@@ -609,7 +617,7 @@ class Home extends CI_Controller {
 
         $config = pagintaion($total_rows, 10);
 
-        $config['base_url']  = site_url('home/purchase_history');
+        $config['base_url']  = site_url('purchase-history');
 
         $this->pagination->initialize($config);
 
@@ -645,21 +653,19 @@ class Home extends CI_Controller {
 
         }
 
-
-
-        if ($param1 == 'user_profile') {
+        if ($param1 == 'user-profile') {
 
             $page_data['page_name'] = "user_profile";
 
             $page_data['page_title'] = site_phrase('user_profile');
 
-        }elseif ($param1 == 'user_credentials') {
+        }elseif ($param1 == 'user-credentials') {
 
             $page_data['page_name'] = "user_credentials";
 
             $page_data['page_title'] = site_phrase('credentials');
 
-        }elseif ($param1 == 'user_photo') {
+        }elseif ($param1 == 'user-photo') {
 
             $page_data['page_name'] = "update_user_photo";
 
@@ -681,13 +687,13 @@ class Home extends CI_Controller {
 
             $this->user_model->edit_user($this->session->userdata('user_id'));
 
-            redirect(site_url('home/profile/user_profile'), 'refresh');
+            redirect(site_url('profile/user-profile'), 'refresh');
 
         }elseif ($param1 == "update_credentials") {
 
             $this->user_model->update_account_settings($this->session->userdata('user_id'));
 
-            redirect(site_url('home/profile/user_credentials'), 'refresh');
+            redirect(site_url('profile/user-credentials'), 'refresh');
 
         }elseif ($param1 == "update_photo") {
 
@@ -709,7 +715,7 @@ class Home extends CI_Controller {
 
             $this->session->set_flashdata('flash_message', site_phrase('updated_successfully'));
 
-            redirect(site_url('home/profile/user_photo'), 'refresh');
+            redirect(site_url('profile/user-photo'), 'refresh');
 
         }
 
@@ -961,7 +967,7 @@ class Home extends CI_Controller {
 
             $this->session->set_userdata('cart_items', array());
 
-            redirect('home/my_courses', 'refresh');
+            redirect('my-courses', 'refresh');
 
         endif;
 
@@ -1051,7 +1057,7 @@ class Home extends CI_Controller {
 
                 $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
 
-                redirect('home/my_courses', 'refresh');
+                redirect('my-courses', 'refresh');
 
             endif;
 
@@ -1912,7 +1918,7 @@ class Home extends CI_Controller {
 
             $this->crud_model->enrol_to_free_course($course_id, $this->session->userdata('user_id'));
 
-            redirect(site_url('home/my_courses'), 'refresh');
+            redirect(site_url('my-courses'), 'refresh');
 
         }else {
 

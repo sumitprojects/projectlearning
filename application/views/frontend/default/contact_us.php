@@ -1,46 +1,5 @@
-<!-- <section class="category-header-area">
-
-    <div class="container-lg">
-
-        <div class="row">
-
-            <div class="col">
-
-                <nav>
-
-                    <ol class="breadcrumb">
-
-                        <li class="breadcrumb-item"><a href="<?php echo site_url('home'); ?>"><i class="fas fa-home"></i></a></li>
-
-                        <li class="breadcrumb-item">
-
-                            <a href="#">
-
-                                <?php echo $page_title;; ?>
-
-                            </a>
-
-                        </li>
-
-                    </ol>
-
-                </nav>
-
-                <h1 class="category-name">
-
-                    <?php echo $page_title; ?>
-
-                </h1>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section> -->
-
 <!-- info section start -->
+<?php if(!$this->agent->is_mobile()): ?>
 
 <section class="d-sm-none d-md-block">
 
@@ -49,12 +8,14 @@
         class="w-100 h-100 d-block">
 
 </section>
+<?php else:?>
 
 <section class="d-sm-block d-md-none">
 
     <img src="<?php echo base_url(); ?>assets/frontend/default/img/mobile contact us.jpg" alt="" class="w-100 h-100">
 
 </section>
+<?php endif;?>
 
 <!-- info section end -->
 

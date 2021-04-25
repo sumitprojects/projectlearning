@@ -206,7 +206,7 @@
                     ?>
                     <li class="nav-item">
 
-                        <a class="nav-link" href="<?php echo site_url('dictionary/'.slugify($dic['language'])); ?>">
+                        <a class="nav-link" href="<?php echo site_url('dictionary/'.$dic['slug']); ?>">
 
                             <?php echo site_phrase($dic['language']); ?>
                         </a>
@@ -235,7 +235,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link" href="<?php echo site_url('home/login'); ?>">
+                        <a class="nav-link" href="<?php echo site_url('login'); ?>">
 
                             <?php echo site_phrase('login'); ?>
 
@@ -453,11 +453,11 @@
 
                     content online with the help of Technology, so that you can learn anytime, anywhere, on any device,
 
-                    simply as per your convenience! <a href="<?php echo base_url(); ?>/home/login"
+                    simply as per your convenience! <a href="<?php echo site_url('login'); ?>"
 
                         class="text-theme">LOGIN</a> to start learning or <a
 
-                        href="<?php echo base_url(); ?>/home/sign_up" class="text-theme">SIGN-UP</a> to be the part of
+                        href="<?php echo site_url('sign_up'); ?>" class="text-theme">SIGN-UP</a> to be the part of
 
                     revolution.</p>
 
@@ -481,7 +481,7 @@
 
                     courses and make them empowered.</p>
 
-                <p><a href="<?php echo base_url();?>/home/jobs" class="text-theme">Explore other Jobs.</a></p>
+                <p><a href="<?php echo base_url();?>/jobs" class="text-theme">Explore other Jobs.</a></p>
 
                 <p class="font-weight-bold">
 
@@ -499,53 +499,53 @@
 
                 <div class="home-payments-icon mt-5 mb-5 text-center">
 
-                    <img src="https://cdn1.byjus.com/home/Payment-icons/paytm-icon.svg"
+                    <img src="<?=base_url()?>/assets/payment/paytm-icon.svg"
 
-                        data-src="https://cdn1.byjus.com/home/Payment-icons/paytm-icon.svg" alt="Paytm"
-
-                        class=" lazyloaded">
-
-                    <img src="https://cdn1.byjus.com/home/Payment-icons/pay-u-icon.svg"
-
-                        data-src="https://cdn1.byjus.com/home/Payment-icons/pay-u-icon.svg" alt="PayU"
+                        data-src="<?=base_url()?>/assets/payment/paytm-icon.svg" alt="Paytm"
 
                         class=" lazyloaded">
 
-                    <img src="https://cdn1.byjus.com/home/Payment-icons/amazon-pay-icon.svg"
+                    <img src="<?=base_url()?>/assets/payment/pay-u-icon.svg"
 
-                        data-src="https://cdn1.byjus.com/home/Payment-icons/amazon-pay-icon.svg" alt="Amazon Pay"
-
-                        class=" lazyloaded">
-
-                    <img src="https://cdn1.byjus.com/home/Payment-icons/upi-pay-icon.svg"
-
-                        data-src="https://cdn1.byjus.com/home/Payment-icons/upi-pay-icon.svg" alt="UPI"
+                        data-src="<?=base_url()?>/assets/payment/pay-u-icon.svg" alt="PayU"
 
                         class=" lazyloaded">
 
-                    <img src="https://cdn1.byjus.com/home/Payment-icons/bhim-pay-icon.svg"
+                    <img src="<?=base_url()?>/assets/payment/amazon-pay-icon.svg"
 
-                        data-src="https://cdn1.byjus.com/home/Payment-icons/bhim-pay-icon.svg" alt="BHIM"
-
-                        class=" lazyloaded">
-
-                    <img src="https://cdn1.byjus.com/home/Payment-icons/rupay-icon.svg"
-
-                        data-src="https://cdn1.byjus.com/home/Payment-icons/rupay-icon.svg" alt="RUPAY"
+                        data-src="<?=base_url()?>/assets/payment/amazon-pay-icon.svg" alt="Amazon Pay"
 
                         class=" lazyloaded">
 
-                    <img src="https://cdn1.byjus.com/home/Payment-icons/Razorpay.svg" alt="Razorpay" class="lazyloaded">
+                    <img src="<?=base_url()?>/assets/payment/upi-pay-icon.svg"
 
-                    <img src="<?=base_url()?>/assets/payment/phonepe.svg" alt="Razorpay" class=" lazyloaded">
+                        data-src="<?=base_url()?>/assets/payment/upi-pay-icon.svg" alt="UPI"
 
-                    <img src="<?=base_url()?>/assets/payment/airtel-money.svg" alt="Razorpay" class=" lazyloaded">
+                        class=" lazyloaded">
 
-                    <img src="<?=base_url()?>/assets/payment/mastercard.svg" alt="Razorpay" class=" lazyloaded">
+                    <img src="<?=base_url()?>/assets/payment/bhim-pay-icon.svg"
 
-                    <img src="<?=base_url()?>/assets/payment/visa.svg" alt="Razorpay" class=" lazyloaded">
+                        data-src="<?=base_url()?>/assets/payment/bhim-pay-icon.svg" alt="BHIM"
 
-                    <img src="<?=base_url()?>/assets/payment/stripe.svg" alt="Stripe" class=" lazyloaded">
+                        class=" lazyloaded">
+
+                    <img src="<?=base_url()?>/assets/payment/rupay-icon.svg"
+
+                        data-src="<?=base_url()?>/assets/payment/rupay-icon.svg" alt="RUPAY"
+
+                        class=" lazyloaded">
+
+                    <img src="<?=base_url()?>/assets/payment/Razorpay.svg" data-src="<?=base_url()?>/assets/payment/Razorpay.svg" alt="Razorpay" class="lazyloaded">
+
+                    <img src="<?=base_url()?>/assets/payment/phonepe.svg" data-src="<?=base_url()?>/assets/payment/phonepe.svg" alt="Razorpay" class=" lazyloaded">
+
+                    <img src="<?=base_url()?>/assets/payment/airtel-money.svg" data-src="<?=base_url()?>/assets/payment/airtel-money.svg" alt="Razorpay" class=" lazyloaded">
+
+                    <img src="<?=base_url()?>/assets/payment/mastercard.svg" data-src="<?=base_url()?>/assets/payment/mastercard.svg" alt="Razorpay" class=" lazyloaded">
+
+                    <img src="<?=base_url()?>/assets/payment/visa.svg" data-src="<?=base_url()?>/assets/payment/visa.svg" alt="Razorpay" class=" lazyloaded">
+
+                    <img src="<?=base_url()?>/assets/payment/stripe.svg" data-src="<?=base_url()?>/assets/payment/stripe.svg" alt="Stripe" class=" lazyloaded">
 
                 </div>
 

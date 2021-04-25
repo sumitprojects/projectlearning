@@ -1,11 +1,10 @@
 @font-face {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     src: url("../webfonts/Inter-Regular.woff2") format("woff");
 }
 
-@import 'https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500&display=swap';
 @font-face {
-    font-family: Metropolis;
+    font-family: 'Metropolis', sans-serif;
     src: url("../webfonts/Metropolis-Bold.woff2") format("woff2");
 }
 
@@ -26,7 +25,7 @@ html {
 }
 
 body {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     padding-right: 0 !important;
     color: #29303b;
     font-size: 15px;
@@ -110,7 +109,7 @@ label {
 }
 
 .font-inter {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
 }
 
 .overlay {
@@ -903,9 +902,9 @@ menu
     line-height: 1.35135;
     border-radius: 2px;
     width: 100%;
-    color: #007791;
+    color: #181D20;
     background-color: #fff;
-    border: 1px solid #007791;
+    border: 1px solid #181D20;
 }
 
 .course-list-dropdown .item-list .item .item-details button:hover,
@@ -922,7 +921,7 @@ menu
     width: 100%;
     border: 0;
     color: #fff;
-    background-color: #007791;
+    background-color: #181D20;
     padding: 11px 12px;
     font-size: 15px;
     line-height: 1.43;
@@ -935,7 +934,7 @@ menu
 
 .course-list-dropdown .dropdown-footer a:hover,
 .course-list-dropdown .dropdown-footer a:focus {
-    background: #003440;
+    background: #181D20;
 }
 
 .course-list-dropdown .dropdown-footer .cart-total-price {
@@ -972,7 +971,7 @@ menu
 
 .notifications-list-dropdown .notifications-footer a,
 .notifications-list-dropdown .notifications-footer button {
-    color: #007791;
+    color: #181D20;
     font-size: 13px;
     font-weight: 600;
     padding: 20px 15px;
@@ -1082,11 +1081,11 @@ menu
     position: absolute;
     height: 10px;
     width: 10px;
-    border: 1px solid #007791;
+    border: 1px solid #181D20;
     border-radius: 50%;
     top: 2px;
     right: -3px;
-    background: #007791;
+    background: #181D20;
 }
 
 .notification-list .notification .mark-as-read.marked {
@@ -1117,7 +1116,7 @@ menu
 }
 
 .user-dropdown-menu li a:hover {
-    color: #007791;
+    color: #181D20;
     background: #f2f3f5;
 }
 
@@ -1126,7 +1125,7 @@ menu
     width: 20px;
     text-align: center;
     margin: 0 19px 0 10px;
-    color: #a1a7b3;
+    color: #181D20;
 }
 
 .dropdown-user-info .user-image img {
@@ -1156,7 +1155,13 @@ menu
 
 .user-dropdown-menu .dropdown-user-logout {
     padding: 10px 0;
-    background: #f7f8fa;
+    background: #181D20 !important;
+}
+
+.user-dropdown-menu .dropdown-user-logout a,
+.user-dropdown-menu .dropdown-user-logout a:hover {
+    background: #181D20 !important;
+    color: white !important;
 }
 
 .sign-in-box>.btn {
@@ -1336,12 +1341,12 @@ menu
 .sign-in-modal .custom-control-input:hover~.custom-control-label::before,
 .sign-in-modal .custom-control-input:focus~.custom-control-label::before {
     box-shadow: 0 0 0 0px #fff, 0 0 0 0 rgba(0, 123, 255, .25);
-    border-color: #007791;
+    border-color: #181D20;
 }
 
 .sign-in-modal .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #007791;
-    border-color: #007791;
+    background-color: #181D20;
+    border-color: #181D20;
 }
 
 .sign-in-modal form button[type="submit"] {
@@ -1851,7 +1856,7 @@ homepage styles
 }
 
 .course-box .course-details .completed-percent .progress-bar {
-    background: #007791;
+    background: #181D20;
 }
 
 .course-box .course-details .completed-percent .progress {
@@ -2199,6 +2204,7 @@ homepage styles
 .course-popover-content .popover-btns .add-to-cart-btn {
     width: 100%;
     padding: 16px 12px;
+    color: white;
 }
 
 .addedToCart {
@@ -2534,7 +2540,7 @@ course content
     background: linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .95), #fff);
     display: block;
     padding: 30px 3px 3px 3px;
-    color: #007791;
+    color: #181D20;
     cursor: pointer;
     z-index: 5;
 }
@@ -2546,7 +2552,7 @@ course content
     width: 100%;
     display: block;
     padding: 3px 3px 3px 3px;
-    color: #007791;
+    color: #181D20;
     cursor: pointer;
 }
 
@@ -2939,7 +2945,7 @@ course content
 .student-feedback-box .individual-rating li>div:not(.progress) span:not(.rating) {
     text-align: center;
     padding-left: 10px;
-    color: #007791;
+    color: #181D20;
 }
 
 .student-feedback-box .reviews .reviews-title {
@@ -3000,8 +3006,8 @@ course content
 
 .reviews .more-reviews-btn button {
     border-radius: 2px;
-    border: 2px solid #007791;
-    color: #007791;
+    border: 2px solid #181D20;
+    color: #181D20;
     background: #fff;
     padding: 11px 12px;
     font-size: 15px;
@@ -3069,7 +3075,7 @@ course content
     left: 22px;
     font-size: 10px;
     top: 16px;
-    color: #007791;
+    color: #181D20;
 }
 
 .course-curriculum-accordion .lecture-group-title[aria-expanded="false"]:before {
@@ -3131,7 +3137,7 @@ course content
 }
 
 .course-curriculum-accordion .lecture-list .lecture.has-preview {
-    color: #007791;
+    color: #181D20;
 }
 
 .course-curriculum-accordion .lecture-list .lecture.has-preview .lecture-title,
@@ -3198,8 +3204,8 @@ section.category-course-list-area {
 
 .filter-box .btn {
     border-radius: 2px;
-    border-color: #007791;
-    color: #007791;
+    border-color: #181D20;
+    color: #181D20;
     font-weight: 600;
     font-size: 15px;
     padding: 10px 12px;
@@ -3214,12 +3220,13 @@ section.category-course-list-area {
 .filter-box .btn:hover,
 .filter-box .btn:focus {
     background: #fff !important;
-    color: #007791 !important;
-    border-color: #007791 !important;
+    color: #181D20 !important;
+    border-color: #181D20 !important;
 }
 
 .filter-box .btn[aria-expanded="true"] {
-    background-color: #76c5d6 !important;
+    color: #181D20 !important;
+    background-color: white;
 }
 
 .filter-box .dropdown-menu {
@@ -3385,7 +3392,7 @@ Instructor page
 */
 
 section.instructor-header-area {
-    background-color: #007791;
+    background-color: #181D20;
     color: #fff;
     padding: 34px 0;
 }
@@ -3512,7 +3519,7 @@ Notifications page
 
 section.page-header-area {
     padding: 40px 0 30px;
-    background: #505763;
+    background: #181D20;
     color: #fff;
 }
 
@@ -3533,7 +3540,7 @@ section.page-header-area .page-subtitle {
 .notifications-list-area .notifications-footer .mark-all-read {
     border: 0;
     background: none;
-    color: #007791;
+    color: #181D20;
 }
 
 .notifications-list-area .notifications-footer .mark-all-read:hover {
@@ -3617,9 +3624,9 @@ section.my-courses-area {
 }
 
 .my-courses-area .my-course-search-bar .input-group-append button {
-    background: #f2f3f5;
-    border-color: #dedfe0;
-    color: #a1a7b3;
+    background: #FF7C2C;
+    border-color: #FF7C2C;
+    color: white;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
 }
@@ -3627,9 +3634,9 @@ section.my-courses-area {
 .my-courses-area .my-course-search-bar .input-group-append button:hover,
 .my-courses-area .my-course-search-bar .input-group-append button:focus,
 .my-courses-area .my-course-search-bar input:focus+.input-group-append button {
-    background: #007791;
+    background: #181D20;
     color: #fff;
-    border-color: #007791;
+    border-color: #181D20;
 }
 
 .my-courses-area .row.no-gutters {
@@ -3642,7 +3649,8 @@ section.my-courses-area {
     padding: 0 10px;
 }
 
-.my-course-filter-bar.filter-box {
+.my-course-filter-bar.filter-box,
+.my-course-search-bar {
     position: relative;
     padding-top: 30px;
 }
@@ -3740,15 +3748,15 @@ section.my-courses-area {
 }
 
 .edit-rating-modal .modal-footer button.previous {
-    color: #007791;
+    color: #181D20;
     background-color: #fff;
-    border-color: #007791;
+    border-color: #181D20;
 }
 
 .edit-rating-modal .modal-footer button.previous:hover,
 .edit-rating-modal .modal-footer button.previous:focus {
     background-color: #e6f2f5 !important;
-    border-color: #007791 !important;
+    border-color: #181D20 !important;
 }
 
 .your-rating {
@@ -3930,7 +3938,7 @@ section.cart-list-area {
 }
 
 .cart-course-wrapper .move-remove div {
-    color: #007791;
+    color: #181D20;
     cursor: pointer;
     font-size: 13px;
     margin-bottom: 3px;
@@ -4009,8 +4017,8 @@ section.cart-list-area {
 
 .cart-sidebar .coupon-field button {
     border-radius: 2px;
-    background-color: #007791;
-    border-color: #007791;
+    background-color: #181D20;
+    border-color: #181D20;
     color: #fff;
     font-weight: 600;
     font-size: 15px;
@@ -4080,6 +4088,18 @@ section.user-dashboard-area {
     display: flex;
 }
 
+@media (max-width:960px) {
+    .user-dashboard-sidebar {
+        width: 100%;
+    }
+    .user-dashboard-content {
+        width: 100%;
+    }
+    .user-dashboard-box {
+        display: block;
+    }
+}
+
 .user-dashboard-sidebar .user-box {
     text-align: center;
     padding: 10px;
@@ -4110,7 +4130,7 @@ section.user-dashboard-area {
 }
 
 .user-dashboard-sidebar .user-dashboard-menu ul .active a {
-    background: #a1a7b3;
+    background: #181D20;
     color: #fff;
 }
 
@@ -4224,9 +4244,9 @@ my message page
 }
 
 .message-sender-list-box .compose-btn {
-    color: #007791;
+    color: #181D20;
     background-color: #fff;
-    border-color: #007791;
+    border-color: #181D20;
     padding: 11px 12px;
     font-size: 15px;
     border-radius: 2px;
@@ -4235,7 +4255,7 @@ my message page
 
 .message-sender-list-box .compose-btn:hover,
 .message-sender-list-box .compose-btn:focus {
-    background-color: #e6f2f5;
+    background-color: #fff;
 }
 
 .message-sender-list-box .message-sender-list {
@@ -4441,7 +4461,7 @@ my message page
 .new-message-details .message-body .cancel-btn {
     border: none;
     background: no-repeat;
-    color: #007791;
+    color: #181D20;
 }
 
 .new-message-details .message-body textarea {
@@ -4521,7 +4541,7 @@ span.select2-results ul li.select2-results__option--highlighted,
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: #007791;
+    background-color: #181D20;
     color: white;
 }
 
@@ -4572,9 +4592,9 @@ section.purchase-history-list-area {
 }
 
 .purchase-history-list .purchase-history-detail .btn-receipt {
-    color: #007791;
+    color: #181D20;
     background-color: #fff;
-    border: 1px solid #007791;
+    border: 1px solid #181D20;
     padding: 2px 8px;
     font-size: 13px;
     line-height: 1.35135;
@@ -4729,7 +4749,7 @@ footer style
     width: 100%;
     border: 0;
     color: #fff;
-    background-color: #007791;
+    background-color: #181D20;
     padding: 11px 12px;
     font-size: 15px;
     line-height: 1.43;
@@ -4742,14 +4762,14 @@ footer style
 
 .purchased a:hover,
 .purchased a:focus {
-    background: #003440;
+    background: #181D20;
 }
 
 .already_purchased a {
     width: 100%;
     border: 0;
     color: #fff;
-    background-color: #007791;
+    background-color: #181D20;
     padding: 11px 12px;
     font-size: 15px;
     line-height: 1.43;
@@ -4762,7 +4782,7 @@ footer style
 
 .already_purchased a:hover,
 .already_purchased a:focus {
-    background: #003440;
+    background: #181D20;
 }
 
 div.tagsinput span.tag {

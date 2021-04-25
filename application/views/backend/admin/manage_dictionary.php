@@ -23,13 +23,13 @@
                     <?php endif;?>
                     <li class="nav-item">
                         <a href="#list" data-toggle="tab" aria-expanded="false"
-                            class="nav-link <?php if(!isset($edit_profile))echo 'active';?>">
+                            class="nav-link <?php if(!isset($edit_profile) && !isset($edit_lang))echo 'active';?>">
                             <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
                             <span class="d-none d-lg-block"><?php echo get_phrase('language_list');?></span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#add_lang" data-toggle="tab" aria-expanded="false" class="nav-link">
+                        <a href="#add_lang" data-toggle="tab" aria-expanded="false" class="nav-link <?php if(isset($edit_lang))echo 'active';?>">
                             <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
                             <span class="d-none d-lg-block"><?php echo get_phrase('add_language');?></span>
                         </a>
@@ -38,7 +38,7 @@
 
                 <div class="tab-content">
                     <!----PHRASE EDITING TAB STARTS-->
-                    <?php if (isset($edit_profile)):
+                    <?php if (isset($edit_profile) && !isset($edit_lang)):
 						$current_editing_language	=	$edit_profile;
 					?>
                     <div class="tab-pane show active" id="edit" style="padding: 30px">
@@ -98,7 +98,7 @@
                     <!----PHRASE EDITING TAB ENDS-->
 
                     <!----TABLE LISTING STARTS-->
-                    <div class="tab-pane <?php if(!isset($edit_profile))echo 'show active';?>" id="list">
+                    <div class="tab-pane <?php if(!isset($edit_profile) && !isset($edit_lang))echo 'show active';?>" id="list">
 
                         <div class="table-responsive-sm">
                             <table class="table table-bordered table-centered mb-0">
@@ -115,12 +115,16 @@
                                         <td><?php echo ucwords($language['language']);?></td>
                                         <td>
                                             <?php if($language['status'] == 1):?>
-                                            <a href="<?php echo site_url('admin/manage_dictionary/edit_phrase/'.$language['language'].'/'.$language['dlid']);?>"
+                                            <a href="<?php echo site_url('admin/manage_dictionary/edit_phrase/'.$language['slug'].'/'.$language['dlid']);?>"
                                                 class="btn btn-info">
                                                 <?php echo get_phrase('edit_phrase');?>
                                             </a>
+                                            <a href="<?php echo site_url('admin/manage_dictionary/edit_language/'.$language['slug'].'/'.$language['dlid']);?>"
+                                                class="btn btn-info">
+                                                <?php echo get_phrase('edit_language');?>
+                                            </a>
                                             <a href="javascript::"
-                                                onclick="confirm_modal('<?php echo site_url('admin/manage_dictionary/delete_language/'.$language['language'].'/'.$language['dlid']);?>')"
+                                                onclick="confirm_modal('<?php echo site_url('admin/manage_dictionary/delete_language/'.$language['slug'].'/'.$language['dlid']);?>')"
                                                 class="btn btn-danger">
                                                 <?php echo get_phrase('delete_language');?>
                                             </a>
@@ -153,16 +157,22 @@
                         </div>
                     </div>
                     <!----PHRASE CREATION FORM ENDS--->
-
-                    <!----ADD NEW LANGUAGE---->
-                    <div class="tab-pane" id="add_lang" style="padding: 30px">
+                    <!----ADD/EDIT NEW LANGUAGE---->
+                    <div class="tab-pane <?php if(isset($edit_lang))echo 'show active';?>" id="add_lang" style="padding: 30px">
                         <div class="row">
                             <div class="col-xl-6">
                                 <form class="" action="<?php echo site_url('admin/manage_dictionary/add_language'); ?>"
                                     method="post">
+                                    <?php if(isset($edit_lang)): ?>
+                                        <input type="hidden" name="dlid" value="<?=$lang_id?>">
+                                    <?php endif; ?>
                                     <div class="form-group mb-3">
+                                        <?php if(isset($edit_lang)): ?>
+                                        <label for="language"><?php echo get_phrase('edit_language'); ?></label>
+                                        <?php else: ?>
                                         <label for="language"><?php echo get_phrase('add_new_language'); ?></label>
-                                        <input type="text" id="language" name="language" class="form-control"
+                                        <?php endif; ?>
+                                        <input type="text" id="language" name="language" class="form-control" value="<?=isset($edit_lang)? $language['language']:''?>"
                                             placeholder="<?php echo get_phrase('no_special_character_or_space_is_allowed').'. '.get_phrase('valid_examples').' : French, Spanish, Bengali etc'; ?>">
                                     </div>
                                     <button type="submit" class="btn btn-primary"

@@ -1092,9 +1092,14 @@ class Crud_model extends CI_Model
         foreach ($course_media_files as $course_media => $size) {
 
             if ($_FILES[$course_media]['name'] != "") {
-
                 move_uploaded_file($_FILES[$course_media]['tmp_name'], 'uploads/thumbnails/course_thumbnails/' . $course_media . '_' . get_frontend_settings('theme') . '_' . $course_id . '.jpg');
-
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = FCPATH.'uploads/thumbnails/course_thumbnails/' . $course_media . '_' . get_frontend_settings('theme') . '_' . $course_id . '.jpg';
+                $config['maintain_ratio'] = TRUE;
+                $config['width']         = 600;
+                $config['height']       = 600;
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
             }
 
         }
@@ -1231,7 +1236,7 @@ class Crud_model extends CI_Model
 
         $trimmed_array = array();
 
-        if (is_array($untrimmed_array) && count($untrimmed_array) > 0) {
+        if (sizeof($untrimmed_array) > 0) {
 
             foreach ($untrimmed_array as $row) {
 
@@ -1365,6 +1370,13 @@ class Crud_model extends CI_Model
             if ($_FILES[$course_media]['name'] != "") {
 
                 move_uploaded_file($_FILES[$course_media]['tmp_name'], 'uploads/thumbnails/course_thumbnails/' . $course_media . '_' . get_frontend_settings('theme') . '_' . $course_id . '.jpg');
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = FCPATH.'uploads/thumbnails/course_thumbnails/' . $course_media . '_' . get_frontend_settings('theme') . '_' . $course_id . '.jpg';
+                $config['maintain_ratio'] = TRUE;
+                $config['width']         = 600;
+                $config['height']       = 600;
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
 
             }
 
@@ -1624,6 +1636,7 @@ class Crud_model extends CI_Model
 
         }else{
 
+            $this->db->order_by('id desc');
             return $this->db->get_where('course', array('is_top_course' => 1, 'status' => 'active', 'course_type' => 'general'));
 
         }
@@ -1634,6 +1647,7 @@ class Crud_model extends CI_Model
 
     public function get_top_magazines()
     {
+            $this->db->order_by('id desc');
 
             return $this->db->get_where('course', array('is_top_course' => 1, 'status' => 'active', 'course_type' => 'magazine'));
 
@@ -3365,6 +3379,7 @@ class Crud_model extends CI_Model
         $user_id = $this->session->userdata('user_id');
 
         $course_details = $this->get_course_by_id($course_id)->row_array();
+        $course_details['course_expiry'] = (int)$course_details['course_expiry'];
 
         $course  =  $this->db->select('*')
 
@@ -3376,9 +3391,9 @@ class Crud_model extends CI_Model
 
         ->get()->row_array();
 
-        $course['expiry_time'] = (int) $course['expiry_time'];
-
-        $course_details['course_expiry'] = (int)$course_details['course_expiry'];
+        if(!empty($course)){
+            $course['expiry_time'] = (int) $course['expiry_time'];
+        }
 
         if($course['expiry_time'] > 0 && $course['expiry_time'] <= strtotime(date('D, d-M-Y')) ){
             return $course;            
@@ -4180,6 +4195,7 @@ class Crud_model extends CI_Model
         }
 
         $this->db->where('status', 'active');
+        $this->db->order_by("id", "desc");
 
         $courses = $this->db->get('course')->result_array();
 
@@ -4242,14 +4258,20 @@ class Crud_model extends CI_Model
     {
 
         if ($category_id > 0 && $sub_category_id > 0 && $instructor_id > 0) {
+                    $this->db->order_by("id", "desc");
+
 
             return $this->db->get_where('course', array('category_id' => $category_id, 'sub_category_id' => $sub_category_id, 'user_id' => $instructor_id));
 
         } elseif ($category_id > 0 && $sub_category_id > 0 && $instructor_id == 0) {
 
+            $this->db->order_by("id", "desc");
+
             return $this->db->get_where('course', array('category_id' => $category_id, 'sub_category_id' => $sub_category_id));
 
         } else {
+            $this->db->order_by("id", "desc");
+
 
             return $this->db->get('course');
 
@@ -4304,6 +4326,8 @@ class Crud_model extends CI_Model
         }
 
         $this->db->where('course_type',$type);
+
+        $this->db->order_by("id", "desc");
 
         return $this->db->get('course')->result_array();
 

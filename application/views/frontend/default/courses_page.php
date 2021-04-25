@@ -44,18 +44,22 @@ if($questionpaper){
 ?>
 
 
+<?php if(!$this->agent->is_mobile()): ?>
 
 <section class="d-sm-none d-md-block">
 
-<img src="<?php echo base_url(); ?>assets/frontend/default/img/web everything hospitality.jpg" alt="" class="w-100 h-100">
+<img src="<?php echo base_url(); ?>assets/frontend/default/img/web everything hospitality.jpg" data-src="<?php echo base_url(); ?>assets/frontend/default/img/web everything hospitality.jpg" alt="" class="w-100 h-100 lazyloaded">
 
 </section>
+<?php else:?>
 
 <section class="d-sm-block d-md-none">
 
-<img src="<?php echo base_url(); ?>assets/frontend/default/img/mobile everything hospitality.jpg" alt="" class="w-100 h-100">
+<img src="<?php echo base_url(); ?>assets/frontend/default/img/mobile everything hospitality.jpg" data-src="<?php echo base_url(); ?>assets/frontend/default/img/mobile everything hospitality.jpg" alt="" class="w-100 h-100 lazyloaded">
 
 </section>
+
+<?php endif; ?>
 
 <section class="category-course-list-area">
 
@@ -69,7 +73,7 @@ if($questionpaper){
 
             <a href="javascript::" onclick="toggleLayout('list')" style="float: right; font-size: 19px;" class="text-dark"><i class="fas fa-th-list"></i></a>
 
-            <a href="<?php echo site_url('courses'); ?>" style="float: right; font-size: 19px; margin-right: 5px;" class="text-dark"><i class="fas fa-sync-alt"></i></a>
+            <a href="<?php echo site_url($type); ?>" style="float: right; font-size: 19px; margin-right: 5px;" class="text-dark"><i class="fas fa-sync-alt"></i></a>
 
         </div>
 
@@ -109,7 +113,7 @@ if($questionpaper){
 
                                         <div class="">
 
-                                            <input type="radio" id="category_all" name="sub_category" class="categories custom-radio" value="all" onclick="filter(this)" <?php if($selected_category_id == 'all') echo 'checked'; ?>>
+                                            <input type="radio" id="category_all" name="sub_category" class="categories custom-radio" value="<?=$type?>" onclick="filter(this)" <?php if($selected_category_id == 'all') echo 'checked'; ?>>
 
                                             <label for="category_all"><?php echo site_phrase('all_category'); ?></label>
 
@@ -215,7 +219,7 @@ if($questionpaper){
 
                             <hr>
 
-                            <?php if(!$magazine && !$questionpaper):?>
+                            <?php if($type == 'courses'):?>
 
                             <div class="filter_type">
 
