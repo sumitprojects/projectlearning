@@ -37,17 +37,12 @@
                 <h4 class="header-title mb-3"><?php echo get_phrase('magazine_manager'); ?>
 
                     <a href="<?php echo site_url('admin/preview/'.$course_id); ?>"
-
                         class="alignToTitle btn btn-outline-secondary btn-rounded btn-sm ml-1"
-
                         target="_blank"><?php echo get_phrase('view_on_frontend'); ?> <i
-
                             class="mdi mdi-arrow-right"></i> </a>
 
                     <a href="<?php echo site_url('admin/magazines'); ?>"
-
                         class="alignToTitle btn btn-outline-secondary btn-rounded btn-sm"> <i
-
                             class=" mdi mdi-keyboard-backspace"></i>
 
                         <?php echo get_phrase('back_to_magazine_list'); ?></a>
@@ -61,9 +56,7 @@
                     <div class="col-xl-12">
 
                         <form class="required-form"
-
                             action="<?php echo site_url('admin/magazine_actions/edit/'.$course_id); ?>" method="post"
-
                             enctype="multipart/form-data">
 
                             <div id="basicwizard">
@@ -77,7 +70,6 @@
                                             <i class="mdi mdi-account-circle mr-1"></i>
 
                                             <span
-
                                                 class="d-none d-sm-inline"><?php echo get_phrase('curriculum'); ?></span>
 
                                         </a>
@@ -93,7 +85,6 @@
                                             <i class="mdi mdi-video-account mr-1"></i>
 
                                             <span
-
                                                 class="d-none d-sm-inline"><?php echo get_phrase('live_class'); ?></span>
 
                                         </a>
@@ -247,7 +238,6 @@
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="course_type"><?php echo get_phrase('course_type'); ?></label>
 
                                                     <div class="col-md-10">
@@ -277,43 +267,50 @@
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="course_title"><?php echo get_phrase('course_title'); ?><span
-
                                                             class="required">*</span></label>
 
                                                     <div class="col-md-10">
 
                                                         <input type="text" class="form-control" id="course_title"
-
                                                             name="title"
-
                                                             placeholder="<?php echo get_phrase('enter_course_title'); ?>"
-
                                                             value="<?php echo $course_details['title']; ?>" required>
 
                                                     </div>
 
                                                 </div>
+                                                <div class="form-group row mb-3">
 
+                                                    <label class="col-md-2 col-form-label"
+                                                        for="magazine_title"><?php echo get_phrase('publish_date'); ?>
+
+                                                        <span class="required">*</span> </label>
+
+                                                    <div class="col-md-10">
+
+                                                        <input type="date" class="form-control" id="publish_date"
+                                                            name="publish_date"
+                                                            value="<?php echo date('Y-m-d',$course_details['date_added']); ?>"
+                                                            placeholder="<?php echo get_phrase('enter_publish_date'); ?>"
+                                                            required>
+
+                                                    </div>
+
+                                                </div>
                                                 <?php if (addon_status('course_subscription')): ?>
 
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="course_expiry"><?php echo get_phrase('magazine_expiry'); ?><span
-
                                                             class="required">*</span></label>
 
                                                     <div class="col-md-10">
 
                                                         <input name="course_expiry" id="course_expiry" type="number"
-
                                                             min="0" class="form-control"
-
                                                             value="<?php echo $course_details['course_expiry']; ?>"
-
                                                             required />
 
                                                     </div>
@@ -327,13 +324,11 @@
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="short_description"><?php echo get_phrase('short_description'); ?></label>
 
                                                     <div class="col-md-10">
 
                                                         <textarea name="short_description" id="short_description"
-
                                                             class="form-control"><?php echo $course_details['short_description']; ?></textarea>
 
                                                     </div>
@@ -343,13 +338,11 @@
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="description"><?php echo get_phrase('description'); ?></label>
 
                                                     <div class="col-md-10">
 
                                                         <textarea name="description" id="description"
-
                                                             class="form-control"><?php echo $course_details['description']; ?></textarea>
 
                                                     </div>
@@ -359,15 +352,12 @@
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="sub_category_id"><?php echo get_phrase('category'); ?><span
-
                                                             class="required">*</span></label>
 
                                                     <div class="col-md-10">
 
                                                         <select class="form-control select2" data-toggle="select2"
-
                                                             name="sub_category_id" id="sub_category_id" required>
 
                                                             <option value="">
@@ -383,7 +373,6 @@
                                                                     foreach ($sub_categories as $sub_category): ?>
 
                                                                 <option value="<?php echo $sub_category['id']; ?>"
-
                                                                     <?php if($sub_category['id'] == $course_details['sub_category_id']) echo 'selected'; ?>>
 
                                                                     <?php echo $sub_category['name']; ?></option>
@@ -397,7 +386,6 @@
                                                         </select>
 
                                                         <small
-
                                                             class="text-muted"><?php echo get_phrase('select_sub_category'); ?></small>
 
                                                     </div>
@@ -407,19 +395,16 @@
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="language_made_in"><?php echo get_phrase('language_made_in'); ?></label>
 
                                                     <div class="col-md-10">
 
                                                         <select class="form-control select2" data-toggle="select2"
-
                                                             name="language_made_in" id="language_made_in">
 
                                                             <?php foreach ($languages as $language): ?>
 
                                                             <option value="<?php echo $language; ?>"
-
                                                                 <?php if ($course_details['language'] == $language)echo 'selected';?>>
 
                                                                 <?php echo ucfirst($language); ?></option>
@@ -439,13 +424,10 @@
                                                         <div class="custom-control custom-checkbox">
 
                                                             <input type="checkbox" class="custom-control-input"
-
                                                                 name="is_top_course" id="is_top_course" value="1"
-
                                                                 <?php if($course_details['is_top_course'] == 1) echo 'checked'; ?>>
 
                                                             <label class="custom-control-label"
-
                                                                 for="is_top_course"><?php echo get_phrase('check_if_this_course_is_top_course'); ?></label>
 
                                                         </div>
@@ -473,15 +455,11 @@
                                                         <div class="custom-control custom-checkbox">
 
                                                             <input type="checkbox" class="custom-control-input"
-
                                                                 name="is_free_course" id="is_free_course" value="1"
-
                                                                 <?php if($course_details['is_free_course'] == 1) echo 'checked'; ?>
-
                                                                 onclick="togglePriceFields(this.id)">
 
                                                             <label class="custom-control-label"
-
                                                                 for="is_free_course"><?php echo get_phrase('check_if_this_is_a_free_course'); ?></label>
 
                                                         </div>
@@ -497,17 +475,13 @@
                                                     <div class="form-group row mb-3">
 
                                                         <label class="col-md-2 col-form-label"
-
                                                             for="price"><?php echo get_phrase('course_price').' ('.currency_code_and_symbol().')'; ?></label>
 
                                                         <div class="col-md-10">
 
                                                             <input type="number" class="form-control" id="price"
-
                                                                 name="price" min="0"
-
                                                                 placeholder="<?php echo get_phrase('enter_course_course_price'); ?>"
-
                                                                 value="<?php echo $course_details['price']; ?>">
 
                                                         </div>
@@ -523,13 +497,10 @@
                                                             <div class="custom-control custom-checkbox">
 
                                                                 <input type="checkbox" class="custom-control-input"
-
                                                                     name="discount_flag" id="discount_flag" value="1"
-
                                                                     <?php if($course_details['discount_flag'] == 1) echo 'checked'; ?>>
 
                                                                 <label class="custom-control-label"
-
                                                                     for="discount_flag"><?php echo get_phrase('check_if_this_course_has_discount'); ?></label>
 
                                                             </div>
@@ -543,27 +514,20 @@
                                                     <div class="form-group row mb-3">
 
                                                         <label class="col-md-2 col-form-label"
-
                                                             for="discounted_price"><?php echo get_phrase('discounted_price').' ('.currency_code_and_symbol().')'; ?></label>
 
                                                         <div class="col-md-10">
 
                                                             <input type="number" class="form-control"
-
                                                                 name="discounted_price" id="discounted_price"
-
                                                                 onkeyup="calculateDiscountPercentage(this.value)"
-
                                                                 value="<?php echo $course_details['discounted_price']; ?>"
-
                                                                 min="0">
 
                                                             <small
-
                                                                 class="text-muted"><?php echo get_phrase('this_course_has'); ?>
 
                                                                 <span id="discounted_percentage"
-
                                                                     class="text-danger">0%</span>
 
                                                                 <?php echo get_phrase('discount'); ?></small>
@@ -591,31 +555,25 @@
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="course_overview_provider"><?php echo get_phrase('course_overview_provider'); ?></label>
 
                                                     <div class="col-md-10">
 
                                                         <select class="form-control select2" data-toggle="select2"
-
                                                             name="course_overview_provider"
-
                                                             id="course_overview_provider">
 
                                                             <option value="youtube"
-
                                                                 <?php if ($course_details['course_overview_provider'] == 'youtube')echo 'selected';?>>
 
                                                                 <?php echo get_phrase('youtube'); ?></option>
 
                                                             <option value="vimeo"
-
                                                                 <?php if ($course_details['course_overview_provider'] == 'vimeo')echo 'selected';?>>
 
                                                                 <?php echo get_phrase('vimeo'); ?></option>
 
                                                             <option value="html5"
-
                                                                 <?php if ($course_details['course_overview_provider'] == 'html5')echo 'selected';?>>
 
                                                                 <?php echo get_phrase('HTML5'); ?></option>
@@ -635,17 +593,13 @@
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="course_overview_url"><?php echo get_phrase('course_overview_url'); ?></label>
 
                                                     <div class="col-md-10">
 
                                                         <input type="text" class="form-control"
-
                                                             name="course_overview_url" id="course_overview_url"
-
                                                             placeholder="E.g: https://www.youtube.com/watch?v=oBtf8Yglw2w"
-
                                                             value="<?php echo $course_details['video_url'] ?>">
 
                                                     </div>
@@ -675,21 +629,15 @@
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="website_keywords"><?php echo get_phrase('meta_keywords'); ?></label>
 
                                                     <div class="col-md-10">
 
                                                         <input type="text" class="form-control bootstrap-tag-input"
-
                                                             id="meta_keywords" name="meta_keywords"
-
                                                             data-role="tagsinput" style="width: 100%;"
-
                                                             value="<?php echo $course_details['meta_keywords']; ?>"
-
                                                             placeholder="<?php echo get_phrase('write_a_keyword_and_then_press_enter_button'); ?>"
-
                                                             . />
 
                                                     </div>
@@ -703,13 +651,11 @@
                                                 <div class="form-group row mb-3">
 
                                                     <label class="col-md-2 col-form-label"
-
                                                         for="meta_description"><?php echo get_phrase('meta_description'); ?></label>
 
                                                     <div class="col-md-10">
 
                                                         <textarea name="meta_description"
-
                                                             class="form-control"><?php echo $course_details['meta_description']; ?></textarea>
 
                                                     </div>
@@ -745,7 +691,6 @@
                                                     <div class="mb-3 mt-3">
 
                                                         <button type="button" class="btn btn-primary text-center"
-
                                                             onclick="checkRequiredFields()"><?php echo get_phrase('submit'); ?></button>
 
                                                     </div>
@@ -765,7 +710,6 @@
                                         <li class="previous list-inline-item">
 
                                             <a href="javascript::" class="btn btn-info"> <i
-
                                                     class="mdi mdi-arrow-left-bold"></i> </a>
 
                                         </li>
@@ -773,7 +717,6 @@
                                         <li class="next list-inline-item">
 
                                             <a href="javascript::" class="btn btn-info"> <i
-
                                                     class="mdi mdi-arrow-right-bold"></i> </a>
 
                                         </li>
@@ -803,7 +746,6 @@
 
 
 <script type="text/javascript">
-
 $(document).ready(function() {
 
     initSummerNote(['#description']);
@@ -811,13 +753,11 @@ $(document).ready(function() {
     togglePriceFields('is_free_course');
 
 });
-
 </script>
 
 
 
 <script type="text/javascript">
-
 var blank_outcome = jQuery('#blank_outcome_field').html();
 
 var blank_requirement = jQuery('#blank_requirement_field').html();
@@ -991,5 +931,4 @@ $('.on-hover-action').mouseleave(function() {
     $('#widgets-of-' + id).hide();
 
 });
-
 </script>

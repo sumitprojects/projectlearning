@@ -1496,7 +1496,7 @@ $allcategory = array_column($latest_courses,'category','c_slug');
 <?php if(!$this->agent->is_mobile()): ?>
     <section class="d-sm-none d-md-block">
 
-        <a href="<?=site_url('advertise_with_us')?>" target="_blank" rel="noopener noreferrer">
+        <a href="<?=site_url('advertise-with-us')?>" target="_blank" rel="noopener noreferrer">
 
             <img src="<?php echo base_url(); ?>assets/frontend/default/img/web footer.jpg" data-src="<?php echo base_url(); ?>assets/frontend/default/img/web footer.jpg" alt=""
                 class="w-100 h-100 d-block lazyloaded">
@@ -1507,7 +1507,7 @@ $allcategory = array_column($latest_courses,'category','c_slug');
 <?php else: ?>
     <section class="d-sm-block d-md-none">
 
-        <a href="<?=site_url('advertise_with_us')?>" target="_blank" rel="noopener noreferrer">
+        <a href="<?=site_url('advertise-with-us')?>" target="_blank" rel="noopener noreferrer">
 
             <img src="<?php echo base_url(); ?>assets/frontend/default/img/mobile footer.jpg" data-src="<?php echo base_url(); ?>assets/frontend/default/img/mobile footer.jpg" alt=""
                 class="w-100 h-100 d-block lazyloaded">

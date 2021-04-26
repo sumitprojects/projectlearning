@@ -349,7 +349,12 @@ $(document).ready(function() {
     if ($('.grid').length > 0) {
         var $grid = $('.grid').isotope({
             itemSelector: '.element-item',
-            layoutMode: 'fitRows'
+            layoutMode: 'fitRows',
+            fitRows: {
+                columnWidth: 200,
+                rowHeight: 350
+            },
+
         });
         // filter functions
         var filterFns = {

@@ -9,7 +9,7 @@
     <?php if ($page_name == 'course_page'):
 
 		$title = $this->crud_model->get_course_by_id($course_id)->row_array()?>
-
+    <meta name="title" content="<?php echo $title['title'].' | '.get_settings('system_name'); ?>">
     <title><?php echo $title['title'].' | '.get_settings('system_name'); ?></title>
     <meta property="og:title" content="<?php echo $title['title'].' | '.get_settings('system_name'); ?>">
     <meta name="twitter:card" content="<?php echo $title['title'].' | '.get_settings('system_name'); ?>">
@@ -17,7 +17,7 @@
     <meta property="og:image" content="<?php echo $this->crud_model->get_course_thumbnail_url($title['id']); ?>">
 
     <?php else: ?>
-
+    <meta name="title" content="<?php echo ucwords($page_title).' | '.get_settings('system_name'); ?>">
     <meta property="og:image" content="<?=base_url()?>/uploads/system/hospitalityconnaisseur_placeholder.jpg">
     <meta name="twitter:card" content="<?php echo ucwords($page_title).' | '.get_settings('system_name'); ?>">
     <meta name="twitter:image:alt" content="<?php echo ucwords($page_title).' | '.get_settings('system_name'); ?>">

@@ -172,7 +172,7 @@ class Home extends CI_Controller {
 
 
 
-        if ($selected_category_id == "all" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
+        if ($selected_category_id == "courses" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
 
             if(!addon_status('scorm_course')){
 
@@ -297,7 +297,7 @@ class Home extends CI_Controller {
         }
 
 
-        if ($selected_category_id == "all" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
+        if ($selected_category_id == "magazines" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
 
             $this->db->where('course_type', 'magazine');
 
@@ -411,7 +411,7 @@ class Home extends CI_Controller {
 
 
 
-        if ($selected_category_id == "all" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
+        if ($selected_category_id == "question-papers" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
 
             $this->db->where('course_type', 'question_paper');
 

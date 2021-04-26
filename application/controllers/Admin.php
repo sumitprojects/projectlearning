@@ -7494,8 +7494,7 @@ class Admin extends CI_Controller {
 
 
 
-            $language = trimmer($this->input->post('language'));
-
+            $language = ucwords($this->input->post('language'));
 
 
             if ($language == 'n-a') {
@@ -7503,12 +7502,7 @@ class Admin extends CI_Controller {
 
 
                 $this->session->set_flashdata('error_message', get_phrase('language_name_can_not_be_empty_or_can_not_have_special_characters'));
-
-
-
                 redirect(site_url('admin/manage_dictionary'), 'refresh');
-
-
 
             }
 
@@ -7621,10 +7615,11 @@ class Admin extends CI_Controller {
         if ($param1 == 'edit_language') {  
             $page_data['lang_id'] = $param3;
 
-            $page_data['language'] = $this->db->select('*')->from('dictionary_lang')->where('dlid',$param3)->get()->result_array();
+            $page_data['dlang'] = $this->db->select('*')->from('dictionary_lang')->where('dlid',$param3)->get()->row_array();
 
             $page_data['edit_lang'] = $param3;
 
+          
         }
 
 

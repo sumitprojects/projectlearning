@@ -164,6 +164,28 @@
 
                                                 </div>
 
+                                                <div class="form-group row mb-3">
+
+                                                    <label class="col-md-2 col-form-label"
+
+                                                        for="magazine_title"><?php echo get_phrase('publish_date'); ?>
+
+                                                        <span class="required">*</span> </label>
+
+                                                    <div class="col-md-10">
+
+                                                        <input type="date" class="form-control" id="publish_date"
+
+                                                            name="publish_date"
+
+                                                            placeholder="<?php echo get_phrase('enter_publish_date'); ?>"
+
+                                                            required>
+
+                                                    </div>
+
+                                                </div>
+
                                                 <?php if (addon_status('course_subscription')): ?>
 
                                                 <div class="form-group row mb-3">

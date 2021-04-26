@@ -1246,5 +1246,8 @@
     "start_reading": "Start reading",
     "user_credentials": "User credentials",
     "all_coruses": "All coruses",
-    "edit_language": "Edit language"
+    "edit_language": "Edit language",
+    "germans": "Germans",
+    "publish_date": "Publish date",
+    "enter_publish_date": "Enter publish date"
 }

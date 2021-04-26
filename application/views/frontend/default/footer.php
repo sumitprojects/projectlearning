@@ -12,7 +12,7 @@
 
             <h3 class="py-3 font-inter">Explore the Details about AdPackages & benefits We Provide.</h3>
 
-            <a class="btn btn-primary btn-lg p-3" href="<?=site_url('home/advertise_with_us')?>">Request Quote</a>
+            <a class="btn btn-primary btn-lg p-3" href="<?=site_url('advertise-with-us')?>">Request Quote</a>
 
         </div>
 
@@ -213,16 +213,6 @@
 
                     </li>
                         <?php endforeach; ?>
-
-                    <!-- <li class="nav-item">
-
-                        <a class="nav-link" href="<?php echo site_url('home/hospitality_keywords'); ?>">
-
-                            <?php echo site_phrase('Hospitality Keywords'); ?>
-
-                        </a>
-
-                    </li> -->
 
                     <li class="nav-item">
 
@@ -457,7 +447,7 @@
 
                         class="text-theme">LOGIN</a> to start learning or <a
 
-                        href="<?php echo site_url('sign_up'); ?>" class="text-theme">SIGN-UP</a> to be the part of
+                        href="<?php echo site_url('sign-up'); ?>" class="text-theme">SIGN-UP</a> to be the part of
 
                     revolution.</p>
 

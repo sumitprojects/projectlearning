@@ -163,8 +163,8 @@
                             <div class="col-xl-6">
                                 <form class="" action="<?php echo site_url('admin/manage_dictionary/add_language'); ?>"
                                     method="post">
-                                    <?php if(isset($edit_lang)): ?>
-                                        <input type="hidden" name="dlid" value="<?=$lang_id?>">
+                                    <?php if(isset($dlang)): ?>
+                                        <input type="hidden" name="dlid" value="<?=$dlang['dlid']?>">
                                     <?php endif; ?>
                                     <div class="form-group mb-3">
                                         <?php if(isset($edit_lang)): ?>
@@ -172,7 +172,7 @@
                                         <?php else: ?>
                                         <label for="language"><?php echo get_phrase('add_new_language'); ?></label>
                                         <?php endif; ?>
-                                        <input type="text" id="language" name="language" class="form-control" value="<?=isset($edit_lang)? $language['language']:''?>"
+                                        <input type="text" id="language" name="language" class="form-control" value="<?=isset($edit_lang)? $dlang['language']:''?>"
                                             placeholder="<?php echo get_phrase('no_special_character_or_space_is_allowed').'. '.get_phrase('valid_examples').' : French, Spanish, Bengali etc'; ?>">
                                     </div>
                                     <button type="submit" class="btn btn-primary"
@@ -192,7 +192,7 @@
 $(document).ready(function() {
     // initDataTable(['#manage-dict']);
 });
-
+<?php if(isset($current_editing_language)):?>
 function updatePhrase(key, lang_key) {
     $('#btn-' + key).text('...');
     var phrase = $('#phrase-' + key).val();
@@ -216,4 +216,5 @@ function updatePhrase(key, lang_key) {
         }
     });
 }
+<?php endif; ?>
 </script>

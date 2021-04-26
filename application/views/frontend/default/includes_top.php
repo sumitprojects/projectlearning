@@ -61,6 +61,7 @@ h1,h2,h3,h4,h5,h6 {
     position: relative;
     float: left;
     width: 300px;
+    height:400px;
 }
 
 .home-banner .container {

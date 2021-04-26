@@ -267,6 +267,23 @@ class User_model extends CI_Model {
     public function upload_user_image($image_code) {
         if (isset($_FILES['user_image']) && $_FILES['user_image']['name'] != "") {
             move_uploaded_file($_FILES['user_image']['tmp_name'], 'uploads/user_image/'.$image_code.'.jpg');
+
+            list($width, $height, $type, $attr) = getimagesize($img);
+
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = FCPATH.'uploads/user_image/'.$image_code.'.jpg';
+            $config['maintain_ratio'] = FALSE;
+            $config['width']         = 512;
+            $config['height']       = 512;
+            $config['maintain_ratio'] = FALSE;
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+            $config['x_axis'] = '10';
+            $config['y_axis'] = '10';
+            $config['width'] = $width-10;
+            $config['height'] = $height-10;
+            $this->load->library('image_lib', $config);
+            $this->image_lib->crop();
             $this->session->set_flashdata('flash_message', get_phrase('user_update_successfully'));
         }
     }

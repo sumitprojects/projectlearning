@@ -1025,9 +1025,15 @@ class Crud_model extends CI_Model
 
         }
 
+        if(isset($_POST['publish_date'])){
 
+            $data['date_added'] = strtotime($this->input->post('publish_date'));
 
-        $data['date_added'] = strtotime(date('D, d-M-Y'));
+        }else{
+
+            $data['date_added'] = strtotime(date('D, d-M-Y'));
+
+        }
 
         $data['section'] = json_encode(array());
 
@@ -1313,6 +1319,15 @@ class Crud_model extends CI_Model
 
         }
 
+        if(isset($_POST['publish_date'])){
+
+            $data['date_added'] = strtotime($this->input->post('publish_date'));
+
+        }else{
+
+            $data['date_added'] = strtotime(date('D, d-M-Y'));
+
+        }
 
 
         $data['meta_description'] = $this->input->post('meta_description');

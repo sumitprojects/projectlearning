@@ -2,7 +2,7 @@
 
 <section>
 
-    <form action="<?=site_url('home/advertise_with_us')?>" method="post">
+    <form action="<?=site_url('advertise-with-us')?>" method="post">
 
     <div class="container">
 

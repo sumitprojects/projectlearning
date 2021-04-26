@@ -535,6 +535,7 @@ class CI_Output {
 		}
 		else
 		{
+			// $output = preg_replace('/(\n)/', '',$output);
 			echo $output; // Send it to the browser!
 		}
 
