@@ -21,9 +21,13 @@
         <p>
 
             <i class="fa fa-briefcase"></i>&nbsp;
-
-            <span class="text-theme"><?=$job['job_type']?></span>
-
+            <?php if($job['job_type'] == 'full'):?>
+                <span class="text-theme"><?=ucwords(get_phrase('full_time'))?></span>
+            <?php elseif($job['job_type'] == 'part'):?>
+                <span class="text-theme"><?=ucwords(get_phrase('part_time'))?></span>
+            <?php else:?>
+                <span class="text-theme"><?=get_phrase('freelance')?></span>
+            <?php endif;?>
         </p>
 
         <p>

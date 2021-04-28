@@ -7156,18 +7156,9 @@ class Admin extends CI_Controller {
 
         if($param1 == 'edit' && $param2>0){
 
-
-
             $page_data['job'] = $this->db->get_where('jobs',['id'=>$param2])->row_array();
 
-            redirect(site_url('admin/manage_jobs'), 'refresh');
-
         }
-
-
-
-
-
 
 
         if($param1 == 'add'){
