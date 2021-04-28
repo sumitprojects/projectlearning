@@ -928,8 +928,10 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
             <li><i class="fas fa-mobile-alt"></i><?php echo site_phrase('access_on_laptop_and_tv'); ?></li>
 
           <?php endif; ?>
-
-            <li><i class="far fa-compass"></i><?php echo site_phrase('limited_access'); ?></li>
+            <?php if($course_details['course_expiry'] > 0):?>
+              <li><i class="far fa-compass"></i><?php echo $course_details['course_expiry'] . ' '. ucwords(site_phrase('days_access')); ?></li>
+            <?php endif; ?>
+          
           <?php endif; ?>
 
         </ul>

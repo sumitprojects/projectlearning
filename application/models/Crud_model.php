@@ -5098,6 +5098,12 @@ class Crud_model extends CI_Model
 
                     $watch_history_array[$i]['progress'] = $progress;
 
+                    if(isset($watch_history_array[$i]['watch'])){
+                        $watch_history_array[$i]['watch'] += 1;
+                    }else{
+                        $watch_history_array[$i]['watch'] = 1;
+                    }
+
                     $founder = true;
 
                 }

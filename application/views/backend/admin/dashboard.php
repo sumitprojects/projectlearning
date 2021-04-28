@@ -14,7 +14,7 @@
         </div> <!-- end card -->
     </div><!-- end col-->
 </div>
-
+<?php if($this->session->userdata('role_id') == 1):?>
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
@@ -29,7 +29,7 @@
         </div> <!-- end card -->
     </div><!-- end col-->
 </div>
-
+<?php endif; ?>
 <div class="row">
     <div class="col-12">
         <div class="card widget-inline">
@@ -115,6 +115,7 @@
             </div>
         </div>
     </div>
+    <?php if($this->session->userdata('role_id') == 1):?>
     <div class="col-xl-8">
         <div class="card" id = 'unpaid-instructor-revenue'>
             <div class="card-body">
@@ -146,9 +147,9 @@
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 </div>
-
 <script type="text/javascript">
     $('#unpaid-instructor-revenue').mouseenter(function() {
         $('#go-to-instructor-revenue').show();

@@ -80,7 +80,7 @@ class Login extends CI_Controller {
         if ($query->num_rows() > 0) {
 
             $row = $query->row();
-
+                
             $this->session->set_userdata('user_id', $row->id);
 
             $this->session->set_userdata('role_id', $row->role_id);
@@ -93,7 +93,7 @@ class Login extends CI_Controller {
 
             $this->session->set_flashdata('flash_message', get_phrase('welcome').' '.$row->first_name.' '.$row->last_name);
 
-            if ($row->role_id == 1) {
+            if ($row->role_id == 1 || $row->role_id > 2) {
 
                 $this->session->set_userdata('admin_login', '1');
 

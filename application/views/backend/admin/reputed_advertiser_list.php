@@ -50,6 +50,14 @@
                             value="<?=!empty($advertiser)? $advertiser['title']:''?>">
 
                     </div>
+                    <div class="form-group mb-3">
+
+                        <label for="title"><?php echo get_phrase('url'); ?></label>
+
+                        <input type="text" id="url" name="url" class="form-control" placeholder="Eg. url"
+                            value="<?=!empty($advertiser)? $advertiser['url']:''?>">
+
+                    </div>
 
                     <div class="form-group mb-3">
 

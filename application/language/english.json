@@ -1251,5 +1251,19 @@
     "publish_date": "Publish date",
     "enter_publish_date": "Enter publish date",
     "french-dictionary": "French-dictionary",
-    "english-dictionary": "English-dictionary"
+    "english-dictionary": "English-dictionary",
+    "days_access": "Days access",
+    "job_applications": "Job applications",
+    "system_user": "System user",
+    "system_users": "System users",
+    "add_system_user": "Add system user",
+    "role": "Role",
+    "save_system_user": "Save system user",
+    "permission": "Permission",
+    "required_for_user": "Required for user",
+    "user_role": "User role",
+    "permissions": "Permissions",
+    "access": "Access",
+    "user_deleted_successfully": "User deleted successfully",
+    "url": "Url"
 }

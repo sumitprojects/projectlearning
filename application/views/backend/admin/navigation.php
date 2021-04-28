@@ -47,13 +47,11 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
                 <i class="dripicons-view-apps"></i>
 
                 <span><?php echo get_phrase('dashboard'); ?></span>
-
             </a>
-
         </li>
 
 
-
+        <?php if(in_array('categories', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
         <li
             class="side-nav-item <?php if ($page_name == 'categories' || $page_name == 'category_add' || $page_name == 'category_edit' ): ?> active <?php endif; ?>">
 
@@ -89,7 +87,9 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 
         </li>
 
+        <?php endif; ?>
 
+        <?php if(in_array('courses', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
         <li class="side-nav-item">
 
@@ -104,7 +104,9 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 
         </li>
 
+        <?php endif; ?>
 
+        <?php if(in_array('magazines', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
         <li class="side-nav-item">
 
@@ -118,6 +120,9 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
             </a>
 
         </li>
+        <?php endif; ?>
+
+        <?php if(in_array('question_papers', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
         <li class="side-nav-item">
 
@@ -131,6 +136,8 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
             </a>
 
         </li>
+
+        <?php endif; ?>
 
 
         <?php if (addon_status('course_bundle')): ?>
@@ -187,6 +194,8 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
         <?php endif; ?>
 
 
+
+        <?php if(in_array('instructors', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
         <li
             class="side-nav-item <?php if ($page_name == 'instructors' || $page_name == 'instructor_add' || $page_name == 'instructor_edit'): ?> active <?php endif; ?>">
@@ -255,6 +264,9 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 
         </li>
 
+        <?php endif; ?>
+
+        <?php if(in_array('users', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
 
         <li class="side-nav-item">
@@ -269,7 +281,6 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
             </a>
 
         </li>
-
 
 
         <li
@@ -308,6 +319,9 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 
         </li>
 
+        <?php endif; ?>
+
+        <?php if(in_array('admin_revenue', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
 
         <li class="side-nav-item">
@@ -347,7 +361,7 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 
         </li>
 
-
+        <?php endif; ?>
 
         <?php if (addon_status('offline_payment')): ?>
 
@@ -416,6 +430,8 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 
 
 
+        <?php if(in_array('manage_newsletter', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
+
         <li class="side-nav-item">
 
             <a href="<?php echo site_url('admin/manage_newsletter'); ?>"
@@ -428,6 +444,9 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
             </a>
 
         </li>
+        <?php endif; ?>
+
+        <?php if(in_array('manage_faq', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
         <li class="side-nav-item">
 
@@ -442,6 +461,9 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 
         </li>
         <!-- manage_advertiser -->
+        <?php endif; ?>
+
+        <?php if(in_array('manage_advertiser', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
 
         <li class="side-nav-item">
@@ -456,6 +478,9 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
             </a>
 
         </li>
+        <?php endif; ?>
+
+        <?php if(in_array('reputed_advertisers', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
         <li class="side-nav-item">
 
@@ -469,6 +494,9 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
             </a>
 
         </li>
+        <?php endif; ?>
+
+        <?php if(in_array('manage_jobs', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
         <li class="side-nav-item">
 
@@ -484,9 +512,11 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
         </li>
 
 
+        <?php endif; ?>
+
+        <?php if(in_array('manage_dictionary', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
         <li class="side-nav-item">
-
             <a href="<?php echo site_url('admin/manage_dictionary'); ?>"
                 class="side-nav-link <?php if ($page_name == 'manage_dictionary')echo 'active';?>">
 
@@ -497,8 +527,19 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
             </a>
 
         </li>
+        <?php endif; ?>
 
+        <?php if(in_array('system_user', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
+        <li class="side-nav-item">
+            <a href="<?php echo site_url('admin/system_user'); ?>"
+                class="side-nav-link <?php if ($page_name == 'system_user')echo 'active';?>">
+                <i class="dripicons-archive"></i>
+                <span><?php echo get_phrase('system_user'); ?></span>
+            </a>
+        </li>
+        <?php endif; ?>
 
+        <?php if($this->session->userdata('role_id') == 1):?>
 
         <li class="side-nav-item">
 
@@ -525,7 +566,9 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 
         </li>
 
+        <?php endif; ?>
 
+        <?php if(in_array('settings', $this->session->userdata('permission')) ^ $this->session->userdata('role_id') == 1):?>
 
         <li
             class="side-nav-item <?php if ($page_name == 'course_subscription' || $page_name == 'system_settings' || $page_name == 'frontend_settings' || $page_name == 'payment_settings' || $page_name == 'smtp_settings' || $page_name == 'manage_language' || $page_name == 'about' || $page_name == 'themes' ): ?> active <?php endif; ?>">
@@ -630,10 +673,11 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
             </ul>
 
         </li>
+        <?php endif; ?>
 
         <li class="side-nav-item <?php if ($page_name == 'manage_profile')echo 'active';?>">
 
-            <a href="<?php echo site_url(strtolower($this->session->userdata('role')).'/manage_profile'); ?>"
+            <a href="<?php echo site_url(strtolower($this->session->userdata('role')=='user'?'user':'admin').'/manage_profile'); ?>"
                 class="side-nav-link">
 
                 <i class="dripicons-user"></i>

@@ -44,7 +44,13 @@ class User_model extends CI_Model {
             $social_link['linkedin'] = html_escape($this->input->post('linkedin_link'));
             $data['social_links'] = json_encode($social_link);
             $data['biography'] = $this->input->post('biography');
-            $data['role_id'] = 2;
+
+            if($this->input->post('role_id')){
+                $data['role_id'] = $this->input->post('role_id');
+            }else{
+                $data['role_id'] = 2;
+            }
+            
             $data['date_added'] = strtotime(date("Y-m-d H:i:s"));
             $data['wishlist'] = json_encode(array());
             $data['watch_history'] = json_encode(array());
@@ -65,7 +71,7 @@ class User_model extends CI_Model {
 
             $data['dob'] = html_escape($this->input->post('dob'));
 
-            $data['gender'] = html_escape($this->input->post('gender'));
+            $data['gender'] = html_escape($this->input->post('gender'))??'male';
 
 
             // Add paypal keys
@@ -90,6 +96,7 @@ class User_model extends CI_Model {
 
             $this->db->insert('users', $data);
             $user_id = $this->db->insert_id();
+            $this->add_permission($user_id);
             $this->upload_user_image($data['image']);
             $this->session->set_flashdata('flash_message', get_phrase('user_added_successfully'));
         }
@@ -225,8 +232,15 @@ class User_model extends CI_Model {
             array_push($stripe_info, $stripe_keys);
             $data['stripe_keys'] = json_encode($stripe_info);
 
+            if($this->input->post('role_id')){
+                $data['role_id'] = $this->input->post('role_id');
+            }else{
+                $data['role_id'] = 2;
+            }
+
             $this->db->where('id', $user_id);
             $this->db->update('users', $data);
+            $this->add_permission($user_id);
             
             $this->session->set_flashdata('flash_message', get_phrase('user_update_successfully'));
         }else {
@@ -501,5 +515,84 @@ class User_model extends CI_Model {
             $this->session->set_flashdata('error_message', get_phrase('invalid_application'));
             redirect(site_url('admin/instructor_application'), 'refresh');
         }
+    }
+
+    public function delete_system_user($user_id = 0){
+        $this->db->where('id', $user_id);
+        $this->db->update('users',['is_delete'=>'1']);
+        $this->session->set_flashdata('flash_message', get_phrase('user_deleted_successfully'));
+    }
+
+
+
+    public function get_roles($not_roles= [],$role_id = 0) {
+        if ($role_id > 0) {
+            $this->db->where('id', $role_id);
+        }
+        if(!empty($not_roles)){
+            $this->db->where_not_in('id',$not_roles);
+        }
+        return $this->db->get('role');
+    }
+
+    public function get_system_user($user_id = 0){
+        $this->db->select('u.*,r.name as role_name');
+        $this->db->from('users as u');
+        $this->db->join('role as r','u.role_id = r.id');
+        if ($user_id > 0) {
+            $this->db->where('u.id', $user_id);
+        }
+        // $this->db->where('u.is_delete',0);
+        $this->db->where('u.role_id <>', 2);
+        $this->db->where('u.role_id <>', 1);
+        return $this->db->get();
+    }
+
+    public function get_all_system_user($user_id = 0) {
+        $this->db->select('u.*,r.name as role_name');
+        $this->db->from('users as u');
+        $this->db->join('role as r','u.role_id = r.id');
+        if ($user_id > 0) {
+            $this->db->where('u.id', $user_id);
+        }
+        // $this->db->where('u.is_delete',0);
+        $this->db->where('u.role_id <>', 2);
+        $this->db->where('u.role_id <>', 1);
+        return $this->db->get();
+    }
+
+    public function get_permission($id = 0) {
+        if ($id > 0) {
+            return $this->db->get_where('permission', array('id' => $id));
+        }else{
+            return $this->db->get('permission');
+        }
+    }
+
+    public function user_permission($user_id){
+        $this->db->select('pm_id,permission.name');
+        $this->db->from('perm_user');
+        $this->db->join('permission','perm_user.pm_id = permission.id','inner');
+
+        if($user_id > 0){
+            $this->db->where('perm_user.user_id',$user_id);
+        }
+        return $this->db->get();
+    }
+
+    public  function add_permission($user_id = ""){
+        $permission = $_POST['permissions'];
+
+        if(is_array($permission) && $user_id > 0){
+            $this->db->where('user_id', $user_id);
+            $this->db->delete('perm_user');
+
+            foreach ($permission as $p) { 
+                $perm['user_id'] = $user_id;
+                $perm['pm_id'] = $p;
+                $this->db->insert('perm_user',$perm);
+            }
+        }
+
     }
 }

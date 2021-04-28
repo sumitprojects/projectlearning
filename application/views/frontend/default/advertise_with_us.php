@@ -125,8 +125,9 @@
                 <div class="row text-center">
                     <?php foreach($reputed_advertisers as $key => $reputed_advertiser):?>
                     <div class="col-3">
-
-                        <img src="<?=base_url().'uploads/system/'.$reputed_advertiser['image']?>" height="150" width="150" class="img-fluid" title="<?=$reputed_advertiser['title']?>" alt="<?=$reputed_advertiser['title']?>">
+                        <a href="<?=$reputed_advertiser['url']?>" target="_blank">
+                            <img src="<?=base_url().'uploads/system/'.$reputed_advertiser['image']?>" height="150" width="150" class="img-fluid" title="<?=$reputed_advertiser['title']?>" alt="<?=$reputed_advertiser['title']?>">
+                        </a>
                     </div>
                     <?php endforeach; ?>
                 </div>        

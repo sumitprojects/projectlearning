@@ -35,7 +35,7 @@
 <script src="<?php echo site_url('assets/backend/js/custom.js');?>"></script>
 
 <!-- Dashboard chart's data is coming from this file -->
-<?php include "$logged_in_user_role/dashboard-chart.php"; ?>
+<?php include ($logged_in_user_role != 2? 'admin': 'user')."/dashboard-chart.php"; ?>
 
 <script type="text/javascript">
   $(document).ready(function() {
