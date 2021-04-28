@@ -275,6 +275,7 @@ jQuery(document).ready(function($) {
 
     $.fn.dataTable.ext.errMode = 'throw';
 
+    <?php if(isset($lang_key)):?>
     manageDict = $('#manage-dict').DataTable({
 
         "processing": true,
@@ -321,6 +322,7 @@ jQuery(document).ready(function($) {
         }]
 
     });
+    <?php endif; ?>
 });
 
 function addPhrase() {

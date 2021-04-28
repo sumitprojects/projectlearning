@@ -134,10 +134,6 @@ $route['home/bundle_invoice/(:any)']  						= "addons/course_bundles/invoice/$1"
 
 $route['translate_uri_dashes'] = TRUE;
 
-$route['courses/(:any)/(:any)'] = "home/course/$1/$2";
-$route['magazines/(:any)/(:any)'] = "home/course/$1/$2";
-$route['question-papers/(:any)/(:any)'] = "home/course/$1/$2";
-
 $route['courses'] = "home/courses";
 $route['magazines'] = 'home/magazines';
 $route['question-papers'] = 'home/question_papers';
@@ -145,6 +141,11 @@ $route['question-papers'] = 'home/question_papers';
 $route['courses/(:any)'] = "home/courses/$1";
 $route['magazines/(:any)'] = 'home/magazines/$1';
 $route['question-papers/(:any)'] = 'home/question_papers/$1';
+
+
+$route['courses/(:any)/(:any)'] = "home/course/$1/$2";
+$route['magazines/(:any)/(:any)'] = "home/course/$1/$2";
+$route['question-papers/(:any)/(:any)'] = "home/course/$1/$2";
 
 
 

@@ -192,7 +192,7 @@
 
 
 
-                                <?php echo site_phrase('be_the_part_of_revolution'); ?>? <a href="javascript::"
+                                <?php echo site_phrase('be_the_part_of_revolution'); ?>. <a href="javascript::"
 
                                     onclick="toggoleForm('registration')"
 

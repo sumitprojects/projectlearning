@@ -856,9 +856,9 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
           <div class="buy-btns">
 
             <?php if ($this->session->userdata('user_login') != 1): ?>
-              <?php if($magazine):?>
+              <?php if($course_details['course_type'] == 'magazine'):?>
               <a href = "#" class="btn btn-buy-now" onclick="handleEnrolledButton()"><?php echo site_phrase('read_now'); ?></a>
-              <?php elseif($questionpaper):?>
+              <?php elseif($course_details['course_type'] == 'question_paper'):?>
                 <a href = "#" class="btn btn-buy-now" onclick="handleEnrolledButton()"><?php echo site_phrase('get_now'); ?></a>
               <?php else:?>
                 <a href = "#" class="btn btn-buy-now" onclick="handleEnrolledButton()"><?php echo site_phrase('get_enrolled'); ?></a>

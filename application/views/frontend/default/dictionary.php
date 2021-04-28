@@ -42,6 +42,7 @@ div.alphabetInfo {
 
 <section class="category-course-list-area">
     <div class="container">
+        <h1 class="py-3"><?=$page_title?></h1>
         <div class="row">
             <div class="col" style="padding: 35px;">
                 <table id="front-dict" class="table table-striped table-bordered" style="width:100%">

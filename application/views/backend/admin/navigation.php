@@ -401,7 +401,7 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 
 
 
-        <li class="side-nav-item">
+        <!-- <li class="side-nav-item">
 
             <a href="<?php echo site_url('admin/message'); ?>"
                 class="side-nav-link <?php if ($page_name == 'message' || $page_name == 'message_new' || $page_name == 'message_read')echo 'active';?>">
@@ -412,7 +412,7 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 
             </a>
 
-        </li>
+        </li> -->
 
 
 

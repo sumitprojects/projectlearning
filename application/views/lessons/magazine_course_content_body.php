@@ -15,8 +15,7 @@
             if($fileExtension == 'pdf'):
             ?>
             <div class="ipgs-flipbook" style="width:100%;height:500px"
-                data-pdf-src="<?php echo base_url().'uploads/lesson_files/'.$lesson_details['attachment']; ?>"
-                data-book-engine="onepageswipe"></div>
+                data-pdf-src="<?php echo base_url().'uploads/lesson_files/'.$lesson_details['attachment']; ?>"></div>
         <?php else: ?>
             <a class="btn btn-primary" href="<?php echo base_url().'uploads/lesson_files/'.$lesson_details['attachment']; ?>" >
                 <?=get_phrase('download')?>

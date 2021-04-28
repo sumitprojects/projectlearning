@@ -168,11 +168,6 @@ foreach ($my_courses as $my_course) {
                                             aria-valuemin="0" aria-valuemax="100"></div>
 
                                     </div>
-                                    <?php if(!empty($expiry_detail) && $expiry_detail['expiry_time'] > 0): ?>
-                                    <p class="alert alert-danger">
-                                        <?=get_phrase('expire_on') . ' ' .date('D, d-M-Y',$expiry_detail['expiry_time'])?>
-                                    </p>
-                                    <?php endif;?>
 
                                     <small><?php echo ceil(course_progress($my_course['course_id'])); ?>%
                                         <?php echo site_phrase('completed'); ?></small>
@@ -197,16 +192,13 @@ foreach ($my_courses as $my_course) {
 
                                         <?php endfor; ?>
 
-                                        <!-- <p class="your-rating-text" id = "<?php echo $my_course['course_id']; ?>" onclick="getCourseDetailsForRatingModal(this.id)">
-
-                                              <span class="your"><?php echo site_phrase('your'); ?></span>
-
-                                              <span class="edit"><?php echo site_phrase('edit'); ?></span>
-
-                                              <?php echo site_phrase('rating'); ?>
-
-                                          </p> -->
-
+                                        <?php if(!empty($expiry_detail) && $expiry_detail['expiry_time'] > 0): ?>
+                                        <div class="mt-2">
+                                            <p class="alert alert-danger">
+                                                <?=get_phrase('expire_on') . ' ' .date('D, d-M-Y',$expiry_detail['expiry_time'])?>
+                                            </p>
+                                        </div>
+                                        <?php endif;?>
                                         <p class="your-rating-text">
 
                                             <a href="javascript:void(0)"
@@ -222,22 +214,22 @@ foreach ($my_courses as $my_course) {
                                         </p>
 
                                         <?php if($course_details['course_type'] == 'general'):?>
-                                            <a href="<?php echo site_url('courses/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
-                                                class="btn btn-primary btn-block"><?php echo site_phrase('course_detail'); ?></a>
-                                            <?php elseif($course_details['course_type'] == 'magazine'):?>
-                                            <a href="<?php echo site_url('magazines/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
-                                                class="btn btn-primary btn-block"><?php echo site_phrase('course_detail'); ?></a>
-                                            <?php elseif($course_details['course_type'] == 'question_paper'):?>
-                                            <a href="<?php echo site_url('question-papers/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
-                                                class="btn btn-primary btn-block"><?php echo site_phrase('course_detail'); ?></a>
-                                            <?php endif;?>
-                                            <?php if($course_details['course_type'] == 'general'):?>
-                                            <a href="<?php echo site_url('home/lesson/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
-                                                class="btn btn-primary btn-block"><?php echo site_phrase('start_lesson'); ?></a>
-                                            <?php else:?>
-                                            <a href="<?php echo site_url('home/lesson/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
-                                                class="btn btn-primary btn-block"><?php echo site_phrase('start_reading'); ?></a>
-                                            <?php endif;?>
+                                        <a href="<?php echo site_url('courses/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
+                                            class="btn btn-primary btn-block"><?php echo site_phrase('course_detail'); ?></a>
+                                        <?php elseif($course_details['course_type'] == 'magazine'):?>
+                                        <a href="<?php echo site_url('magazines/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
+                                            class="btn btn-primary btn-block"><?php echo site_phrase('course_detail'); ?></a>
+                                        <?php elseif($course_details['course_type'] == 'question_paper'):?>
+                                        <a href="<?php echo site_url('question-papers/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
+                                            class="btn btn-primary btn-block"><?php echo site_phrase('course_detail'); ?></a>
+                                        <?php endif;?>
+                                        <?php if($course_details['course_type'] == 'general'):?>
+                                        <a href="<?php echo site_url('home/lesson/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
+                                            class="btn btn-primary btn-block"><?php echo site_phrase('start_lesson'); ?></a>
+                                        <?php else:?>
+                                        <a href="<?php echo site_url('home/lesson/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
+                                            class="btn btn-primary btn-block"><?php echo site_phrase('start_reading'); ?></a>
+                                        <?php endif;?>
                                     </div>
                                 </div>
                             </div>

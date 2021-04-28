@@ -3410,7 +3410,7 @@ class Crud_model extends CI_Model
             $course['expiry_time'] = (int) $course['expiry_time'];
         }
 
-        if($course['expiry_time'] > 0 && $course['expiry_time'] <= strtotime(date('D, d-M-Y')) ){
+        if($course['expiry_time'] > 0 && $course['expiry_time'] >= strtotime(date('D, d-M-Y')) ){
             return $course;            
         }else if($course['expiry_time'] == 0){
             return $course;
@@ -3463,7 +3463,7 @@ class Crud_model extends CI_Model
 
             $exp_days = $this->get_course_expiry_days($purchased_course);
 
-            if($exp_days != 0 && $exp_days <= 999999){
+            if($exp_days > 0 && $exp_days <= 999999){
                 $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days")));
             }else{
                 $data['expiry_time'] = 0;
@@ -3537,8 +3537,6 @@ class Crud_model extends CI_Model
 
             $data['date_added'] = strtotime(date('D, d-M-Y'));
 
-            $this->db->insert('enrol', $data);
-
             $exp_days = $this->crud_model->get_course_expiry_days($data['course_id'])->row_array()['course_expiry'];
 
             if($exp_days != 0 && $exp_days <= 999999){
@@ -3547,6 +3545,8 @@ class Crud_model extends CI_Model
                 $data['expiry_time'] = 0;
             }
             $this->session->set_flashdata('flash_message', get_phrase('student_has_been_enrolled_to_that_course'));
+
+            $this->db->insert('enrol', $data);
 
             $response['status'] = 1;
 
@@ -3580,15 +3580,15 @@ class Crud_model extends CI_Model
 
                 $data['date_added'] = strtotime(date('D, d-M-Y'));
 
-                $this->db->insert('enrol', $data);
 
                 $exp_days = $this->crud_model->get_course_expiry_days($data['course_id'])->row_array()['course_expiry'];
 
-                if($exp_days != 0 && $exp_days <= 999999){
+                if($exp_days > 0 && $exp_days <= 999999){
                     $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days")));
                 }else{
                     $data['expiry_time'] = 0;
                 }
+                $this->db->insert('enrol', $data);
                 $this->session->set_flashdata('flash_message', get_phrase('successfully_enrolled'));
 
             }
@@ -4210,6 +4210,7 @@ class Crud_model extends CI_Model
         }
 
         $this->db->where('status', 'active');
+        
         $this->db->order_by("id", "desc");
 
         $courses = $this->db->get('course')->result_array();
@@ -4255,6 +4256,7 @@ class Crud_model extends CI_Model
             // }
             $this->db->where('course_type', $type);
             $this->db->where_in('id', $course_ids);
+            $this->db->order_by("id", "desc");
 
             return $this->db->get('course')->result_array();
 

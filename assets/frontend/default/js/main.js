@@ -197,7 +197,6 @@ $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip()
     })
 
-
     /////////////
     //Slick Carousel Controllers
     $(".testimonial-reel").slick({

@@ -112,7 +112,7 @@ h1,h2,h3,h4,h5,h6 {
     animation-timing-function: linear;
     background: #f6f7f8;
     background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-    height: 96px;
+    /* height: auto; */
     position: relative;
 }
 

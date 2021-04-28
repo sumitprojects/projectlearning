@@ -28,8 +28,6 @@ class Home extends CI_Controller {
 
         $this->output->set_header('Pragma: no-cache');
 
-
-
         // CHECK CUSTOM SESSION DATA
         $this->load->library('user_agent');
 
@@ -101,7 +99,7 @@ class Home extends CI_Controller {
 
 
 
-    public function courses() {
+    public function courses($page = 0) {
 
         if (!$this->session->userdata('layout')) {
 
@@ -110,7 +108,7 @@ class Home extends CI_Controller {
 
         $layout = $this->session->userdata('layout');
 
-        $selected_category_id = "courses";
+        $selected_category_id = "all";
 
         $selected_price = "all";
 
@@ -169,10 +167,7 @@ class Home extends CI_Controller {
         }
 
 
-
-
-
-        if ($selected_category_id == "courses" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
+        if ($selected_category_id == "all" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
 
             if(!addon_status('scorm_course')){
 
@@ -184,11 +179,9 @@ class Home extends CI_Controller {
 
             $total_rows = $this->db->get('course')->num_rows();
 
-
-
             $config = array();
 
-            $config = pagintaion($total_rows, 6);
+            $config = pagintaion($total_rows, 12);
 
             $config['base_url']  = site_url('courses/');
 
@@ -204,7 +197,7 @@ class Home extends CI_Controller {
 
             $this->db->order_by("id", "desc");
 
-            $page_data['courses'] = $this->db->get('course', $config['per_page'], $this->uri->segment(3))->result_array();
+            $page_data['courses'] = $this->db->get('course', $config['per_page'], $page)->result_array();
 
         }else {
 
@@ -238,7 +231,7 @@ class Home extends CI_Controller {
 
 
 
-    public function magazines() {
+    public function magazines($page = 0) {
 
         if (!$this->session->userdata('layout')) {
 
@@ -248,7 +241,7 @@ class Home extends CI_Controller {
 
         $layout = $this->session->userdata('layout');
 
-        $selected_category_id = "magazines";
+        $selected_category_id = "all";
 
         $selected_price = "all";
 
@@ -297,7 +290,7 @@ class Home extends CI_Controller {
         }
 
 
-        if ($selected_category_id == "magazines" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
+        if ($selected_category_id == "all" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
 
             $this->db->where('course_type', 'magazine');
 
@@ -307,7 +300,7 @@ class Home extends CI_Controller {
 
             $config = array();
 
-            $config = pagintaion($total_rows, 6);
+            $config = pagintaion($total_rows, 12);
 
             $config['base_url']  = site_url('magazines/');
 
@@ -318,7 +311,10 @@ class Home extends CI_Controller {
             $this->db->where('status', 'active');
 
             $this->db->order_by("id", "desc");
-            $page_data['courses'] = $this->db->get('course', $config['per_page'], $this->uri->segment(3))->result_array();
+
+            $this->db->limit($config['per_page'], $page);
+
+            $page_data['courses'] = $this->db->get('course')->result_array();
 
         }else {
 
@@ -328,7 +324,8 @@ class Home extends CI_Controller {
 
         }
 
-
+        // var_dump($page_data['courses']);
+        // die;
 
         $page_data['page_name']  = "courses_page";
 
@@ -359,7 +356,7 @@ class Home extends CI_Controller {
 
         $layout = $this->session->userdata('layout');
 
-        $selected_category_id = "question-papers";
+        $selected_category_id = "all";
 
         $selected_price = "all";
 
@@ -411,7 +408,7 @@ class Home extends CI_Controller {
 
 
 
-        if ($selected_category_id == "question-papers" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
+        if ($selected_category_id == "all" && $selected_price == "all" && $selected_level == 'all' && $selected_language == 'all' && $selected_rating == 'all') {
 
             $this->db->where('course_type', 'question_paper');
 
@@ -421,7 +418,7 @@ class Home extends CI_Controller {
 
             $config = array();
 
-            $config = pagintaion($total_rows, 6);
+            $config = pagintaion($total_rows, 12);
 
             $config['base_url']  = site_url('question-papers/');
 
@@ -433,7 +430,7 @@ class Home extends CI_Controller {
 
             $this->db->order_by("id", "desc");
 
-            $page_data['courses'] = $this->db->get('course', $config['per_page'], $this->uri->segment(3))->result_array();
+            $page_data['courses'] = $this->db->get('course', $config['per_page'], $page)->result_array();
 
         }else {
 
@@ -2406,11 +2403,13 @@ class Home extends CI_Controller {
 
     public function dictionary($param1 = ""){
 
-        $page_data['phrase_list'] = $this->db->select('dictionary.*')->from('dictionary')->join('dictionary_lang','dictionary_lang.dlid = dictionary.lang_key')->where('dictionary_lang.language',$param1)->get()->result_array();
+        $page_data['phrase_list'] = $this->db->select('dictionary.*')->from('dictionary')->join('dictionary_lang','dictionary_lang.dlid = dictionary.lang_key')->where('dictionary_lang.slug',$param1)->get()->result_array();
+
+        $selected_language = $this->db->select('dictionary_lang.language')->from('dictionary_lang')->where('slug',$param1)->get()->row_array();
 
         $page_data['page_name'] = 'dictionary';
 
-        $page_data['page_title'] = site_phrase('dictionary');
+        $page_data['page_title'] = ucfirst($selected_language['language']);
 
         $this->load->view('frontend/'.get_frontend_settings('theme').'/index', $page_data);
 
