@@ -3461,7 +3461,7 @@ class Crud_model extends CI_Model
 
             $data['date_added'] = strtotime(date('D, d-M-Y'));
 
-            $exp_days = $this->get_course_expiry_days($purchased_course);
+            $exp_days = (int)($this->get_course_expiry_days($purchased_course)->row_array()['course_expiry']);
 
             if($exp_days > 0 && $exp_days <= 999999){
                 $data['expiry_time'] = strtotime(date('D, d-M-Y', strtotime(date('D, d-M-Y')."+".$exp_days. " Days")));

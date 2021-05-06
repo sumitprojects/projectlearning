@@ -92,9 +92,9 @@ h1,h2,h3,h4,h5,h6 {
     color: white !important;
 }
 
-#st-2.st-right {
+/* #st-2.st-right {
     z-index: 0;
-}
+} */
 @keyframes placeHolderShimmer{
     0%{
         background-position: -468px 0
@@ -115,5 +115,51 @@ h1,h2,h3,h4,h5,h6 {
     /* height: auto; */
     position: relative;
 }
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.font-weight-bold,nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    padding: 0 10px;
+}
 
+.menu-area.sticky-top {
+    width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    display:block;
+}
+@media (max-width:1199px) and (min-width:768px){
+.menu-area.sticky-top {
+    width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 8;
+    display:block;
+    /*overflow:hidden;*/
+}
+}
+
+@media (max-width:768px){
+.menu-area.sticky-top {
+    width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display:block;
+    overflow:hidden;
+}
+.course-sidebar {
+    z-index: 0;
+}
+.mobile-main-nav.nav-is-visible{
+    z-index: 1000;
+}
+}
+
+body.gray-bg {
+    background: #f7f8fa;
+    display:block;
+    width:100%;
+    overflow-x:hidden;
+}
 </style>

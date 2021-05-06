@@ -661,7 +661,7 @@ menu
 .menu-area {
     box-shadow: 0 0 1px 1px rgba(20, 23, 28, .1), 0 3px 1px 0 rgba(20, 23, 28, .1);
     position: relative;
-    z-index: 99;
+    z-index: 8;
 }
 
 .menu-area .navbar {
@@ -1000,6 +1000,8 @@ menu
 
 .notifications-list-dropdown .notifications-footer a:hover i {
     transform: translateX(5px);
+    -webkit-transition: translateX(5px);
+    -ms-webkit-transition: translateX(5px);
 }
 
 .notification-list ul {
@@ -2274,7 +2276,7 @@ section.course-header-area {
     top: 0;
     left: 0;
     z-index: 9;
-    background-color: rgba(41, 48, 59, .8);
+    background-color: rgb(41, 48, 59);
     padding: 10px 0;
 }
 
@@ -4960,6 +4962,7 @@ border: none;
     margin: 0 auto;
     overflow: hidden;
     transform: rotate(-90deg) rotateX(180deg);
+    -webit-transform: rotate(-90deg) rotateX(180deg);
     background-color: #fff;
 }
 
@@ -4984,6 +4987,7 @@ border: none;
     left: 50%;
     font-size: 35px;
     transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
     content: attr(data-percent) " %";
 }
 
@@ -5322,8 +5326,10 @@ border: none;
 @keyframes marquee {
     0% {
         transform: translate(0, 0);
+        -webkit-transform: translate(0, 0);
     }
     100% {
         transform: translate(-100%, 0);
+        -webkit-transform: translate(-100%, 0);
     }
 }

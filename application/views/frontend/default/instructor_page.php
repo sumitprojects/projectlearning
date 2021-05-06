@@ -33,9 +33,8 @@ $course_ids = $this->crud_model->get_instructor_wise_courses($instructor_id, 'si
             </div>
             <div class="col-lg-9">
                 <div class="instructor-right-box">
-
-                    <div class="biography-content-box view-more-parent">
-                        <div class="view-more" onclick="viewMore(this,'hide')"><b><?php echo site_phrase('show_full_biography'); ?></b></div>
+                    <div class="biography-content-box view-more-parent expanded has-hide">
+                        <!-- <div class="view-less" onclick="viewMore(this,'show')"><b><?php echo site_phrase('show_full_biography'); ?></b></div> -->
                         <div class="biography-content">
                             <?php echo $instructor_details['biography']; ?>
                         </div>

@@ -132,7 +132,7 @@ class User extends CI_Controller {
 
         $page_data['page_title'] = get_phrase('dashboard');
 
-        $this->load->view('backend/index.php', $page_data);
+        $this->load->view('backend/index', $page_data);
 
     }
 

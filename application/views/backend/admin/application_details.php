@@ -22,13 +22,21 @@ $applicant_details = $this->user_model->get_all_user($application_details['user_
                 <td><?php echo $application_details['phone']; ?></td>
             </tr>
             <tr class="text-center">
-                <td><strong><?php echo get_phrase('address'); ?></strong></td>
-                <td><?php echo $application_details['address']; ?></td>
+                <td><strong>Why do you want to be a Hospitality Influencer?</strong></td>
+                <td><?php echo $applicant_details['que1']; ?></td>
             </tr>
             <tr class="text-center">
+                <td><strong>Tell us about your Field of Interest and teaching experience.</strong></td>
+                <td><?php echo $applicant_details['que2']; ?></td>
+            </tr>
+            <tr class="text-center">
+                <td><strong>How many hours can you invest weekly for this opportunity?</strong></td>
+                <td><?php echo $applicant_details['que3']; ?></td>
+            </tr>
+            <!-- <tr class="text-center">
                 <td><strong><?php echo get_phrase('message'); ?></strong></td>
                 <td><?php echo $application_details['message']; ?></td>
-            </tr>
+            </tr> -->
             <tr class="text-center">
                 <td><strong><?php echo get_phrase('status'); ?></strong></td>
                 <td><?php if ($application_details['status']): ?><span class="badge badge-success"><?php echo get_phrase('approved'); ?></span> <?php else: ?><span class="badge badge-danger"><?php echo get_phrase('pending'); ?></span><?php endif; ?></td>

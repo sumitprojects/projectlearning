@@ -854,7 +854,6 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
         <?php if ($course_details['is_free_course'] == 1): ?>
 
           <div class="buy-btns">
-
             <?php if ($this->session->userdata('user_login') != 1): ?>
               <?php if($course_details['course_type'] == 'magazine'):?>
               <a href = "#" class="btn btn-buy-now" onclick="handleEnrolledButton()"><?php echo site_phrase('read_now'); ?></a>
@@ -864,9 +863,14 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                 <a href = "#" class="btn btn-buy-now" onclick="handleEnrolledButton()"><?php echo site_phrase('get_enrolled'); ?></a>
               <?php endif; ?>
             <?php else: ?>
-
-              <a href = "<?php echo site_url('home/get_enrolled_to_free_course/'.$course_details['id']); ?>" class="btn btn-buy-now"><?php echo site_phrase('get_enrolled'); ?></a>
-
+              <?php if($course_details['course_type'] == 'magazine'):?>
+                <a href = "<?php echo site_url('home/get_enrolled_to_free_course/'.$course_details['id']); ?>" class="btn btn-buy-now"><?php echo site_phrase('read_now'); ?></a>
+              <?php elseif($course_details['course_type'] == 'question_paper'):?>
+                <a href = "<?php echo site_url('home/get_enrolled_to_free_course/'.$course_details['id']); ?>" class="btn btn-buy-now"><?php echo site_phrase('get_now'); ?></a>            
+                <?php else:?>
+                  <a href = "<?php echo site_url('home/get_enrolled_to_free_course/'.$course_details['id']); ?>" class="btn btn-buy-now"><?php echo site_phrase('get_enrolled'); ?></a>
+                 <?php endif; ?>
+            
             <?php endif; ?>
 
           </div>
@@ -874,8 +878,19 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
         <?php else: ?>
 
           <div class="buy-btns">
+            <?php if($course_details['course_type'] == 'magazine'):?>
 
-            <a href = "javascript::" class="btn btn-buy-now" id = "course_<?php echo $course_details['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('buy_now'); ?></a>
+              <a href = "javascript::" class="btn btn-buy-now" id = "course_<?php echo $course_details['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('read_now'); ?></a>
+
+            <?php elseif($course_details['course_type'] == 'question_paper'):?>
+              
+              <a href = "javascript::" class="btn btn-buy-now" id = "course_<?php echo $course_details['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('get_now'); ?></a>
+
+            <?php else:?>
+                
+                <a href = "javascript::" class="btn btn-buy-now" id = "course_<?php echo $course_details['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('buy_now'); ?></a>
+              
+            <?php endif; ?>
 
             <?php if (in_array($course_details['id'], $this->session->userdata('cart_items'))): ?>
 
@@ -928,7 +943,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
             <li><i class="fas fa-mobile-alt"></i><?php echo site_phrase('access_on_laptop_and_tv'); ?></li>
 
           <?php endif; ?>
-            <?php if($course_details['course_expiry'] > 0):?>
+            <?php if($course_details['course_expiry'] > 0 && $course_details['course_expiry'] < 999999):?>
               <li><i class="far fa-compass"></i><?php echo $course_details['course_expiry'] . ' '. ucwords(site_phrase('days_access')); ?></li>
             <?php endif; ?>
           

@@ -433,6 +433,14 @@ class User_model extends CI_Model {
             $data['address'] = $this->input->post('address');
             $data['phone'] = $this->input->post('phone');
             $data['message'] = $this->input->post('message');
+
+
+            $userdata['que1'] = $this->input->post('que1');
+            $userdata['que2'] = $this->input->post('que2');
+            $userdata['que3'] = $this->input->post('que3');
+
+            $this->db->update('users',$userdata,['id'=>$data['user_id']]);
+            
             if (isset($_FILES['document']) && $_FILES['document']['name'] != "") {
                 if (!file_exists('uploads/document')) {
                     mkdir('uploads/document', 0777, true);

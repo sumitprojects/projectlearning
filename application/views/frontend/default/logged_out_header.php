@@ -1,10 +1,13 @@
 <section class="menu-area">
+    <?php include 'top_bar.php'; ?>
 
-<?php include 'top_bar.php'; ?>
+</section>
+<section class="menu-area sticky-top">
 
 
 
-    <div class="container-xl main-menu">
+
+    <div class="main-menu">
 
         <div class="row">
 

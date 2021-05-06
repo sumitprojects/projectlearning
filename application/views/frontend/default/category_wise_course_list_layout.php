@@ -29,7 +29,7 @@
 
             <div class="course-details">
 
-                <a href="<?php echo site_url(($type).rawurlencode(slugify($course['title'])).'/'.$course['id']); ?>"
+                <a href="<?php echo site_url(($type).'/'.rawurlencode(slugify($course['title'])).'/'.$course['id']); ?>"
                     class="course-title"><?php echo $course['title']; ?></a>
 
                 <a href="<?php echo site_url('home/instructor_page/'.$instructor_details['id']) ?>"

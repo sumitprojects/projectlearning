@@ -471,7 +471,7 @@
 
                     courses and make them empowered.</p>
 
-                <p><a href="<?php echo base_url();?>/jobs" class="text-theme">Explore other Jobs.</a></p>
+                <p><a href="<?=base_url()?>jobs" class="text-theme">Explore other Jobs.</a></p>
 
                 <p class="font-weight-bold">
 

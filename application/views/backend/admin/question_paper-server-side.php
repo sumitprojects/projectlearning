@@ -1,7 +1,6 @@
 <?php 
 $status_wise_courses = $this->crud_model->get_status_wise_courses("",'question_paper');
 ?>
-
 <div class="row ">
 
     <div class="col-xl-12">
@@ -295,7 +294,7 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses("",'question_p
 
                                 <th>#</th>
 
-                                <th><?php echo get_phrase('title'); ?></th>
+                                <th class=""><?php echo get_phrase('title'); ?></th>
 
                                 <th><?php echo get_phrase('category'); ?></th>
 

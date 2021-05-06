@@ -41,13 +41,16 @@
     <?php if(!$this->agent->is_mobile()): ?>
     <section class="d-sm-none d-md-block">
 
-        <img src="<?php echo base_url(); ?>assets/frontend/default/img/web main.jpg" data-src="<?php echo base_url(); ?>assets/frontend/default/img/web main.jpg" alt="" class="lazyloaded w-100 h-100 d-block">
+        <img src="<?php echo base_url(); ?>assets/frontend/default/img/web main.jpg"
+            data-src="<?php echo base_url(); ?>assets/frontend/default/img/web main.jpg" alt=""
+            class="lazyloaded w-100 h-100 d-block">
 
     </section>
     <?php else:?>
     <section class="d-sm-block d-md-none">
 
-        <img src="<?php echo base_url(); ?>assets/frontend/default/img/mobile main.jpg" data-src="<?php echo base_url(); ?>assets/frontend/default/img/mobile main.jpg" alt=""
+        <img src="<?php echo base_url(); ?>assets/frontend/default/img/mobile main.jpg"
+            data-src="<?php echo base_url(); ?>assets/frontend/default/img/mobile main.jpg" alt=""
             class="w-100 h-100 d-block lazyloaded">
 
     </section>
@@ -65,7 +68,10 @@
 
                     <div class="home-fact-box mr-md-auto mr-auto">
 
-                        <i class="float-left"><img src="<?php echo base_url(); ?>assets/frontend/default/img/onlineCoursesFactBox.png" data-src="<?php echo base_url(); ?>assets/frontend/default/img/onlineCoursesFactBox.png" class="lazyloaded"></i>
+                        <i class="float-left"><img
+                                src="<?php echo base_url(); ?>assets/frontend/default/img/onlineCoursesFactBox.png"
+                                data-src="<?php echo base_url(); ?>assets/frontend/default/img/onlineCoursesFactBox.png"
+                                class="lazyloaded"></i>
 
                         <div class="text-box">
 
@@ -100,7 +106,8 @@
 
                     <div class="home-fact-box mr-md-auto mr-auto">
 
-                        <i class="float-left"><img class="lazyloaded" data-src="<?php echo base_url(); ?>assets/frontend/default/img/magazineFactBox.png"
+                        <i class="float-left"><img class="lazyloaded"
+                                data-src="<?php echo base_url(); ?>assets/frontend/default/img/magazineFactBox.png"
                                 src="<?php echo base_url(); ?>assets/frontend/default/img/magazineFactBox.png"></i>
 
                         <div class="text-box">
@@ -138,7 +145,8 @@
                         <!--<i class="far fa-clock float-left"></i>-->
 
                         <i class="float-left">
-                        <img class="lazyloaded" data-src="<?php echo base_url(); ?>assets/frontend/default/img/industryUpdatesFactBox.png"
+                            <img class="lazyloaded"
+                                data-src="<?php echo base_url(); ?>assets/frontend/default/img/industryUpdatesFactBox.png"
                                 src="<?php echo base_url(); ?>assets/frontend/default/img/industryUpdatesFactBox.png"></i>
 
                         <div class="text-box">
@@ -271,9 +279,8 @@
 
     <section class="d-sm-none d-md-block">
 
-        <img src="<?php echo base_url(); ?>assets/frontend/default/img/web our philosophy.jpg" 
-            data-src="<?php echo base_url(); ?>assets/frontend/default/img/web our philosophy.jpg"
-            alt=""
+        <img src="<?php echo base_url(); ?>assets/frontend/default/img/web our philosophy.jpg"
+            data-src="<?php echo base_url(); ?>assets/frontend/default/img/web our philosophy.jpg" alt=""
             class="w-100 h-100 d-block lazyloaded">
 
     </section>
@@ -281,7 +288,7 @@
 
     <section class="d-sm-block d-md-none">
 
-        <img data-src="<?php echo base_url(); ?>assets/frontend/default/img/mobile our philosophy.jpg" 
+        <img data-src="<?php echo base_url(); ?>assets/frontend/default/img/mobile our philosophy.jpg"
             src="<?php echo base_url(); ?>assets/frontend/default/img/mobile our philosophy.jpg" alt=""
             class="w-100 h-100 d-block lazyloaded">
 
@@ -421,8 +428,6 @@
                                 </div>
 
                             </a>
-
-
 
                             <div class="webui-popover-content">
 
@@ -704,8 +709,8 @@
 
                     <figure class="image">
 
-                        <img src="<?php echo $this->user_model->get_user_image_url($review('user_id')); ?>"
-                        data-src="<?php echo $this->user_model->get_user_image_url($review('user_id')); ?>"
+                        <img src="<?php echo $this->user_model->get_user_image_url($review['user_id']); ?>"
+                            data-src="<?php echo $this->user_model->get_user_image_url($review['user_id']); ?>"
                             alt="user-image" height="42" class="img-fluid rounded-circle shadow-sm lazyloaded">
 
                     </figure>
@@ -787,329 +792,320 @@ $allcategory = array_column($latest_courses,'category','c_slug');
                         <?php endforeach; ?>
 
                     </div>
-                
-                <div class="col">
 
-                    <!-- AkshayFilter start -->
+                    <div class="col">
+                        <!-- AkshayFilter start -->
+                        <div class="grid mt-2">
+                            <?php foreach ($latest_courses as $latest_course):?>
+                            <div class="element-item transition <?=strtolower($latest_course['c_slug'])?>"
+                                data-category="<?=strtolower($latest_course['c_slug'])?>">
+                                <div class="course-box-wrap">
 
-                    <div class="grid mt-2">
+                                    <a href="<?php echo site_url('courses/'.rawurlencode(slugify($latest_course['title'])).'/'.$latest_course['id']); ?>"
+                                        class="has-popover">
 
-                        <?php foreach ($latest_courses as $latest_course):?>
+                                        <div class="course-box">
 
+                                            <!-- <div class="course-badge position best-seller">Best seller</div> -->
 
-                        <div class="element-item transition <?=strtolower($latest_course['c_slug'])?>"
-                            data-category="<?=strtolower($latest_course['c_slug'])?>">
+                                            <div class="course-image">
 
-                            <div class="course-box-wrap">
-
-                                <a class="has-popover"
-                                    href="<?php echo site_url('courses/'.rawurlencode(slugify($latest_course['title'])).'/'.$latest_course['id']); ?>">
-
-                                    <div class="course-box">
-
-                                        <div class="course-image">
-
-                                            <img src="<?php echo $this->crud_model->get_course_thumbnail_url($latest_course['id']); ?>"
-                                                alt="" class="img-fluid">
-
-                                        </div>
-
-                                        <div class="course-details">
-
-                                            <h5 class="title">
-
-                                                <?php echo $latest_course['title']; ?>
-
-                                            </h5>
-
-                                            <p class="instructors">
-
-                                                <?php
-
-                                        $instructor_details = $this->user_model->get_all_user($latest_course['user_id'])->row_array();
-
-                                        echo $instructor_details['first_name'].' '.$instructor_details['last_name']; ?>
-
-                                            </p>
-
-                                            <div class="rating">
-
-                                                <?php
-
-                                        $total_rating =  $this->crud_model->get_ratings('course', $latest_course['id'], true)->row()->rating;
-
-                                        $number_of_ratings = $this->crud_model->get_ratings('course', $latest_course['id'])->num_rows();
-
-                                        if ($number_of_ratings > 0) {
-
-                                            $average_ceil_rating = ceil($total_rating / $number_of_ratings);
-
-                                        }else {
-
-                                            $average_ceil_rating = 0;
-
-                                        }
-
-                                        for($i = 1; $i < 6; $i++):?>
-
-                                                <?php if ($i <= $average_ceil_rating): ?>
-
-                                                <i class="fas fa-star filled"></i>
-
-                                                <?php else: ?>
-
-                                                <i class="fas fa-star"></i>
-
-                                                <?php endif; ?>
-
-                                                <?php endfor; ?>
-
-                                                <span
-                                                    class="d-inline-block average-rating"><?php echo $average_ceil_rating; ?></span>
+                                                <img src="<?php echo $this->crud_model->get_course_thumbnail_url($latest_course['id']); ?>"
+                                                    data-src="<?php echo $this->crud_model->get_course_thumbnail_url($latest_course['id']); ?>"
+                                                    alt="" class="img-fluid lazyloaded">
 
                                             </div>
 
-                                            <?php if ($latest_course['is_free_course'] == 1): ?>
+                                            <div class="course-details">
 
-                                            <p class="price text-right">
+                                                <h5 class="title">
 
-                                                <?php echo site_phrase('free'); ?>
+                                                    <?php echo $latest_course['title']; ?>
 
-                                            </p>
+                                                </h5>
+
+                                                <p class="instructors">
+
+                                                    <?php echo $latest_course['short_description']; ?>
+
+                                                </p>
+
+                                                <div class="rating">
+
+                                                    <?php
+
+                                                $total_rating =  $this->crud_model->get_ratings('course', $latest_course['id'], true)->row()->rating;
+
+                                                $number_of_ratings = $this->crud_model->get_ratings('course', $latest_course['id'])->num_rows();
+
+                                                if ($number_of_ratings > 0) {
+
+                                                    $average_ceil_rating = ceil($total_rating / $number_of_ratings);
+
+                                                }else {
+
+                                                    $average_ceil_rating = 0;
+
+                                                }
+
+
+
+                                                for($i = 1; $i < 6; $i++):?>
+
+                                                                <?php if ($i <= $average_ceil_rating): ?>
+
+                                                                <i class="fas fa-star filled"></i>
+
+                                                                <?php else: ?>
+
+                                                                <i class="fas fa-star"></i>
+
+                                                                <?php endif; ?>
+
+                                                                <?php endfor; ?>
+
+                                                                <span
+                                                                    class="d-inline-block average-rating"><?php echo $average_ceil_rating; ?></span>
+
+                                                            </div>
+
+                                                            <?php if ($latest_course['is_free_course'] == 1): ?>
+
+                                                            <p class="price text-right">
+
+                                                                <?php echo site_phrase('free'); ?>
+
+                                                            </p>
+
+                                                            <?php else: ?>
+
+                                                            <?php if ($latest_course['discount_flag'] == 1): ?>
+
+                                                            <p class="price text-right">
+
+                                                                <small><?php echo currency($latest_course['price']); ?></small>
+
+                                                                <?php echo currency($latest_course['discounted_price']); ?>
+
+                                                            </p>
+
+                                                            <?php else: ?>
+
+                                                            <p class="price text-right">
+
+                                                                <?php echo currency($latest_course['price']); ?>
+
+                                                            </p>
+
+                                                            <?php endif; ?>
+
+                                                <?php endif; ?>
+
+                                            </div>
+
+                                        </div>
+
+                                    </a>
+
+                                    <div class="webui-popover-content">
+
+                                        <div class="course-popover-content">
+
+                                            <?php if ($latest_course['last_modified'] == ""): ?>
+
+                                            <div class="last-updated">
+
+                                                <?php echo site_phrase('last_updater').' '.date('D, d-M-Y', $latest_course['date_added']); ?>
+
+                                            </div>
 
                                             <?php else: ?>
 
-                                            <?php if ($latest_course['discount_flag'] == 1): ?>
+                                            <div class="last-updated">
 
-                                            <p class="price text-right">
+                                                <?php echo site_phrase('last_updater').' '.date('D, d-M-Y', $latest_course['last_modified']); ?>
 
-                                                <small><?php echo currency($latest_course['price']); ?></small>
-
-                                                <?php echo currency($latest_course['discounted_price']); ?>
-
-                                            </p>
-
-                                            <?php else: ?>
-
-                                            <p class="price text-right">
-
-                                                <?php echo currency($latest_course['price']); ?>
-
-                                            </p>
+                                            </div>
 
                                             <?php endif; ?>
 
-                                            <?php endif; ?>
 
-                                        </div>
 
-                                    </div>
+                                            <div class="course-title">
 
-                                </a>
+                                                <a
+                                                    href="<?php echo site_url('courses/'.rawurlencode(slugify($latest_course['title'])).'/'.$latest_course['id']); ?>">
 
-                                <div class="webui-popover-content">
-
-                                    <div class="course-popover-content">
-
-                                        <?php if ($top_course['last_modified'] == ""): ?>
-
-                                        <div class="last-updated">
-
-                                            <?php echo site_phrase('last_updater').' '.date('D, d-M-Y', $top_course['date_added']); ?>
-
-                                        </div>
-
-                                        <?php else: ?>
-
-                                        <div class="last-updated">
-
-                                            <?php echo site_phrase('last_updater').' '.date('D, d-M-Y', $top_course['last_modified']); ?>
-
-                                        </div>
-
-                                        <?php endif; ?>
-
-
-
-                                        <div class="course-title">
-
-                                            <a
-                                                href="<?php echo site_url('courses/'.rawurlencode(slugify($top_course['title'])).'/'.$top_course['id']); ?>">
-
-                                                <?php echo $top_course['title']; ?>
-
-                                            </a>
-
-                                        </div>
-
-                                        <div class="course-meta">
-
-                                            <?php if($top_course['course_type'] == 'general'): ?>
-
-                                            <span class=""><i class="fas fa-play-circle"></i>
-
-                                                <?php echo $this->crud_model->get_lessons('course', $top_course['id'])->num_rows().' '.site_phrase('lessons'); ?>
-
-                                            </span>
-
-                                            <span class=""><i class="far fa-clock"></i>
-
-                                                <?php
-
-                                        $total_duration = 0;
-
-                                        $lessons = $this->crud_model->get_lessons('course', $top_course['id'])->result_array();
-
-                                        foreach ($lessons as $lesson) {
-
-                                            if ($lesson['lesson_type'] != "other") {
-
-                                                $time_array = explode(':', $lesson['duration']);
-
-                                                $hour_to_seconds = $time_array[0] * 60 * 60;
-
-                                                $minute_to_seconds = $time_array[1] * 60;
-
-                                                $seconds = $time_array[2];
-
-                                                $total_duration += $hour_to_seconds + $minute_to_seconds + $seconds;
-
-                                            }
-
-                                        }
-
-                                        echo gmdate("H:i:s", $total_duration).' '.site_phrase('hours');
-
-                                        ?>
-
-                                            </span>
-
-                                            <?php elseif($top_course['course_type'] == 'scorm'): ?>
-
-                                            <span class="badge badge-light"><?= site_phrase('scorm_course'); ?></span>
-
-                                            <?php endif; ?>
-
-                                            <span class=""><i
-                                                    class="fas fa-closed-captioning"></i><?php echo ucfirst($top_course['language']); ?></span>
-
-                                        </div>
-
-                                        <div class="course-subtitle">
-
-                                            <?php echo $top_course['short_description']; ?>
-
-                                        </div>
-
-                                        <div class="what-will-learn">
-
-                                            <ul>
-
-                                                <?php
-
-                                    $outcomes = json_decode($top_course['outcomes']);
-
-                                    foreach ($outcomes as $outcome):?>
-
-                                                <li>
-
-                                                    <?php echo $outcome; ?>
-
-                                                </li>
-
-                                                <?php endforeach; ?>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div class="popover-btns">
-
-                                            <?php if (is_purchased($top_course['id'])): ?>
-
-                                            <div class="purchased">
-
-                                                <a href="<?php echo site_url('my-courses'); ?>">
-
-                                                    <?php echo site_phrase('already_purchased'); ?>
+                                                    <?php echo $latest_course['title']; ?>
 
                                                 </a>
 
                                             </div>
 
-                                            <?php else: ?>
+                                            <div class="course-meta">
 
-                                            <?php if ($top_course['is_free_course'] == 1):
+                                                <?php if($latest_course['course_type'] == 'general'): ?>
 
-                                    if($this->session->userdata('user_login') != 1) {
+                                                <span class=""><i class="fas fa-play-circle"></i>
 
-                                        $url = "#";
+                                                    <?php echo $this->crud_model->get_lessons('course', $latest_course['id'])->num_rows().' '.site_phrase('lessons'); ?>
 
-                                    }else {
+                                                </span>
 
-                                        $url = site_url('home/get_enrolled_to_free_course/'.$top_course['id']);
+                                                <span class=""><i class="far fa-clock"></i>
 
-                                    }?>
+                                                    <?php
 
-                                            <a href="<?php echo $url; ?>" class="btn add-to-cart-btn big-cart-button"
-                                                onclick="handleEnrolledButton()">
+            $total_duration = 0; $lessons = $this->crud_model->get_lessons('course', $latest_course['id'])->result_array();
 
-                                                <?php echo site_phrase('get_enrolled'); ?>
+            foreach ($lessons as $lesson) {
 
-                                            </a>
+                if ($lesson['lesson_type'] != "other") {
 
-                                            <?php else: ?>
+                    $time_array = explode(':', $lesson['duration']);
 
-                                            <button type="button"
-                                                class="btn add-to-cart-btn <?php if(in_array($top_course['id'], $cart_items)) echo 'addedToCart'; ?> big-cart-button-<?php echo $top_course['id'];?>"
-                                                id="<?php echo $top_course['id']; ?>" onclick="handleCartItems(this)">
+                    $hour_to_seconds = $time_array[0] * 60 * 60;
 
-                                                <?php
+                    $minute_to_seconds = $time_array[1] * 60;
 
-                                        if(in_array($top_course['id'], $cart_items))
+                    $seconds = $time_array[2];
 
-                                        echo site_phrase('added_to_cart');
+                    $total_duration += $hour_to_seconds + $minute_to_seconds + $seconds;
 
-                                        else
+                }
 
-                                        echo site_phrase('add_to_cart');
+            }
 
-                                        ?>
+            echo gmdate("H:i:s", $total_duration).' '.site_phrase('hours');
 
-                                            </button>
+            ?>
 
-                                            <?php endif; ?>
+                                                </span>
 
-                                            <button type="button"
-                                                class="wishlist-btn <?php if($this->crud_model->is_added_to_wishlist($top_course['id'])) echo 'active'; ?>"
-                                                title="Add to wishlist" onclick="handleWishList(this)"
-                                                id="<?php echo $top_course['id']; ?>"><i
-                                                    class="fas fa-heart"></i></button>
+                                                <?php elseif($latest_course['course_type'] == 'scorm'): ?>
 
-                                            <?php endif; ?>
+                                                <span
+                                                    class="badge badge-light"><?= site_phrase('scorm_course'); ?></span>
+
+                                                <?php endif; ?>
+
+                                                <span class=""><i
+                                                        class="fas fa-closed-captioning"></i><?php echo ucfirst($latest_course['language']); ?></span>
+
+                                            </div>
+
+                                            <div class="course-subtitle">
+
+                                                <?php echo $latest_course['short_description']; ?>
+
+                                            </div>
+
+                                            <div class="what-will-learn">
+
+                                                <ul>
+
+                                                    <?php
+
+        $outcomes = json_decode($latest_course['outcomes']);
+
+        foreach ($outcomes as $outcome):?>
+
+                                                    <li>
+
+                                                        <?php echo $outcome; ?>
+
+                                                    </li>
+
+                                                    <?php endforeach; ?>
+
+                                                </ul>
+
+                                            </div>
+
+                                            <div class="popover-btns">
+
+                                                <?php if (is_purchased($latest_course['id'])): ?>
+
+                                                <div class="purchased">
+
+                                                    <a href="<?php echo site_url('my-courses'); ?>">
+
+                                                        <?php echo site_phrase('already_purchased'); ?>
+
+                                                    </a>
+
+                                                </div>
+
+                                                <?php else: ?>
+
+                                                <?php if ($latest_course['is_free_course'] == 1):
+
+        if($this->session->userdata('user_login') != 1) {
+
+            $url = "#";
+
+        }else {
+
+            $url = site_url('home/get_enrolled_to_free_course/'.$latest_course['id']);
+
+        }?>
+
+                                                <a href="<?php echo $url; ?>"
+                                                    class="btn add-to-cart-btn big-cart-button"
+                                                    onclick="handleEnrolledButton()">
+
+                                                    <?php echo site_phrase('get_enrolled'); ?>
+
+                                                </a>
+
+                                                <?php else: ?>
+
+                                                <button type="button"
+                                                    class="btn add-to-cart-btn <?php if(in_array($latest_course['id'], $cart_items)) echo 'addedToCart'; ?> big-cart-button-<?php echo $latest_course['id'];?>"
+                                                    id="<?php echo $latest_course['id']; ?>"
+                                                    onclick="handleCartItems(this)">
+
+                                                    <?php
+
+            if(in_array($latest_course['id'], $cart_items))
+
+            echo site_phrase('added_to_cart');
+
+            else
+
+            echo site_phrase('add_to_cart');
+
+            ?>
+
+                                                </button>
+
+                                                <?php endif; ?>
+
+                                                <button type="button"
+                                                    class="wishlist-btn <?php if($this->crud_model->is_added_to_wishlist($latest_course['id'])) echo 'active'; ?>"
+                                                    title="Add to wishlist" onclick="handleWishList(this)"
+                                                    id="<?php echo $latest_course['id']; ?>"><i
+                                                        class="fas fa-heart"></i></button>
+
+                                                <?php endif; ?>
 
 
+
+                                            </div>
 
                                         </div>
 
                                     </div>
 
                                 </div>
-
                             </div>
-
+                            <?php endforeach; ?>
                         </div>
-                        <?php endforeach; ?>
-
+                        <!-- AkshayFilter end -->
                     </div>
-                    <!-- AkshayFilter end -->
-
-                </div>
                 </div>
             </div>
-
         </div>
-
     </section>
     <?php if(!$this->agent->is_mobile()): ?>
 
@@ -1303,7 +1299,7 @@ $allcategory = array_column($latest_courses,'category','c_slug');
 
                     <div class="row js-slick-carousel">
 
-                        <?php foreach ($latest_news->channel->item as $news) :?>
+                        <?php foreach ($latest_articles->channel->item as $news) :?>
 
                         <div class="col">
 
@@ -1446,7 +1442,8 @@ $allcategory = array_column($latest_courses,'category','c_slug');
 
                     <article class="test-content">
 
-                        <img class="img-fluid lazyloaded" data-src="<?php echo base_url(); ?>/assets/frontend/default/img/India 500 Nomination.jpg"
+                        <img class="img-fluid lazyloaded"
+                            data-src="<?php echo base_url(); ?>/assets/frontend/default/img/India 500 Nomination.jpg"
                             src="<?php echo base_url(); ?>/assets/frontend/default/img/India 500 Nomination.jpg">
 
                     </article>
@@ -1463,7 +1460,8 @@ $allcategory = array_column($latest_courses,'category','c_slug');
 
                     <article class="test-content">
 
-                        <img class="img-fluid lazyloaded" data-src="<?php echo base_url(); ?>/assets/frontend/default/img/Startup India.jpg"
+                        <img class="img-fluid lazyloaded"
+                            data-src="<?php echo base_url(); ?>/assets/frontend/default/img/Startup India.jpg"
                             src="<?php echo base_url(); ?>/assets/frontend/default/img/Startup India.jpg">
 
                     </article>
@@ -1478,7 +1476,9 @@ $allcategory = array_column($latest_courses,'category','c_slug');
 
                     <article class="test-content">
 
-                        <img class="img-fluid lazyloaded" data-src="<?php echo base_url(); ?>/assets/frontend/default/img/UDYAM.jpg" src="<?php echo base_url(); ?>/assets/frontend/default/img/UDYAM.jpg">
+                        <img class="img-fluid lazyloaded"
+                            data-src="<?php echo base_url(); ?>/assets/frontend/default/img/UDYAM.jpg"
+                            src="<?php echo base_url(); ?>/assets/frontend/default/img/UDYAM.jpg">
 
                     </article>
 
@@ -1493,27 +1493,29 @@ $allcategory = array_column($latest_courses,'category','c_slug');
         <!-- / Testimonial Carousel -->
 
     </section>
-<?php if(!$this->agent->is_mobile()): ?>
+    <?php if(!$this->agent->is_mobile()): ?>
     <section class="d-sm-none d-md-block">
 
         <a href="<?=site_url('advertise-with-us')?>" target="_blank" rel="noopener noreferrer">
 
-            <img src="<?php echo base_url(); ?>assets/frontend/default/img/web footer.jpg" data-src="<?php echo base_url(); ?>assets/frontend/default/img/web footer.jpg" alt=""
+            <img src="<?php echo base_url(); ?>assets/frontend/default/img/web footer.jpg"
+                data-src="<?php echo base_url(); ?>assets/frontend/default/img/web footer.jpg" alt=""
                 class="w-100 h-100 d-block lazyloaded">
 
         </a>
 
     </section>
-<?php else: ?>
+    <?php else: ?>
     <section class="d-sm-block d-md-none">
 
         <a href="<?=site_url('advertise-with-us')?>" target="_blank" rel="noopener noreferrer">
 
-            <img src="<?php echo base_url(); ?>assets/frontend/default/img/mobile footer.jpg" data-src="<?php echo base_url(); ?>assets/frontend/default/img/mobile footer.jpg" alt=""
+            <img src="<?php echo base_url(); ?>assets/frontend/default/img/mobile footer.jpg"
+                data-src="<?php echo base_url(); ?>assets/frontend/default/img/mobile footer.jpg" alt=""
                 class="w-100 h-100 d-block lazyloaded">
         </a>
     </section>
-<?php endif; ?>
+    <?php endif; ?>
     <script type="text/javascript">
 function handleWishList(elem) {
 

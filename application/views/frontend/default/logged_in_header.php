@@ -2,8 +2,11 @@
 $user_details = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
 ?>
 <section class="menu-area">
-    <?php include 'top_bar.php'; ?>
-    <div class="container-xl  main-menu">
+        <?php include 'top_bar.php'; ?>
+</section>
+<section class="menu-area sticky-top">
+
+    <div class="main-menu">
         <div class="row">
             <div class="col">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -88,10 +91,12 @@ $user_details = $this->user_model->get_user($this->session->userdata('user_id'))
                                 <li class="user-dropdown-menu-item"><a
                                         href="<?php echo site_url('my-wishlist'); ?>"><i
                                             class="far fa-heart"></i><?php echo site_phrase('my_wishlist'); ?></a></li>
+                                <?php if (get_settings('allow_instructor') == 1): ?>
                                 <li class="user-dropdown-menu-item"><a
-                                        href="<?php echo site_url('my-messages'); ?>"><i
-                                            class="far fa-envelope"></i><?php echo site_phrase('my_messages'); ?></a>
+                                        href="<?php echo site_url('user'); ?>"><i
+                                            class="far fa-envelope"></i><?php echo site_phrase('hospitality_influencer'); ?></a>
                                 </li>
+                                <?php endif; ?>
                                 <li class="user-dropdown-menu-item"><a
                                         href="<?php echo site_url('purchase-history'); ?>"><i
                                             class="fas fa-shopping-cart"></i><?php echo site_phrase('purchase_history'); ?></a>

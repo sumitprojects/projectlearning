@@ -194,7 +194,7 @@ foreach ($my_courses as $my_course) {
 
                                         <?php if(!empty($expiry_detail) && $expiry_detail['expiry_time'] > 0): ?>
                                         <div class="mt-2">
-                                            <p class="alert alert-danger">
+                                            <p class="alert alert-danger p-2" style="text-align:left">
                                                 <?=get_phrase('expire_on') . ' ' .date('D, d-M-Y',$expiry_detail['expiry_time'])?>
                                             </p>
                                         </div>
@@ -218,10 +218,10 @@ foreach ($my_courses as $my_course) {
                                             class="btn btn-primary btn-block"><?php echo site_phrase('course_detail'); ?></a>
                                         <?php elseif($course_details['course_type'] == 'magazine'):?>
                                         <a href="<?php echo site_url('magazines/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
-                                            class="btn btn-primary btn-block"><?php echo site_phrase('course_detail'); ?></a>
+                                            class="btn btn-primary btn-block"><?php echo site_phrase('detail'); ?></a>
                                         <?php elseif($course_details['course_type'] == 'question_paper'):?>
                                         <a href="<?php echo site_url('question-papers/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"
-                                            class="btn btn-primary btn-block"><?php echo site_phrase('course_detail'); ?></a>
+                                            class="btn btn-primary btn-block"><?php echo site_phrase('detail'); ?></a>
                                         <?php endif;?>
                                         <?php if($course_details['course_type'] == 'general'):?>
                                         <a href="<?php echo site_url('home/lesson/'.rawurlencode(slugify($course_details['title'])).'/'.$my_course['course_id']); ?>"

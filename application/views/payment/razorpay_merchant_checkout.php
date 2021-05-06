@@ -34,7 +34,7 @@
   </form>
 
 </body>
-<!-- <script type='text/javascript'>
+<script type='text/javascript'>
       document.razor.submit();
-</script> -->
+</script>
 </html>

@@ -73,6 +73,9 @@ class Home extends CI_Controller {
 
         $page_data['latest_podcast'] = simplexml_load_file('https://community.hospitalityconnaisseur.com/category/podcast/feed/');
 
+        $page_data['latest_articles'] = simplexml_load_file('https://community.hospitalityconnaisseur.com/category/articles/feed/');
+
+
         $page_data['reviews'] = $this->db->select('rating.*,concat(users.first_name, " ", users.last_name) as full_name')->from('rating')->join('users','users.id = rating.user_id')->where('rating >', 3)->get()->result_array();
 
         $this->load->view('frontend/'.get_frontend_settings('theme').'/index', $page_data);
