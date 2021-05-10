@@ -36,8 +36,7 @@
 
                     <li>
 
-                        <a class="nav-link" href="https://community.hospitality.com" target="_blank"
-
+                        <a class="nav-link" href="https://community.hospitalityconnaisseur.com" target="_blank"
                             rel="noopener noreferrer">
 
                             <?php echo site_phrase('Free Knowledge Base'); ?>
@@ -48,9 +47,7 @@
 
                     <li>
 
-                        <a class="nav-link" href="<?=site_url('magazines')?>"
-
-                            target="_blank" rel="noopener noreferrer">
+                        <a class="nav-link" href="<?=site_url('magazines')?>" target="_blank" rel="noopener noreferrer">
 
                             <?php echo site_phrase('Digital Magazine'); ?>
 
@@ -61,7 +58,6 @@
                     <li>
 
                         <a class="nav-link" href="https://community.hospitalityconnaisseur.com/category/podcast/"
-
                             target="_blank" rel="noopener noreferrer">
 
                             <?php echo site_phrase('Podcasts'); ?>
@@ -72,24 +68,18 @@
 
                     <li>
 
-                        <a class="nav-link" href="<?=site_url('courses')?>" target="_blank"
-
-                            rel="noopener noreferrer">
+                        <a class="nav-link" href="<?=site_url('courses')?>" target="_blank" rel="noopener noreferrer">
 
                             <?php echo site_phrase('Keynote Courses'); ?>
 
                         </a>
 
                     </li>
-
                     <li>
 
-                        <a class="nav-link" href="<?=site_url('contact-us')?>" target="_blank"
-
+                        <a class="nav-link" href="<?=site_url('sign-up')?>" target="_blank"
                             rel="noopener noreferrer">
-
-                            <?php echo site_phrase('Benefits of Hospitality Connaisseur'); ?>
-
+                            <?php echo site_phrase('hospitality_influencer'); ?>
                         </a>
 
                     </li>
@@ -111,9 +101,7 @@
                     <li class="">
 
                         <a class="nav-link"
-
                             href="<?=site_url('courses?category=all&price=all&level=all&language=all&rating=all')?>"
-
                             target="_blank" rel="noopener noreferrer">
 
                             <?php echo site_phrase('All Category'); ?>
@@ -131,9 +119,7 @@
                     <li class="">
 
                         <a class="nav-link"
-
                             href="<?=site_url($category['slug'].'?category='.$category['slug'].'&price=all&level=all&language=all&rating=all')?>"
-
                             target="_blank" rel="noopener noreferrer">
 
                             <?php echo site_phrase($category['name']); ?>
@@ -161,7 +147,6 @@
                     <li class="nav-item">
 
                         <a class="nav-link"
-
                             href="<?php echo site_url('about-us'); ?>"><?php echo site_phrase('About Us'); ?></a>
 
                     </li>
@@ -169,7 +154,6 @@
                     <li class="nav-item">
 
                         <a class="nav-link"
-
                             href="<?php echo site_url('privacy-policy'); ?>"><?php echo site_phrase('Privacy Policy'); ?></a>
 
                     </li>
@@ -177,7 +161,6 @@
                     <li class="nav-item">
 
                         <a class="nav-link"
-
                             href="<?php echo site_url('terms-and-condition'); ?>"><?php echo site_phrase('Terms and Condition'); ?></a>
 
                     </li>
@@ -185,7 +168,6 @@
                     <li class="nav-item">
 
                         <a class="nav-link"
-
                             href="<?php echo site_url('refund-policy'); ?>"><?php echo site_phrase('Refund Policy'); ?></a>
 
                     </li>
@@ -212,7 +194,7 @@
                         </a>
 
                     </li>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
 
                     <li class="nav-item">
 
@@ -246,7 +228,6 @@
                             <?php if (trim($language) != ""): ?>
 
                             <option value="<?php echo strtolower($language); ?>"
-
                                 <?php if ($this->session->userdata('language') == $language): ?>selected<?php endif; ?>>
 
                                 <?php echo ucwords($language);?></option>
@@ -275,19 +256,19 @@
 
                     <p><span class="navbar-text text-white my-1 font-weight-bold">
 
-                        <i class="far fa-envelope"></i> <?=get_settings('system_email')?>
+                            <i class="far fa-envelope"></i> <?=get_settings('system_email')?>
 
-                    </span>
+                        </span>
 
                     </p>
 
                     <p>
 
-                    <span class="navbar-text text-white my-1 font-weight-bold">
+                        <span class="navbar-text text-white my-1 font-weight-bold">
 
-                        <i class="far fa-clock"></i> <?=get_settings('support_time')?>
+                            <i class="far fa-clock"></i> <?=get_settings('support_time')?>
 
-                    </span>
+                        </span>
 
                     </p>
 
@@ -306,27 +287,21 @@
                         <span class="navbar-text my-1">
 
                             <a class="navbar-text text-white mr-2" href="<?=get_settings('facebook_link')?>"><i
-
                                     class="fab fa-facebook"></i></a>
 
                             <a class="navbar-text text-white mr-2" href="<?=get_settings('linkedin_link')?>"><i
-
                                     class="fab fa-linkedin"></i></a>
 
                             <a class="navbar-text text-white mr-2" href="<?=get_settings('instagram_link')?>"><i
-
                                     class="fab fa-instagram"></i></a>
 
                             <a class="navbar-text text-white mr-2" href="<?=get_settings('youtube_link')?>"><i
-
                                     class="fab fa-youtube"></i></a>
 
                             <a class="navbar-text text-white mr-2" href="<?=get_settings('twitter_link')?>"><i
-
                                     class="fab fa-twitter"></i></a>
 
                             <a class="navbar-text text-white mr-2" href="<?=get_settings('whatsapp_link')?>"><i
-
                                     class="fab fa-whatsapp"></i></a>
 
                         </span>
@@ -376,7 +351,6 @@
                 <p>
 
                     <b>1. Free Knowledge Repository :</b> Visit <a href="https://community.hospitalityconnaisseur.com"
-
                         class="text-theme" target="_blank">community.hospitalityconnaisseur.com</a> and explore wide
 
                     range
@@ -444,10 +418,8 @@
                     content online with the help of Technology, so that you can learn anytime, anywhere, on any device,
 
                     simply as per your convenience! <a href="<?php echo site_url('login'); ?>"
-
-                        class="text-theme">LOGIN</a> to start learning or <a
-
-                        href="<?php echo site_url('sign-up'); ?>" class="text-theme">SIGN-UP</a> to be the part of
+                        class="text-theme">LOGIN</a> to start learning or <a href="<?php echo site_url('sign-up'); ?>"
+                        class="text-theme">SIGN-UP</a> to be the part of
 
                     revolution.</p>
 
@@ -490,52 +462,41 @@
                 <div class="home-payments-icon mt-5 mb-5 text-center">
 
                     <img src="<?=base_url()?>/assets/payment/paytm-icon.svg"
-
-                        data-src="<?=base_url()?>/assets/payment/paytm-icon.svg" alt="Paytm"
-
-                        class=" lazyloaded">
+                        data-src="<?=base_url()?>/assets/payment/paytm-icon.svg" alt="Paytm" class=" lazyloaded">
 
                     <img src="<?=base_url()?>/assets/payment/pay-u-icon.svg"
-
-                        data-src="<?=base_url()?>/assets/payment/pay-u-icon.svg" alt="PayU"
-
-                        class=" lazyloaded">
+                        data-src="<?=base_url()?>/assets/payment/pay-u-icon.svg" alt="PayU" class=" lazyloaded">
 
                     <img src="<?=base_url()?>/assets/payment/amazon-pay-icon.svg"
-
                         data-src="<?=base_url()?>/assets/payment/amazon-pay-icon.svg" alt="Amazon Pay"
-
                         class=" lazyloaded">
 
                     <img src="<?=base_url()?>/assets/payment/upi-pay-icon.svg"
-
-                        data-src="<?=base_url()?>/assets/payment/upi-pay-icon.svg" alt="UPI"
-
-                        class=" lazyloaded">
+                        data-src="<?=base_url()?>/assets/payment/upi-pay-icon.svg" alt="UPI" class=" lazyloaded">
 
                     <img src="<?=base_url()?>/assets/payment/bhim-pay-icon.svg"
-
-                        data-src="<?=base_url()?>/assets/payment/bhim-pay-icon.svg" alt="BHIM"
-
-                        class=" lazyloaded">
+                        data-src="<?=base_url()?>/assets/payment/bhim-pay-icon.svg" alt="BHIM" class=" lazyloaded">
 
                     <img src="<?=base_url()?>/assets/payment/rupay-icon.svg"
+                        data-src="<?=base_url()?>/assets/payment/rupay-icon.svg" alt="RUPAY" class=" lazyloaded">
 
-                        data-src="<?=base_url()?>/assets/payment/rupay-icon.svg" alt="RUPAY"
+                    <img src="<?=base_url()?>/assets/payment/Razorpay.svg"
+                        data-src="<?=base_url()?>/assets/payment/Razorpay.svg" alt="Razorpay" class="lazyloaded">
 
-                        class=" lazyloaded">
+                    <img src="<?=base_url()?>/assets/payment/phonepe.svg"
+                        data-src="<?=base_url()?>/assets/payment/phonepe.svg" alt="Razorpay" class=" lazyloaded">
 
-                    <img src="<?=base_url()?>/assets/payment/Razorpay.svg" data-src="<?=base_url()?>/assets/payment/Razorpay.svg" alt="Razorpay" class="lazyloaded">
+                    <img src="<?=base_url()?>/assets/payment/airtel-money.svg"
+                        data-src="<?=base_url()?>/assets/payment/airtel-money.svg" alt="Razorpay" class=" lazyloaded">
 
-                    <img src="<?=base_url()?>/assets/payment/phonepe.svg" data-src="<?=base_url()?>/assets/payment/phonepe.svg" alt="Razorpay" class=" lazyloaded">
+                    <img src="<?=base_url()?>/assets/payment/mastercard.svg"
+                        data-src="<?=base_url()?>/assets/payment/mastercard.svg" alt="Razorpay" class=" lazyloaded">
 
-                    <img src="<?=base_url()?>/assets/payment/airtel-money.svg" data-src="<?=base_url()?>/assets/payment/airtel-money.svg" alt="Razorpay" class=" lazyloaded">
+                    <img src="<?=base_url()?>/assets/payment/visa.svg"
+                        data-src="<?=base_url()?>/assets/payment/visa.svg" alt="Razorpay" class=" lazyloaded">
 
-                    <img src="<?=base_url()?>/assets/payment/mastercard.svg" data-src="<?=base_url()?>/assets/payment/mastercard.svg" alt="Razorpay" class=" lazyloaded">
-
-                    <img src="<?=base_url()?>/assets/payment/visa.svg" data-src="<?=base_url()?>/assets/payment/visa.svg" alt="Razorpay" class=" lazyloaded">
-
-                    <img src="<?=base_url()?>/assets/payment/stripe.svg" data-src="<?=base_url()?>/assets/payment/stripe.svg" alt="Stripe" class=" lazyloaded">
+                    <img src="<?=base_url()?>/assets/payment/stripe.svg"
+                        data-src="<?=base_url()?>/assets/payment/stripe.svg" alt="Stripe" class=" lazyloaded">
 
                 </div>
 
@@ -610,7 +571,6 @@ if ($stripe_info[0]['active'] == 0) {
 <!-- Modal -->
 
 <div class="modal fade multi-step" id="EditRatingModal" tabindex="-1" role="dialog" aria-hidden="true"
-
     reset-on-close="true">
 
     <div class="modal-dialog modal-lg" role="document">
@@ -778,9 +738,7 @@ if ($stripe_info[0]['active'] == 0) {
                                 <h4 class="rating-title"><?php echo site_phrase('write_a_public_review'); ?></h4>
 
                                 <textarea id="review_of_a_course" name="review_of_a_course"
-
                                     placeholder="<?php echo site_phrase('describe_your_experience_what_you_got_out_of_the_course_and_other_helpful_highlights').'. '.site_phrase('what_did_the_instructor_do_well_and_what_could_use_some_improvement') ?>?"
-
                                     maxlength="65000" class="form-control"></textarea>
 
                             </div>
@@ -832,17 +790,13 @@ if ($stripe_info[0]['active'] == 0) {
             <div class="modal-footer">
 
                 <button type="button" class="btn btn-primary next step step-1" data-step="1"
-
                     onclick="sendEvent(2)"><?php echo site_phrase('next'); ?></button>
 
                 <button type="button" class="btn btn-primary previous step step-2 mr-auto" data-step="2"
-
                     onclick="sendEvent(1)"><?php echo site_phrase('previous'); ?></button>
 
                 <button type="button" class="btn btn-primary publish step step-2"
-
                     onclick="publishRating($('#course_id_for_rating').val())"
-
                     id=""><?php echo site_phrase('publish'); ?></button>
 
             </div>
@@ -856,7 +810,6 @@ if ($stripe_info[0]['active'] == 0) {
 
 
 <script type="text/javascript">
-
 function switch_language(language) {
 
     $.ajax({
@@ -884,5 +837,4 @@ function switch_language(language) {
     });
 
 }
-
 </script>

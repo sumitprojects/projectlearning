@@ -36,6 +36,24 @@ class Email_model extends CI_Model {
 		}
 	}
 
+	function course_expiry_notification($course_id = "", $uid = '') {
+		$query = $this->db->get_where('users' , array('id' => $uid));
+		$course_details    = $this->crud_model->get_course_by_id($course_id)->row_array();
+		if($query->num_rows() > 0) {
+			$email_data['subject'] = "Course Expiry";
+			$email_data['from'] = get_settings('system_email');
+			$email_data['to'] = $query['email'];
+			$email_data['to_name'] = $query->row('first_name').' '.$query->row('last_name');
+			$email_data['message'] = 'Your '.$course_details['title'].' is going to Expire. Please, kindly learn your lessons. After course expiry you will not able to access the course and its content.<br />';
+			$email_data['message'] .= '<a href="'.site_url('courses').'">Explore More</a><br />';
+			$email_template = $this->load->view('email/common_template', $email_data, TRUE);
+			$this->send_smtp_mail($email_template, $email_data['subject'], $email_data['to'], $email_data['from']);
+			return true;
+		}else {
+			return false;
+		}
+	}
+
 	public function send_mail_on_course_status_changing($course_id = "", $mail_subject = "", $mail_body = "") {
 		$instructor_id		 = 0;
 		$course_details    = $this->crud_model->get_course_by_id($course_id)->row_array();

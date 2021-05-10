@@ -297,7 +297,6 @@ class Crud_model extends CI_Model
 
 
     public function enrol_history_by_user_id($user_id = "")
-
     {
 
         return $this->db->get_where('enrol', array('user_id' => $user_id));
@@ -305,9 +304,11 @@ class Crud_model extends CI_Model
     }
 
 
+    public function get_expiry_enrolment(){
+        return $this->db->get('enrol'); 
+    }
 
     public function all_enrolled_student()
-
     {
 
         $this->db->select('user_id');

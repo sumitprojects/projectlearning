@@ -5,7 +5,7 @@
     <div class="text-center" style="margin: 12px 10px;">
         <h5><?php echo get_phrase('course_content'); ?></h5>
     </div>
-    <div class="row" style="margin: 12px -1px">
+    <div class="row" style="margin:0">
         <div class="col-12">
             <ul class="nav nav-tabs" id="lessonTab" role="tablist">
                 <li class="nav-item">

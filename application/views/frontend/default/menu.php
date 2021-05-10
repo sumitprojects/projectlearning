@@ -98,6 +98,7 @@ foreach ($sub_categories as $sub_category): ?>
 
 
             <ul class="category corner-triangle top-left is-hidden pb-0">
+                <li class="go-back"><a href=""><i class="fas fa-angle-left"></i>Menu</a></li>
 
                 <li>
 

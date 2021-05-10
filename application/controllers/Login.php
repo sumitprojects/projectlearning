@@ -290,10 +290,8 @@ class Login extends CI_Controller {
         $this->session->set_flashdata('error_message',site_phrase('your_sign_up_form_is_empty').'. '.site_phrase('fill_out_the_form with_your_valid_data'));
 
         redirect(site_url('sign-up'), 'refresh');
-    }
-        
+    }       
 }
-
 
 
     public function logout($from = "") {

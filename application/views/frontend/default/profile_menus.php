@@ -18,7 +18,7 @@
                   <li class="<?php if($page_name == 'purchase_history' || $page_name == 'invoice') echo 'active'; ?>"><a href="<?php echo site_url('purchase-history'); ?>"><?php echo site_phrase('purchase_history'); ?></a></li>
 
                   <li class="">
-                           <a href="<?php echo site_url('user'); ?>" ><?php echo site_phrase('instructor'); ?></a>
+                           <a href="<?php echo site_url('user'); ?>" ><?php echo site_phrase('hospitality_influencer'); ?></a>
                    </li>
                   <li class="<?php if($page_name == 'user_profile') echo 'active'; ?>"><a href="<?php echo site_url('profile/user-profile'); ?>"><?php echo site_phrase('profile'); ?></a></li>
                 </ul>

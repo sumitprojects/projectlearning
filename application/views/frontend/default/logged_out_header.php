@@ -15,8 +15,6 @@
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light font-weight-bold">
 
-
-
                     <ul class="mobile-header-buttons">
 
                         <li><a class="mobile-nav-trigger" href="#mobile-primary-nav"><?=site_phrase('Menu')?><span></span></a></li>
@@ -25,34 +23,14 @@
 
                     </ul>
 
-
-
                     <a href="<?php echo site_url(''); ?>" class="navbar-brand" href="#"><img
 
                             src="<?php echo base_url('uploads/system/'.get_frontend_settings('dark_logo')); ?>" alt="" class="main-logo"></a>
 
 
-
                     <?php include 'menu.php'; ?>
 
-                    <?php if ($this->session->userdata('admin_login')): ?>
-
-                    <!--<div class="instructor-box menu-icon-box">-->
-
-                    <!--    <div class="icon">-->
-
-                    <!--        <a href="<?php echo site_url('admin'); ?>"-->
-
-                    <!--            style="border: 1px solid transparent; margin: 10px 10px; width: 100%; border-radius: 0;"><?php echo site_phrase('administrator'); ?></a>-->
-
-                    <!--    </div>-->
-
-                    <!--</div>-->
-
-                    <?php endif; ?>
-
-
-<div class="menu-icon-box">
+                    <div class="menu-icon-box">
                         <div class="icon">
                             <a href="#" onclick="openSearch()">
                                 <span class="text-dark"><i class="fas fa-search text-dark"></i></span>

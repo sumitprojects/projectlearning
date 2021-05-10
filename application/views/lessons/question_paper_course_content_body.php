@@ -8,7 +8,7 @@
         // If the lesson type is video
         // i am checking the null and empty values because of the existing users does not have video in all video lesson as type
                 ?>
-        <div class="mt-5">
+        <div class="">
             <?php 
                 $tmp           = explode('.', $lesson_details['attachment']);
                 $fileExtension = strtolower(end($tmp));
