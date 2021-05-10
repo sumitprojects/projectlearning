@@ -56,7 +56,7 @@
 
                         </div>
 
-                        <?php if ($this->session->flashdata('error_message') != ""):?>
+                                    <?php if ($this->session->flashdata('error_message')):?>
 
                                         <div class="alert alert-danger" role="alert">
 

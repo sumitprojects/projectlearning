@@ -25,7 +25,7 @@
                             <div class="subtitle"><?php echo site_phrase('start_learning'); ?>.</div>
 
                         </div>
-                        <?php if ($this->session->flashdata('error_message') != ""):?>
+                        <?php if ($this->session->flashdata('error_message')):?>
                                         <div class="alert alert-danger" role="alert">
                                         <?php echo $this->session->flashdata("error_message");?>
                                     </div>
