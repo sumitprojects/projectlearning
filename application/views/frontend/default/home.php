@@ -696,51 +696,31 @@
         <h1 class="text-white text-center py-4">WHAT HOTELIERS SAY</h1>
 
         <div class="testimonial-reel">
-
             <!-- Testimonial -->
-
             <?php foreach ($reviews as $review) :?>
-
             <div>
-
                 <div class="box">
-
                     <!-- Testimonial Image -->
-
                     <figure class="image">
-
                         <img src="<?php echo $this->user_model->get_user_image_url($review['user_id']); ?>"
                             data-src="<?php echo $this->user_model->get_user_image_url($review['user_id']); ?>"
                             alt="user-image" height="42" class="img-fluid rounded-circle shadow-sm lazyloaded">
-
                     </figure>
-
                     <!-- / Testimonial Image -->
-
                     <div class="test-component">
-
                         <!-- Title -->
-
                         <article class="test-title">
-
                             <h4>
-
-                                <?=$review['full_name']?>
-
+                                <?=$review['user']??$review['full_name']?>
                             </h4>
-
                         </article>
 
                         <!-- / Title -->
 
                         <article class="test-content">
-
                             <p>
-
                                 <?=$review['review']?>
-
                             </p>
-
                         </article>
 
                     </div>
@@ -750,17 +730,11 @@
             </div>
 
             <?php endforeach;?>
-
             <!-- / Testimonial -->
-
         </div>
-
         <!-- / Testimonial Carousel -->
-
     </section>
-
     <!-- student testimonial section end -->
-
     <?php endif; ?>
 
 

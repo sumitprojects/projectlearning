@@ -48,6 +48,18 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 					<span><?php echo get_phrase('payout_settings'); ?></span>
 				</a>
 			</li>
+			<li class="side-nav-item">
+				<a href="<?php echo site_url('user/guide/basic'); ?>" class="side-nav-link <?php if ($page_name == 'payment_settings')echo 'active';?>">
+					<i class="dripicons-gear"></i>
+					<span><?php echo get_phrase('basic_guide'); ?></span>
+				</a>
+			</li>
+			<li class="side-nav-item">
+				<a href="<?php echo site_url('user/guide/video'); ?>" class="side-nav-link <?php if ($page_name == 'payment_settings')echo 'active';?>">
+					<i class="dripicons-gear"></i>
+					<span><?php echo get_phrase('video_guide'); ?></span>
+				</a>
+			</li>
 		<?php else: ?>
 			<li class="side-nav-item">
 				<a href="<?php echo site_url('user/become_an_instructor'); ?>" class="side-nav-link <?php if ($page_name == 'become_an_instructor')echo 'active';?>">

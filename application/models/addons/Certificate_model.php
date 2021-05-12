@@ -59,6 +59,7 @@ class Certificate_model extends CI_Model
 		// COURSE DETAILS
 		$course_details = $this->crud_model->get_course_by_id($course_id)->row_array();
 		$course_name = $course_details['title'];
+		$level =  $course_details['level'];
 		// INSTRUCTOR DETAILS
 		$instructor_details = $this->user_model->get_all_user($course_details['user_id'])->row_array();
 		$instructor_name = $instructor_details['first_name'].' '.$instructor_details['last_name'];
@@ -74,7 +75,11 @@ class Certificate_model extends CI_Model
 		}
 
 		if (strpos($certificate_template, '{course}') != false) {
-			$certificate_template = str_replace('{course}', $course_name, $certificate_template);
+			$certificate_template = str_replace('{course}', '"'. strtoupper($course_name) .'"', $certificate_template);
+		}
+
+		if (strpos($certificate_template, '{level}') != false) {
+			$certificate_template = str_replace('{level}', '"'. strtoupper($level) .'"', $certificate_template);
 		}
 
 		// MAKE A COPY OF CERTIFICATE TEMPLATE
@@ -83,9 +88,31 @@ class Certificate_model extends CI_Model
 
 		$splited_certificate_template = explode( "\n", wordwrap( $certificate_template, 70));
 		$splited_certificate_template_part = count($splited_certificate_template);
+		// CONFIG CERTIFICATE TEMPLATE
+		$this->load->library('image_lib');
+		$config_certificate['image_library'] = 'gd2';
+		$config_certificate['source_image'] = $certificate_src;
+		$config_certificate['wm_text'] = ucwords($splited_certificate_template[0]);
+		$config_certificate['wm_type'] = 'text';
+		$config_certificate['wm_font_path'] = FCPATH.'/system/fonts/KaufmannBT.ttf';
+		$config_certificate['wm_font_size'] = '40';
+		$config_certificate['wm_font_color'] = '102041';
+		$config_certificate['wm_vrt_alignment'] = 'top';
+		$config_certificate['wm_hor_alignment'] = 'center';
+		$config_certificate['wm_padding'] = '0';
+		$config_certificate['wm_hor_offset'] = '-15';
+		$config_certificate['wm_vrt_offset'] = '240';
+		$config_certificate['quality'] = '100%';
 
-		for ($i=0; $i < $splited_certificate_template_part; $i++) {
-			$vrt_offset = 340;
+		$this->image_lib->initialize($config_certificate);
+
+		if ( ! $this->image_lib->watermark())
+		{
+			echo $this->image_lib->display_errors();
+		}
+	
+		for ($i=1; $i < $splited_certificate_template_part; $i++) {
+			$vrt_offset = 270;
 			$line_number = $i + 1;
 
 			// CONFIG CERTIFICATE TEMPLATE
@@ -94,14 +121,14 @@ class Certificate_model extends CI_Model
 			$config_certificate['source_image'] = $certificate_src;
 			$config_certificate['wm_text'] = $splited_certificate_template[$i];
 			$config_certificate['wm_type'] = 'text';
-			$config_certificate['wm_font_path'] = FCPATH.'/system/fonts/Palatino.ttf';
-			$config_certificate['wm_font_size'] = '18';
-			$config_certificate['wm_font_color'] = '2C5C8F';
+			$config_certificate['wm_font_path'] = FCPATH.'/system/fonts/MYRIADPRO-REGULAR.OTF';
+			$config_certificate['wm_font_size'] = '14';
+			$config_certificate['wm_font_color'] = '102041';
 			$config_certificate['wm_vrt_alignment'] = 'top';
 			$config_certificate['wm_hor_alignment'] = 'center';
 			$config_certificate['wm_padding'] = '0';
 			$config_certificate['wm_hor_offset'] = '0';
-			$config_certificate['wm_vrt_offset'] = $vrt_offset + (40 * $i);
+			$config_certificate['wm_vrt_offset'] = $vrt_offset + (27 * $i);
 			$config_certificate['quality'] = '100%';
 
 			$this->image_lib->initialize($config_certificate);
@@ -112,49 +139,49 @@ class Certificate_model extends CI_Model
 			}
 		}
 
-		//INSTRUCTOR PLEBEYA CONFIG
-		$config_instructor_name_plebeya['image_library'] = 'gd2';
-		$config_instructor_name_plebeya['source_image'] = $certificate_src;
-		$config_instructor_name_plebeya['wm_text'] = $instructor_name;
-		$config_instructor_name_plebeya['wm_type'] = 'text';
-		$config_instructor_name_plebeya['wm_font_path'] = FCPATH.'/system/fonts/Plebeya.otf';
-		$config_instructor_name_plebeya['wm_font_size'] = '22';
-		$config_instructor_name_plebeya['wm_font_color'] = '2C5C8F';
-		$config_instructor_name_plebeya['wm_vrt_alignment'] = 'top';
-		$config_instructor_name_plebeya['wm_hor_alignment'] = 'left';
-		$config_instructor_name_plebeya['wm_padding'] = '0';
-		$config_instructor_name_plebeya['wm_hor_offset'] = '95';
-		$config_instructor_name_plebeya['wm_vrt_offset'] = '585';
-		$config_instructor_name_plebeya['quality'] = '100%';
+		// //INSTRUCTOR PLEBEYA CONFIG
+		// $config_instructor_name_plebeya['image_library'] = 'gd2';
+		// $config_instructor_name_plebeya['source_image'] = $certificate_src;
+		// $config_instructor_name_plebeya['wm_text'] = $instructor_name;
+		// $config_instructor_name_plebeya['wm_type'] = 'text';
+		// $config_instructor_name_plebeya['wm_font_path'] = FCPATH.'/system/fonts/Plebeya.otf';
+		// $config_instructor_name_plebeya['wm_font_size'] = '22';
+		// $config_instructor_name_plebeya['wm_font_color'] = '2C5C8F';
+		// $config_instructor_name_plebeya['wm_vrt_alignment'] = 'top';
+		// $config_instructor_name_plebeya['wm_hor_alignment'] = 'left';
+		// $config_instructor_name_plebeya['wm_padding'] = '0';
+		// $config_instructor_name_plebeya['wm_hor_offset'] = '95';
+		// $config_instructor_name_plebeya['wm_vrt_offset'] = '585';
+		// $config_instructor_name_plebeya['quality'] = '100%';
 
-		$this->image_lib->initialize($config_instructor_name_plebeya);
+		// $this->image_lib->initialize($config_instructor_name_plebeya);
 
-		if ( ! $this->image_lib->watermark())
-		{
-			echo $this->image_lib->display_errors();
-		}
+		// if ( ! $this->image_lib->watermark())
+		// {
+		// 	echo $this->image_lib->display_errors();
+		// }
 
-		//INSTRUCTOR PALATINO CONFIG
-		$config_instructor_name_palatino['image_library'] = 'gd2';
-		$config_instructor_name_palatino['source_image'] = $certificate_src;
-		$config_instructor_name_palatino['wm_text'] = $instructor_name;
-		$config_instructor_name_palatino['wm_type'] = 'text';
-		$config_instructor_name_palatino['wm_font_path'] = FCPATH.'/system/fonts/Palatino.ttf';
-		$config_instructor_name_palatino['wm_font_size'] = '13';
-		$config_instructor_name_palatino['wm_font_color'] = '2C5C8F';
-		$config_instructor_name_palatino['wm_vrt_alignment'] = 'top';
-		$config_instructor_name_palatino['wm_hor_alignment'] = 'left';
-		$config_instructor_name_palatino['wm_padding'] = '0';
-		$config_instructor_name_palatino['wm_hor_offset'] = '95';
-		$config_instructor_name_palatino['wm_vrt_offset'] = '625';
-		$config_instructor_name_palatino['quality'] = '100%';
+		// //INSTRUCTOR PALATINO CONFIG
+		// $config_instructor_name_palatino['image_library'] = 'gd2';
+		// $config_instructor_name_palatino['source_image'] = $certificate_src;
+		// $config_instructor_name_palatino['wm_text'] = $instructor_name;
+		// $config_instructor_name_palatino['wm_type'] = 'text';
+		// $config_instructor_name_palatino['wm_font_path'] = FCPATH.'/system/fonts/Palatino.ttf';
+		// $config_instructor_name_palatino['wm_font_size'] = '13';
+		// $config_instructor_name_palatino['wm_font_color'] = '2C5C8F';
+		// $config_instructor_name_palatino['wm_vrt_alignment'] = 'top';
+		// $config_instructor_name_palatino['wm_hor_alignment'] = 'left';
+		// $config_instructor_name_palatino['wm_padding'] = '0';
+		// $config_instructor_name_palatino['wm_hor_offset'] = '95';
+		// $config_instructor_name_palatino['wm_vrt_offset'] = '625';
+		// $config_instructor_name_palatino['quality'] = '100%';
 
-		$this->image_lib->initialize($config_instructor_name_palatino);
+		// $this->image_lib->initialize($config_instructor_name_palatino);
 
-		if ( ! $this->image_lib->watermark())
-		{
-			echo $this->image_lib->display_errors();
-		}
+		// if ( ! $this->image_lib->watermark())
+		// {
+		// 	echo $this->image_lib->display_errors();
+		// }
 
 		//DATE CONFIG PLEBEYA
 		$config_date_plebeya['image_library'] = 'gd2';
@@ -163,37 +190,15 @@ class Certificate_model extends CI_Model
 		$config_date_plebeya['wm_type'] = 'text';
 		$config_date_plebeya['wm_font_path'] = FCPATH.'/system/fonts/Plebeya.otf';
 		$config_date_plebeya['wm_font_size'] = '22';
-		$config_date_plebeya['wm_font_color'] = '2C5C8F';
-		$config_date_plebeya['wm_vrt_alignment'] = 'top';
-		$config_date_plebeya['wm_hor_alignment'] = 'right';
+		$config_date_plebeya['wm_font_color'] = '102041';
+		$config_date_plebeya['wm_vrt_alignment'] = 'bottom';
+		$config_date_plebeya['wm_hor_alignment'] = 'center';
 		$config_date_plebeya['wm_padding'] = '0';
-		$config_date_plebeya['wm_hor_offset'] = '-105';
-		$config_date_plebeya['wm_vrt_offset'] = '585';
+		$config_date_plebeya['wm_hor_offset'] = '0';
+		$config_date_plebeya['wm_vrt_offset'] = '-70';
 		$config_date_plebeya['quality'] = '100%';
 
 		$this->image_lib->initialize($config_date_plebeya);
-
-		if ( ! $this->image_lib->watermark())
-		{
-			echo $this->image_lib->display_errors();
-		}
-
-		//DATE CONFIG PALATINO
-		$config_date_palatino['image_library'] = 'gd2';
-		$config_date_palatino['source_image'] = $certificate_src;
-		$config_date_palatino['wm_text'] = "Date";
-		$config_date_palatino['wm_type'] = 'text';
-		$config_date_palatino['wm_font_path'] = FCPATH.'/system/fonts/Palatino.ttf';
-		$config_date_palatino['wm_font_size'] = '13';
-		$config_date_palatino['wm_font_color'] = '2C5C8F';
-		$config_date_palatino['wm_vrt_alignment'] = 'top';
-		$config_date_palatino['wm_hor_alignment'] = 'right';
-		$config_date_palatino['wm_padding'] = '0';
-		$config_date_palatino['wm_hor_offset'] = '-105';
-		$config_date_palatino['wm_vrt_offset'] = '625';
-		$config_date_palatino['quality'] = '100%';
-
-		$this->image_lib->initialize($config_date_palatino);
 
 		if ( ! $this->image_lib->watermark())
 		{
@@ -207,7 +212,7 @@ class Certificate_model extends CI_Model
 		$config_certificate_number_palatino['wm_type'] = 'text';
 		$config_certificate_number_palatino['wm_font_path'] = FCPATH.'/system/fonts/Palatino.ttf';
 		$config_certificate_number_palatino['wm_font_size'] = '7';
-		$config_certificate_number_palatino['wm_font_color'] = '757575';
+		$config_certificate_number_palatino['wm_font_color'] = '102041';
 		$config_certificate_number_palatino['wm_vrt_alignment'] = 'top';
 		$config_certificate_number_palatino['wm_hor_alignment'] = 'left';
 		$config_certificate_number_palatino['wm_padding'] = '0';
@@ -229,7 +234,7 @@ class Certificate_model extends CI_Model
 		$config_certificate_url_palatino['wm_type'] = 'text';
 		$config_certificate_url_palatino['wm_font_path'] = FCPATH.'/system/fonts/Palatino.ttf';
 		$config_certificate_url_palatino['wm_font_size'] = '7';
-		$config_certificate_url_palatino['wm_font_color'] = '757575';
+		$config_certificate_url_palatino['wm_font_color'] = '102041';
 		$config_certificate_url_palatino['wm_vrt_alignment'] = 'top';
 		$config_certificate_url_palatino['wm_hor_alignment'] = 'right';
 		$config_certificate_url_palatino['wm_padding'] = '0';
@@ -252,7 +257,7 @@ class Certificate_model extends CI_Model
 	//CERTIFICATE TEMPLATE TEXT UPDATE
 	public function update_certificate_template_text() {
 		$data['value'] = $this->input->post('certificate_template');
-		if (strlen($this->input->post('certificate_template')) > 120 || strlen($this->input->post('certificate_template')) == 0) {
+		if (strlen($this->input->post('certificate_template')) > 500 || strlen($this->input->post('certificate_template')) == 0) {
 			$this->session->set_flashdata('error_message', get_phrase('certificate_template_has_a_limit_of_120_charecters_and_it_can_not_be_empty_either'));
 			redirect(site_url('addons/certificate/settings'), 'refresh');
 		}

@@ -76,8 +76,9 @@ class Home extends CI_Controller {
         $page_data['latest_articles'] = simplexml_load_file('https://community.hospitalityconnaisseur.com/category/articles/feed/');
 
 
-        $page_data['reviews'] = $this->db->select('rating.*,concat(users.first_name, " ", users.last_name) as full_name')->from('rating')->join('users','users.id = rating.user_id')->where('rating >', 3)->get()->result_array();
-
+        $reviews = $this->crud_model->manage_ratings()->result_array();
+        $reviews = array_slice($reviews,0,6);
+        $page_data['reviews'] = $reviews;
         $this->load->view('frontend/'.get_frontend_settings('theme').'/index', $page_data);
 
     }
@@ -1581,7 +1582,7 @@ class Home extends CI_Controller {
             }
             redirect('jobs/'.$job['slug'].'/'.$jobid,'refresh');
         }else{
-            $page_data['locations'] = $this->db->distinct('location')->from('jobs')->get()->result_array();
+            $page_data['locations'] = $this->db->distinct('location')->from('jobs')->where('status',1)->get()->result_array();
 
             $search = $this->input->post('search_term');
             $job_type = $this->input->post('job_type');
@@ -1607,10 +1608,6 @@ class Home extends CI_Controller {
         }
 
     }
-
-
-
-
 
     // Version 1.1
 

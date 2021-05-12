@@ -1194,5 +1194,26 @@ class User extends CI_Controller {
 
     }
 
+    function guide($type = "basic"){
+        if ($this->session->userdata('user_login') != true) {
+
+            redirect(site_url('login'), 'refresh');
+
+        }
+
+
+
+        $page_data['page_name'] = 'guide_page';
+
+        if($type == 'basic'){
+            $page_data['page_title'] = get_phrase('basic_guide');
+            $page_data['guide'] = get_frontend_settings('instructor_basic_guide');
+        }else if($type == 'video'){
+            $page_data['page_title'] = get_phrase('video_guide');
+            $page_data['guide'] = get_frontend_settings('instructor_video_guide');
+
+        }
+        $this->load->view('backend/index', $page_data);
+    }
 }
 

@@ -35,7 +35,7 @@
 
                             <div class="form-group">
                                 <input type="text" class="form-control" id="" name="search_term"
-                                    placeholder="search_term">
+                                    placeholder="Search Term">
                             </div>
                         </div>
 
@@ -114,11 +114,13 @@
 
         <div class="row p-sm-2">
 
-            <div class="col py-3 px-4 border">
+            <div class="col">
+                
+                <?php if(!empty($jobs)): 
+                
+                foreach($jobs as $job):?>
 
-                <?php foreach($jobs as $job):?>
-
-                <div class="row">
+                <div class="row py-3 px-4 border">
 
                     <div class="col-md-12 col-lg-4">
 
@@ -158,8 +160,11 @@
 
                 </div>
 
-                <?php endforeach;?>
-
+                <?php endforeach; else:?>
+                    <div class="alert alert-warning">
+                        Record Not Found
+                    </div>
+                <?php endif;?>
             </div>
 
         </div>

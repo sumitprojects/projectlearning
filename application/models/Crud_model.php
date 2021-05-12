@@ -929,16 +929,31 @@ class Crud_model extends CI_Model
 
         if (isset($_POST['instructor_application_note'])) {
 
-            $data['value'] = html_escape($this->input->post('instructor_application_note'));
+            $data['value'] = trim($_POST['instructor_application_note']);
 
             $this->db->where('key', 'instructor_application_note');
 
             $this->db->update('settings', $data);
-
         }
 
+        if (isset($_POST['instructor_basic_guide'])) {
 
+            $instructor_basic_guide['value'] = trim($_POST['instructor_basic_guide']);
 
+            $this->db->where('key', 'instructor_basic_guide');
+
+            $this->db->update('frontend_settings', $instructor_basic_guide);
+        }
+
+        if (isset($_POST['instructor_video_guide'])) {
+
+            $instructor_video_guide['value'] = trim($_POST['instructor_video_guide']);
+
+            $this->db->where('key', 'instructor_video_guide');
+
+            $this->db->update('frontend_settings', $instructor_video_guide);
+
+        }
     }
 
 
@@ -5557,6 +5572,48 @@ class Crud_model extends CI_Model
 
         return $this->db->get('course');
 
+    }
+
+
+    public function manage_ratings($request = '', $param2 = ""){
+        $id = $this->input->post('id');
+
+        if($request == 'delete' && $id > 0){
+            $this->db->delete('rating',['id' => $id]);
+        }else if($request == 'add_edit'){
+            $this->form_validation->set_rules('course_id', 'Course', 'trim|required');
+            $this->form_validation->set_rules('rating', 'Rating', 'required|integer');
+            $this->form_validation->set_rules('review', 'Review', 'trim|required|max_length[255]');
+            $data = [];
+            if ($this->form_validation->run()) {
+                $data['full_name'] = $this->input->post('full_name');
+                $data['ratable_id'] = $this->input->post('course_id');
+                $course = $this->crud_model->get_course_by_id($data['ratable_id'])->row_array();
+                $data['ratable_type'] = $course['course_type'];
+                $data['rating'] = $this->input->post('rating');
+                $data['review'] = ($this->input->post('review'));
+                $data['date_added'] = strtotime(date('D, d-m-Y'));
+            }
+            if($id > 0){
+                $data['last_modified'] = strtotime(date('D, d-m-Y'));
+                $this->db->update('rating',$data, ['id' => $id]);
+            }else{
+                $this->db->insert('rating',$data);
+            }
+        }elseif($request == 'get' && $param2>0){
+            $this->db->select('rating.*, concat(users.first_name," ",users.last_name) as user, course.title');
+            $this->db->from('rating');
+            $this->db->join('course','course.id = rating.ratable_id','inner');
+            $this->db->join('users','rating.user_id = users.id','left');
+            $this->db->where('rating.id',$param2);
+            return $this->db->get();
+        }else{
+            $this->db->select('rating.*, concat(users.first_name," ",users.last_name) as user, course.title');
+            $this->db->from('rating');
+            $this->db->join('course','course.id = rating.ratable_id','inner');
+            $this->db->join('users','rating.user_id = users.id','left');
+            return $this->db->get();
+        }
     }
 
 }

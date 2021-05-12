@@ -122,8 +122,11 @@
 
             <div class="col">
 
-                <div class="row text-center">
+                <div class="row mt-2 text-center">
                     <?php foreach($reputed_advertisers as $key => $reputed_advertiser):?>
+                    <?php if(($key+1)%4 == 0):?> 
+                        </div><div class="row mt-2 text-center">
+                    <?php endif; ?>                        
                     <div class="col-3">
                         <a href="<?=$reputed_advertiser['url']?>" target="_blank">
                             <img src="<?=base_url().'uploads/system/'.$reputed_advertiser['image']?>" height="150" width="150" class="img-fluid" title="<?=$reputed_advertiser['title']?>" alt="<?=$reputed_advertiser['title']?>">

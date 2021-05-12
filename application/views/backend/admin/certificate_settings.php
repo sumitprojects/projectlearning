@@ -20,8 +20,7 @@
               <p class="text-muted font-13">
                 N.B: <strong>"{student}"</strong> <?php echo strtolower(get_phrase('and')); ?> <strong>"{course}"</strong> <?php echo strtolower(get_phrase('represents_student_name_and_course_title_on_the_certificate')); ?>.
               </p>
-              <textarea name="certificate_template" data-toggle="maxlength" class="form-control" maxlength="120" rows="3"
-              placeholder="This textarea has a limit of 120 chars." required><?php echo get_settings('certificate_template'); ?></textarea>
+              <textarea name="certificate_template" class="form-control" rows="3" required><?php echo get_settings('certificate_template'); ?></textarea>
             </div>
             <button type="submit" class="btn btn-primary"><?php echo get_phrase('save'); ?></button>
           </form>

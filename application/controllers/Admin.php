@@ -1957,7 +1957,9 @@ class Admin extends CI_Controller {
         $page_data['faqs'] = $this->db->get_where('faqs',['status'=> 1])->result_array();
         $this->load->view('backend/index', $page_data);
 
-    }    public function manage_dictionary($param1 = '', $param2 = '', $param3 = '',$param4 = ''){
+    }    
+    
+    public function manage_dictionary($param1 = '', $param2 = '', $param3 = '',$param4 = ''){
         if ($this->session->userdata('admin_login') != true) {
             redirect(site_url('login'), 'refresh');
         }
@@ -2003,7 +2005,7 @@ class Admin extends CI_Controller {
         }
 
         if ($param1 == 'delete_language') {
-            $this->db->update('dictionary_lang',['status'=>0],['dlid'=>$param4,'language'=>$param3]);
+            $this->db->update('dictionary_lang',['status'=>0],['dlid'=>$param3,'language'=>$param2]);
             $this->session->set_flashdata('flash_message', get_phrase('language_deleted_successfully'));
             redirect(site_url('admin/manage_dictionary'), 'refresh');
         }
@@ -2017,11 +2019,13 @@ class Admin extends CI_Controller {
 
           
         }
-        $page_data['languages']             = $this->db->get('dictionary_lang')->result_array();
+        $page_data['languages']             = $this->db->get_where('dictionary_lang',['status'=> 1])->result_array();
         $page_data['page_name']             =  'manage_dictionary';
         $page_data['page_title']            =   get_phrase('multi_language_settings');
         $this->load->view('backend/index', $page_data);
-    }    public function get_dictionary(){
+    }    
+    
+    public function get_dictionary(){
 
         $phrase_list = $this->db->select('dictionary.*')->from('dictionary')->join('dictionary_lang','dictionary_lang.dlid = dictionary.lang_key')->where('dictionary.lang_key',$_POST['lang_key'])->get()->result_array();
 
@@ -2129,5 +2133,24 @@ class Admin extends CI_Controller {
         }
     }
 
+    public function manage_ratings($param1 = "", $param2 = ""){
+        $this->load->helper('text');
+
+        if($param1 == 'add'){
+            $this->crud_model->manage_ratings('add_edit');
+            redirect('admin/manage_ratings');
+        }elseif ($param1 == 'delete'){
+            $this->crud_model->manage_ratings('delete');            
+            redirect('admin/manage_ratings','refresh');
+        }elseif($param1 == 'get' && $param2 > 0){
+            $page_data['rating'] = $this->crud_model->manage_ratings('get', $param2)->row_array();
+        }
+
+        $page_data['page_name'] = 'manage_ratings';
+        $page_data['page_title'] = get_phrase('manage_ratings');
+        $page_data['ratings'] = $this->crud_model->manage_ratings()->result_array();
+        $page_data['courses'] = $this->db->get_where('course',['status'=>'active'])->result_array();
+        $this->load->view('backend/index', $page_data);
+    }
     
 }

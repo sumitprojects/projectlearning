@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <label for="instructor_application_note"><?php echo get_phrase('instructor_application_note'); ?></label>
                         <div class="form-group">
-                            <textarea class="form-control" name="instructor_application_note" rows="8" cols="80"><?php echo get_settings('instructor_application_note'); ?></textarea>
+                        <textarea class="form-control" name="instructor_application_note" id="instructor_application_note" rows="8" cols="80"><?php echo get_settings('instructor_application_note'); ?></textarea>
                         </div>
                     </div>
 
@@ -75,11 +75,61 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mb-3 header-title"><?php echo get_phrase('instructor_basic_guide');?></h4>
+
+                <form action="<?php echo site_url('admin/instructor_settings/update'); ?>" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="instructor_basic_guide"><?php echo get_phrase('instructor_basic_guide'); ?></label>
+                        <div class="form-group">
+                            <textarea class="form-control" name="instructor_basic_guide" id="instructor_basic_guide" rows="8" cols="80"><?php echo get_frontend_settings('instructor_basic_guide'); ?></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-7">
+                            <button type="submit" class="btn btn-primary btn-block"><?php echo get_phrase('update_settings'); ?></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mb-3 header-title"><?php echo get_phrase('instructor_video_guide');?></h4>
+
+                <form action="<?php echo site_url('admin/instructor_settings/update'); ?>" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="instructor_video_guide"><?php echo get_phrase('instructor_video_guide'); ?></label>
+                        <div class="form-group">
+                            <textarea class="form-control" name="instructor_video_guide" id="instructor_video_guide" rows="8" cols="80"><?php echo get_frontend_settings('instructor_video_guide'); ?></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-7">
+                            <button type="submit" class="btn btn-primary btn-block"><?php echo get_phrase('update_settings'); ?></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <script type="text/javascript">
     $(document).ready(function() {
         var instructor_revenue = $('#instructor_revenue').val();
         calculateAdminRevenue(instructor_revenue);
+        initSummerNote(['#instructor_application_note','#instructor_video_guide','#instructor_basic_guide'])
     });
+
     function calculateAdminRevenue(instructor_revenue) {
         if(instructor_revenue <= 100){
             var admin_revenue = 100 - instructor_revenue;

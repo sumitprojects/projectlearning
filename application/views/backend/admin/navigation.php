@@ -540,6 +540,13 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
         <?php endif; ?>
 
         <?php if($this->session->userdata('role_id') == 1):?>
+        <li class="side-nav-item">
+            <a href="<?php echo site_url('admin/manage_ratings'); ?>"
+                class="side-nav-link <?php if ($page_name == 'manage_ratings')echo 'active';?>">
+                <i class="dripicons-archive"></i>
+                <span><?php echo get_phrase('manage_ratings'); ?></span>
+            </a>
+        </li>
 
         <li class="side-nav-item">
 
